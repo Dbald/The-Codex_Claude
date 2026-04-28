@@ -1,0 +1,202 @@
+[
+  {
+    "id": "electronics-lesson-001",
+    "channel": "Electronics",
+    "type": "lesson",
+    "level": "Beginner",
+    "title": "What is voltage?",
+    "hook": "Voltage is electrical pressure.",
+    "explanation": "Voltage is the force that pushes electric charge through a circuit. It is measured in volts (V). Think of it like water pressure in a pipe — higher voltage pushes more electrons with more force.",
+    "example": "A 9V battery pushes electrons harder than a 1.5V AA battery. A wall outlet in the US runs at 120V — much more powerful than either battery.",
+    "whyItMatters": "Too much voltage can damage a component instantly. Too little and the circuit won't work. Matching voltage to component specs is essential.",
+    "challenge": "Find 3 devices in your home and check their voltage rating (usually printed on the label or charger)."
+  },
+  {
+    "id": "electronics-lesson-002",
+    "channel": "Electronics",
+    "type": "lesson",
+    "level": "Beginner",
+    "title": "What is current?",
+    "hook": "Current is the flow of electrons.",
+    "explanation": "Current is the amount of electric charge flowing through a circuit per second. It is measured in amperes (amps or A). More current means more electrons flowing. Current flows from the positive terminal of a battery to the negative terminal.",
+    "example": "An LED might need only 20 milliamps (0.02A). A car starter motor might need 200 amps. The difference is enormous.",
+    "whyItMatters": "Too much current through a component burns it out. Resistors, fuses, and circuit breakers all exist to control current.",
+    "challenge": "Look at a USB charger. Find its output current rating (listed in amps or milliamps). Write it down."
+  },
+  {
+    "id": "electronics-lesson-003",
+    "channel": "Electronics",
+    "type": "lesson",
+    "level": "Beginner",
+    "title": "What is resistance?",
+    "hook": "Resistance is what slows electrons down.",
+    "explanation": "Resistance is the opposition to electrical current flow. It is measured in ohms (Ω). Higher resistance means less current flows for the same voltage. Resistors are components specifically designed to add resistance to a circuit.",
+    "example": "If you connect a bare LED directly to a 9V battery with no resistor, it will burn out immediately. Adding a 470Ω resistor limits current to a safe level.",
+    "whyItMatters": "Resistance lets you control how much current flows to each component. Without it, circuits would destroy themselves.",
+    "challenge": "Look up 'Ohm's Law' and write down the formula that connects voltage, current, and resistance."
+  },
+  {
+    "id": "electronics-lesson-004",
+    "channel": "Electronics",
+    "type": "lesson",
+    "level": "Beginner",
+    "title": "What is Ohm's Law?",
+    "hook": "Three variables. One formula. Everything in electronics.",
+    "explanation": "Ohm's Law states: Voltage = Current × Resistance (V = I × R). This means if you know any two of the three values, you can calculate the third. It is the fundamental equation of electronics.",
+    "example": "You have a 9V battery and a 470Ω resistor. How much current flows? I = V / R = 9 / 470 = 0.019 amps = 19 milliamps. A safe amount for an LED.",
+    "whyItMatters": "Ohm's Law is used in every circuit calculation. Master this and you can understand and design basic circuits.",
+    "challenge": "Use Ohm's Law to calculate: if you have 5V and want exactly 25mA of current, what resistor value do you need?"
+  },
+  {
+    "id": "electronics-lesson-005",
+    "channel": "Electronics",
+    "type": "lesson",
+    "level": "Beginner",
+    "title": "What is a circuit?",
+    "hook": "A circuit is a complete loop that electricity travels through.",
+    "explanation": "A circuit is a closed path that allows electrical current to flow from a power source, through components, and back to the source. If the loop is broken anywhere, the current stops. Switches work by breaking and completing this loop.",
+    "example": "A simple flashlight circuit: battery positive → switch → LED → resistor → battery negative. If the switch opens, the loop breaks and the LED goes off.",
+    "whyItMatters": "Understanding circuits is the foundation of all electronics. Every device from your phone to a spaceship runs on circuits.",
+    "challenge": "Draw a simple circuit diagram showing a battery, a switch, and an LED with a resistor."
+  },
+  {
+    "id": "electronics-lesson-006",
+    "channel": "Electronics",
+    "type": "lesson",
+    "level": "Beginner",
+    "title": "What is a breadboard?",
+    "hook": "A breadboard lets you build circuits without soldering.",
+    "explanation": "A breadboard is a reusable plastic board with a grid of holes connected by metal strips underneath. You push components and wires into the holes to create temporary circuit connections. The power rails run along the top and bottom edges.",
+    "example": "To test an LED circuit, you place the battery, resistor, and LED on the breadboard and connect them with jumper wires. If something doesn't work, you just move the wires.",
+    "whyItMatters": "Breadboards let you experiment safely and quickly. They are the training ground for every electronics beginner.",
+    "challenge": "Search for 'breadboard tutorial' online and find what the long vertical power strips are used for."
+  },
+  {
+    "id": "electronics-lesson-007",
+    "channel": "Electronics",
+    "type": "lesson",
+    "level": "Beginner",
+    "title": "What are LEDs?",
+    "hook": "An LED is a light that runs on tiny amounts of power.",
+    "explanation": "LED stands for Light-Emitting Diode. It emits light when current flows through it in one direction. LEDs have two legs: the longer leg is positive (anode) and the shorter leg is negative (cathode). They only work when connected correctly.",
+    "example": "A standard red LED needs about 2V and 20mA. With a 5V supply you need a resistor: R = (5V - 2V) / 0.02A = 150Ω.",
+    "whyItMatters": "LEDs are in everything — screens, indicators, headlights. Learning to control them is your first step into practical electronics.",
+    "challenge": "If you have a red LED (forward voltage 2V) and a 9V battery, calculate the resistor you need to limit current to 20mA."
+  },
+  {
+    "id": "electronics-lesson-008",
+    "channel": "Electronics",
+    "type": "lesson",
+    "level": "Beginner",
+    "title": "What is a multimeter?",
+    "hook": "A multimeter is your most important tool in electronics.",
+    "explanation": "A multimeter measures voltage, current, and resistance. It has two probes (red positive, black negative) and a dial to select what you are measuring. It is used to diagnose circuits, test batteries, and verify connections.",
+    "example": "Set it to DC voltage, touch red to positive and black to negative of a battery, and it reads the voltage. Set it to continuity mode and it beeps when two points are connected.",
+    "whyItMatters": "You cannot fix what you cannot measure. A multimeter tells you what is actually happening in your circuit, not what you think is happening.",
+    "challenge": "If you have a multimeter, measure the voltage of 3 batteries you have at home. Compare the readings to their rated voltage."
+  },
+  {
+    "id": "electronics-lesson-009",
+    "channel": "Electronics",
+    "type": "lesson",
+    "level": "Beginner",
+    "title": "What are series vs parallel circuits?",
+    "hook": "Two ways to connect components. Very different results.",
+    "explanation": "In a series circuit, components are connected end-to-end in one loop. Current is the same through all components but voltage splits. In a parallel circuit, components share the same two connection points. Voltage is the same across all but current splits.",
+    "example": "String lights are in series — one burned bulb kills the whole string. Outlets in your home are in parallel — unplugging one device doesn't cut power to others.",
+    "whyItMatters": "Knowing which configuration to use affects how your circuit behaves under load, failure, and when adding or removing components.",
+    "challenge": "Look around your home and identify one example of a series circuit and one example of a parallel circuit."
+  },
+  {
+    "id": "electronics-lesson-010",
+    "channel": "Electronics",
+    "type": "lesson",
+    "level": "Beginner",
+    "title": "What is a sensor?",
+    "hook": "Sensors let your circuit feel the world.",
+    "explanation": "A sensor is a component that detects a physical condition and converts it into an electrical signal. Temperature sensors detect heat. Light sensors detect brightness. Distance sensors detect how far away objects are. Your circuit can then respond to these readings.",
+    "example": "A temperature sensor (like LM35) outputs a voltage that changes with temperature. At 25°C it might output 250mV. A microcontroller reads this and can trigger actions based on it.",
+    "whyItMatters": "Sensors are what make electronics interactive and intelligent. Without sensors, circuits are static. With sensors, they respond to the world.",
+    "challenge": "List 3 sensors you interact with every day (hint: think about your phone, car, and home thermostat)."
+  },
+  {
+    "id": "electronics-quiz-001",
+    "channel": "Electronics",
+    "type": "quiz",
+    "level": "Beginner",
+    "question": "What unit is voltage measured in?",
+    "options": ["Amperes", "Ohms", "Watts", "Volts"],
+    "answer": "Volts",
+    "explanation": "Voltage is measured in Volts (V), named after Alessandro Volta. Current is measured in Amperes (A) and resistance in Ohms (Ω)."
+  },
+  {
+    "id": "electronics-quiz-002",
+    "channel": "Electronics",
+    "type": "quiz",
+    "level": "Beginner",
+    "question": "According to Ohm's Law, if V = 12V and R = 4Ω, what is the current?",
+    "options": ["3A", "48A", "8A", "0.33A"],
+    "answer": "3A",
+    "explanation": "Using Ohm's Law: I = V / R = 12 / 4 = 3 Amperes."
+  },
+  {
+    "id": "electronics-quiz-003",
+    "channel": "Electronics",
+    "type": "quiz",
+    "level": "Beginner",
+    "question": "On an LED, which leg is the positive (anode)?",
+    "options": ["The shorter leg", "The curved leg", "The longer leg", "Both legs are the same"],
+    "answer": "The longer leg",
+    "explanation": "The longer leg of an LED is the anode (positive). The shorter leg is the cathode (negative). LEDs only light up when connected in the correct direction."
+  },
+  {
+    "id": "electronics-quiz-004",
+    "channel": "Electronics",
+    "type": "quiz",
+    "level": "Beginner",
+    "question": "What does a breadboard allow you to do?",
+    "options": ["Solder components permanently", "Build temporary circuits without soldering", "Measure voltage", "Generate electricity"],
+    "answer": "Build temporary circuits without soldering",
+    "explanation": "A breadboard lets you prototype and test circuits by pushing components into holes. No soldering needed, so you can easily modify and reuse it."
+  },
+  {
+    "id": "electronics-quiz-005",
+    "channel": "Electronics",
+    "type": "quiz",
+    "level": "Beginner",
+    "question": "What happens if you connect an LED directly to a 9V battery with no resistor?",
+    "options": ["It glows brighter", "Nothing happens", "It burns out from too much current", "It charges the battery"],
+    "answer": "It burns out from too much current",
+    "explanation": "Without a current-limiting resistor, too much current flows through the LED and destroys it almost instantly. Always use a resistor with LEDs."
+  },
+  {
+    "id": "electronics-challenge-001",
+    "channel": "Electronics",
+    "type": "challenge",
+    "level": "Beginner",
+    "title": "Voltage Hunt",
+    "prompt": "Find 5 devices or appliances in your home. Read the label or charger of each one and write down the voltage rating. Compare them. Which requires the highest voltage? Which the lowest?",
+    "whyItMatters": "Connecting everyday objects to electronics concepts makes the theory stick. Voltage ratings are everywhere once you start looking.",
+    "completionCriteria": "You have found and recorded voltage ratings for at least 5 home devices."
+  },
+  {
+    "id": "electronics-challenge-002",
+    "channel": "Electronics",
+    "type": "challenge",
+    "level": "Beginner",
+    "title": "Ohm's Law Practice",
+    "prompt": "Solve these three problems using Ohm's Law (V = I × R):\n1. V = 9V, R = 300Ω → What is I?\n2. I = 50mA, R = 100Ω → What is V?\n3. V = 5V, I = 25mA → What is R?\nWrite your answers with units.",
+    "whyItMatters": "Ohm's Law is the math behind every circuit. Practicing it now means you can design and troubleshoot circuits later.",
+    "completionCriteria": "You have solved all three Ohm's Law problems and written down your answers."
+  },
+  {
+    "id": "electronics-challenge-003",
+    "channel": "Electronics",
+    "type": "challenge",
+    "level": "Beginner",
+    "title": "Draw a Circuit",
+    "prompt": "Draw a simple LED circuit by hand or on paper:\n- One 9V battery\n- One switch\n- One resistor (calculate the correct value for 20mA through an LED with 2V forward voltage)\n- One LED\nLabel each component and show the direction of current flow.",
+    "whyItMatters": "Drawing circuits trains your brain to think in terms of current paths and component relationships. This skill is fundamental to all electronics work.",
+    "completionCriteria": "You have drawn and labeled a complete LED circuit with correctly calculated resistor value."
+  }
+]

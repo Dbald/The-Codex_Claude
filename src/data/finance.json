@@ -1,0 +1,202 @@
+[
+  {
+    "id": "finance-lesson-001",
+    "channel": "Finance",
+    "type": "lesson",
+    "level": "Beginner",
+    "title": "What is equity?",
+    "hook": "Equity means ownership.",
+    "explanation": "If you own part of a company, property, or asset, the value of your ownership is your equity. Equity is what remains after you subtract what you owe from what you own.",
+    "example": "If your business is worth $10,000 and you own 100% of it, you have $10,000 in equity. If you own a house worth $300,000 and owe $200,000 on it, your equity is $100,000.",
+    "whyItMatters": "Understanding equity helps you think like an owner, not just a worker. Building equity is one of the core paths to financial freedom.",
+    "challenge": "Write down 3 things you own that could be considered assets with equity."
+  },
+  {
+    "id": "finance-lesson-002",
+    "channel": "Finance",
+    "type": "lesson",
+    "level": "Beginner",
+    "title": "What is net worth?",
+    "hook": "Net worth is your financial scoreboard.",
+    "explanation": "Net worth equals everything you own (assets) minus everything you owe (liabilities). It is a snapshot of your financial health at any given moment.",
+    "example": "You have $5,000 in savings, a $1,000 laptop, and $2,000 in credit card debt. Your net worth is $4,000.",
+    "whyItMatters": "Tracking net worth shows you whether you are moving forward or backward financially. Growing your net worth is the goal.",
+    "challenge": "Calculate your net worth today. List your assets and liabilities."
+  },
+  {
+    "id": "finance-lesson-003",
+    "channel": "Finance",
+    "type": "lesson",
+    "level": "Beginner",
+    "title": "What is cash flow?",
+    "hook": "Cash flow is money moving in and out of your life.",
+    "explanation": "Positive cash flow means more money comes in than goes out. Negative cash flow means you are spending more than you earn. Rich people focus on building positive cash flow.",
+    "example": "If you earn $4,000 per month and spend $3,500, your cash flow is +$500. That surplus can be saved or invested.",
+    "whyItMatters": "Controlling cash flow is more important than having a high salary. A high earner with no control is still broke.",
+    "challenge": "Track every dollar you spend for one week and calculate your cash flow."
+  },
+  {
+    "id": "finance-lesson-004",
+    "channel": "Finance",
+    "type": "lesson",
+    "level": "Beginner",
+    "title": "What are assets vs liabilities?",
+    "hook": "Assets put money in your pocket. Liabilities take money out.",
+    "explanation": "An asset generates income or increases in value over time. A liability costs you money to maintain or requires regular payments. The wealthy collect assets. Most people collect liabilities thinking they are assets.",
+    "example": "A rental property that earns rent is an asset. A car loan that requires monthly payments is a liability. A depreciating car in your driveway is also a liability.",
+    "whyItMatters": "The path to wealth is simple: acquire more assets than liabilities. This is the game.",
+    "challenge": "List 5 things you own. Label each one as an asset or liability and explain why."
+  },
+  {
+    "id": "finance-lesson-005",
+    "channel": "Finance",
+    "type": "lesson",
+    "level": "Beginner",
+    "title": "What are stocks?",
+    "hook": "A stock is a small piece of ownership in a company.",
+    "explanation": "When you buy a stock, you become a part owner of that company. If the company grows and becomes more valuable, your stock increases in value. Stocks are traded on exchanges like the NYSE or NASDAQ.",
+    "example": "If Apple has 1 billion shares and you buy 100 shares, you own 0.000001% of Apple. If Apple doubles in value, your shares also roughly double.",
+    "whyItMatters": "Stocks have historically been one of the best long-term wealth-building tools available to everyday people.",
+    "challenge": "Look up one company you believe in and check what its stock price is today."
+  },
+  {
+    "id": "finance-lesson-006",
+    "channel": "Finance",
+    "type": "lesson",
+    "level": "Beginner",
+    "title": "What are ETFs?",
+    "hook": "An ETF lets you own a little bit of everything.",
+    "explanation": "An ETF (Exchange-Traded Fund) is a basket of stocks or bonds you can buy as a single investment. Instead of picking one company, you buy a slice of hundreds of companies at once. ETFs trade on stock exchanges just like individual stocks.",
+    "example": "The S&P 500 ETF (like VOO or SPY) tracks the 500 largest US companies. Buying one share gives you exposure to all 500.",
+    "whyItMatters": "ETFs reduce risk through diversification and are a foundational investing tool for building long-term wealth with low effort.",
+    "challenge": "Search 'S&P 500 ETF' and find out what the average annual return has been over the last 10 years."
+  },
+  {
+    "id": "finance-lesson-007",
+    "channel": "Finance",
+    "type": "lesson",
+    "level": "Beginner",
+    "title": "What is compound interest?",
+    "hook": "Compound interest is money making money on itself.",
+    "explanation": "When you earn interest and that interest earns more interest, it compounds. The longer money compounds, the faster it grows. Time is the most powerful ingredient in compounding.",
+    "example": "$1,000 at 10% annual return becomes $1,100 after year 1. After year 2, it is $1,210. After 30 years it becomes $17,449 without adding another dollar.",
+    "whyItMatters": "Starting early is the single most powerful financial decision you can make. Waiting costs you more than most people realize.",
+    "challenge": "Use a compound interest calculator online to see what $100/month becomes in 30 years at 8% annual return."
+  },
+  {
+    "id": "finance-lesson-008",
+    "channel": "Finance",
+    "type": "lesson",
+    "level": "Beginner",
+    "title": "What is income vs wealth?",
+    "hook": "Income is what you earn. Wealth is what you keep.",
+    "explanation": "Income is the money that flows to you from work, a job, or business. Wealth is accumulated assets minus liabilities. High income does not guarantee wealth. Wealth is built by spending less than you earn and investing the difference.",
+    "example": "A doctor earning $300,000 per year with $400,000 in debt and no investments has high income but low wealth. A teacher earning $60,000 who invests consistently could have more wealth over time.",
+    "whyItMatters": "Chasing income without building wealth is a treadmill. Focus on building assets that grow without you actively working.",
+    "challenge": "Write down: what would happen to your lifestyle if your income stopped for 3 months?"
+  },
+  {
+    "id": "finance-lesson-009",
+    "channel": "Finance",
+    "type": "lesson",
+    "level": "Beginner",
+    "title": "What is the 50/30/20 rule?",
+    "hook": "A simple budget framework that actually works.",
+    "explanation": "The 50/30/20 rule divides your after-tax income into three buckets: 50% for needs, 30% for wants, and 20% for savings and investments. It is a starting point, not a rigid rule.",
+    "example": "If you take home $3,000/month: $1,500 for rent, utilities, food. $900 for entertainment, dining out, subscriptions. $600 for savings, investing, or paying down debt.",
+    "whyItMatters": "Having a framework removes the guilt and guesswork from budgeting. You know exactly what you have permission to spend.",
+    "challenge": "Apply the 50/30/20 rule to your current monthly take-home pay and see where you land."
+  },
+  {
+    "id": "finance-lesson-010",
+    "channel": "Finance",
+    "type": "lesson",
+    "level": "Beginner",
+    "title": "What is financial freedom?",
+    "hook": "Financial freedom means your money works so you don't have to.",
+    "explanation": "Financial freedom is when your passive income from investments, businesses, or assets equals or exceeds your living expenses. At that point, work becomes optional. You work because you want to, not because you have to.",
+    "example": "If your expenses are $3,000/month and your investments generate $3,000/month in dividends or returns, you are financially free.",
+    "whyItMatters": "Financial freedom is not about being rich. It is about having choices. Every dollar invested moves you one step closer.",
+    "challenge": "Calculate your 'freedom number': how much would your investments need to generate monthly to cover your lifestyle?"
+  },
+  {
+    "id": "finance-quiz-001",
+    "channel": "Finance",
+    "type": "quiz",
+    "level": "Beginner",
+    "question": "What does equity mean?",
+    "options": ["Debt you owe", "Ownership value in an asset", "A monthly bill", "A type of tax"],
+    "answer": "Ownership value in an asset",
+    "explanation": "Equity represents the ownership value in an asset. It is calculated as the value of the asset minus any money owed on it."
+  },
+  {
+    "id": "finance-quiz-002",
+    "channel": "Finance",
+    "type": "quiz",
+    "level": "Beginner",
+    "question": "Net worth is calculated as:",
+    "options": ["Income minus expenses", "Assets minus liabilities", "Salary plus bonuses", "Savings minus taxes"],
+    "answer": "Assets minus liabilities",
+    "explanation": "Net worth = Assets - Liabilities. It is your true financial picture at any point in time."
+  },
+  {
+    "id": "finance-quiz-003",
+    "channel": "Finance",
+    "type": "quiz",
+    "level": "Beginner",
+    "question": "Which of these is an ASSET?",
+    "options": ["A car loan", "A credit card balance", "A rental property generating income", "A student loan"],
+    "answer": "A rental property generating income",
+    "explanation": "An asset generates income or increases in value. A rental property that earns monthly rent is a classic asset. Loans and credit card balances are liabilities."
+  },
+  {
+    "id": "finance-quiz-004",
+    "channel": "Finance",
+    "type": "quiz",
+    "level": "Beginner",
+    "question": "What is an ETF?",
+    "options": ["A type of bank account", "A single company stock", "A basket of stocks or bonds traded like a stock", "An emergency fund type"],
+    "answer": "A basket of stocks or bonds traded like a stock",
+    "explanation": "An ETF (Exchange-Traded Fund) holds many assets in one package. Buying one ETF share gives you exposure to all the assets inside it."
+  },
+  {
+    "id": "finance-quiz-005",
+    "channel": "Finance",
+    "type": "quiz",
+    "level": "Beginner",
+    "question": "In the 50/30/20 budget rule, what does the 20% represent?",
+    "options": ["Fun money", "Needs like rent and food", "Savings and investments", "Taxes"],
+    "answer": "Savings and investments",
+    "explanation": "The 50/30/20 rule allocates 50% to needs, 30% to wants, and 20% to savings and investments. The 20% is how you build wealth."
+  },
+  {
+    "id": "finance-challenge-001",
+    "channel": "Finance",
+    "type": "challenge",
+    "level": "Beginner",
+    "title": "Calculate Your Net Worth",
+    "prompt": "List everything you own (assets) and everything you owe (liabilities). Subtract liabilities from assets to find your current net worth. Write it down somewhere you can track it monthly.",
+    "whyItMatters": "You cannot improve what you do not measure. Knowing your starting number is step one of the financial game.",
+    "completionCriteria": "You have calculated and written down your current net worth."
+  },
+  {
+    "id": "finance-challenge-002",
+    "channel": "Finance",
+    "type": "challenge",
+    "level": "Beginner",
+    "title": "Find Your Freedom Number",
+    "prompt": "Add up your monthly living expenses. Multiply by 12 to get your annual expenses. Multiply that by 25 to find your financial freedom number — the amount you need invested to live off 4% returns indefinitely.",
+    "whyItMatters": "Having a concrete target makes financial freedom feel real and achievable instead of abstract.",
+    "completionCriteria": "You have calculated your personal financial freedom number."
+  },
+  {
+    "id": "finance-challenge-003",
+    "channel": "Finance",
+    "type": "challenge",
+    "level": "Beginner",
+    "title": "Apply the 50/30/20 Rule",
+    "prompt": "Take your monthly take-home pay and divide it using the 50/30/20 rule. Set up 3 categories in your phone notes or a notebook: Needs (50%), Wants (30%), Savings (20%). Track your spending for the next 7 days.",
+    "whyItMatters": "A simple budget followed consistently beats a perfect budget ignored. Start now.",
+    "completionCriteria": "You have set up your 50/30/20 budget categories and tracked at least one day."
+  }
+]

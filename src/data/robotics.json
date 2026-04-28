@@ -1,0 +1,202 @@
+[
+  {
+    "id": "robotics-lesson-001",
+    "channel": "Robotics",
+    "type": "lesson",
+    "level": "Beginner",
+    "title": "What is a motor driver?",
+    "hook": "Your microcontroller is too weak to power a motor by itself.",
+    "explanation": "A motor driver is an integrated circuit that sits between your microcontroller and a motor. It takes a small control signal from the microcontroller and uses a stronger power source to actually drive the motor. Common motor drivers include the L298N and L9110S.",
+    "example": "An Arduino outputs 5V at a few milliamps — not enough to spin a DC motor. The L298N motor driver takes this signal and can deliver up to 2A to the motor from a separate power supply.",
+    "whyItMatters": "Without a motor driver, you can damage your microcontroller or fail to move the motor. Every robot that moves uses a motor driver.",
+    "challenge": "Search 'L298N motor driver pinout' and learn what each pin does."
+  },
+  {
+    "id": "robotics-lesson-002",
+    "channel": "Robotics",
+    "type": "lesson",
+    "level": "Beginner",
+    "title": "What are DC motors?",
+    "hook": "DC motors convert electricity into rotation.",
+    "explanation": "DC (Direct Current) motors spin when voltage is applied. Reverse the polarity and they spin the other direction. The speed can be controlled using PWM (Pulse Width Modulation). DC motors are simple, cheap, and everywhere.",
+    "example": "Most wheeled robots use two DC motors — one for each drive wheel. Reversing one motor while running the other turns the robot. Running both forward moves it straight.",
+    "whyItMatters": "DC motors are the workhorses of robotics. Understanding how to control them is the foundation of robot movement.",
+    "challenge": "Think of 3 objects at home that use a DC motor to spin something."
+  },
+  {
+    "id": "robotics-lesson-003",
+    "channel": "Robotics",
+    "type": "lesson",
+    "level": "Beginner",
+    "title": "What are servo motors?",
+    "hook": "A servo motor can hold a precise position.",
+    "explanation": "A servo motor rotates to a specific angle and holds that position. It uses a feedback mechanism internally to know where it is. Standard servos rotate between 0° and 180°. They are controlled by PWM signals.",
+    "example": "Robot arms, camera mounts, and RC car steering all use servos. Send a signal for 90° and it moves to the center. Send 0° and it moves to one extreme.",
+    "whyItMatters": "Servos give your robot precise control over angles and positions. A robot arm cannot be built without them.",
+    "challenge": "Search 'servo motor control with Arduino' and find the signal pulse width for 0°, 90°, and 180°."
+  },
+  {
+    "id": "robotics-lesson-004",
+    "channel": "Robotics",
+    "type": "lesson",
+    "level": "Beginner",
+    "title": "What is a microcontroller?",
+    "hook": "A microcontroller is the brain of your robot.",
+    "explanation": "A microcontroller is a small computer on a single chip. It has a processor, memory, and input/output pins. You write code that runs on the microcontroller and it controls everything connected to it. Arduino boards are built around microcontrollers.",
+    "example": "The ATmega328 chip inside an Arduino Uno runs your code, reads sensor values through analog and digital pins, and sends signals to motors and LEDs.",
+    "whyItMatters": "The microcontroller is what makes your robot programmable and intelligent. It is the difference between a toy and a machine you control.",
+    "challenge": "Look up 'Arduino Uno pinout' and count how many digital pins, analog pins, and PWM pins it has."
+  },
+  {
+    "id": "robotics-lesson-005",
+    "channel": "Robotics",
+    "type": "lesson",
+    "level": "Beginner",
+    "title": "What is Arduino?",
+    "hook": "Arduino makes microcontrollers accessible to everyone.",
+    "explanation": "Arduino is an open-source electronics platform with hardware and software. The boards have a microcontroller, USB connection for programming, and labeled pins. You write code in a simplified version of C++ in the Arduino IDE and upload it to the board.",
+    "example": "A basic Arduino sketch has two main functions: setup() runs once when the board starts, and loop() runs continuously forever. The classic first program blinks an LED.",
+    "whyItMatters": "Arduino lowered the barrier to building robots and electronics projects. It is the most common starting point in robotics and physical computing.",
+    "challenge": "Download the Arduino IDE and run the built-in 'Blink' example. Even without a board, read through the code and understand what it does."
+  },
+  {
+    "id": "robotics-lesson-006",
+    "channel": "Robotics",
+    "type": "lesson",
+    "level": "Beginner",
+    "title": "What is PWM?",
+    "hook": "PWM lets you fake an analog signal with digital pulses.",
+    "explanation": "PWM stands for Pulse Width Modulation. It rapidly switches a digital pin on and off. The ratio of on-time to total time is called the duty cycle. A 50% duty cycle makes a motor or LED behave as if it received 50% of the supply voltage.",
+    "example": "To control LED brightness: 100% duty cycle = full brightness. 50% = half brightness. 0% = off. To control servo position: the pulse width (not duty cycle) determines the angle.",
+    "whyItMatters": "PWM is how microcontrollers control motor speed, servo angle, LED brightness, and audio output. It is fundamental to physical computing.",
+    "challenge": "In Arduino, the analogWrite() function produces PWM. Research what value range it accepts and what the frequency is."
+  },
+  {
+    "id": "robotics-lesson-007",
+    "channel": "Robotics",
+    "type": "lesson",
+    "level": "Beginner",
+    "title": "What is a distance sensor?",
+    "hook": "Distance sensors let your robot know what is in front of it.",
+    "explanation": "Ultrasonic distance sensors (like the HC-SR04) emit a sound pulse and measure how long it takes to bounce back. Using the speed of sound, the distance can be calculated. IR sensors work similarly with light instead of sound.",
+    "example": "The HC-SR04 sends a 40kHz sound pulse. If it takes 5.8ms to return, the object is about 1 meter away (343 m/s × 0.0058s / 2 = ~1m).",
+    "whyItMatters": "Obstacle avoidance is one of the most basic robot behaviors. Distance sensors make it possible. Every self-driving system relies on some form of distance sensing.",
+    "challenge": "Research the HC-SR04 sensor and find out its minimum and maximum detection range."
+  },
+  {
+    "id": "robotics-lesson-008",
+    "channel": "Robotics",
+    "type": "lesson",
+    "level": "Beginner",
+    "title": "What is a Raspberry Pi?",
+    "hook": "A Raspberry Pi is a full Linux computer the size of a credit card.",
+    "explanation": "The Raspberry Pi is a single-board computer with a processor, RAM, USB ports, HDMI, and GPIO (General Purpose Input/Output) pins. Unlike Arduino, it runs a full operating system (usually Linux). It is used for more complex robot tasks that need processing power.",
+    "example": "An Arduino controls a servo motor directly. A Raspberry Pi runs a Python program that processes a camera image, decides where to move, then sends signals to a motor driver.",
+    "whyItMatters": "For AI, computer vision, wireless communication, and complex decision-making, Raspberry Pi is the tool. Arduino and Raspberry Pi are often used together in advanced robots.",
+    "challenge": "Look up 'Raspberry Pi 5 specs' and write down its processor speed, RAM, and number of GPIO pins."
+  },
+  {
+    "id": "robotics-lesson-009",
+    "channel": "Robotics",
+    "type": "lesson",
+    "level": "Beginner",
+    "title": "What is robot behavior?",
+    "hook": "Robot behavior is just a set of if-then rules.",
+    "explanation": "Robot behavior is the decision logic programmed into a robot. Simple behaviors follow a sense-decide-act loop: read a sensor, decide what to do based on the reading, then actuate a motor or other output. Complex behaviors combine many simple behaviors.",
+    "example": "Obstacle avoidance: if distance sensor < 20cm, stop and turn right. Otherwise, move forward. This single rule creates a robot that navigates around walls.",
+    "whyItMatters": "Understanding behavior design lets you think like a roboticist. Every autonomous system from Roomba to self-driving cars is built from layered behaviors.",
+    "challenge": "Write out a simple behavior rule in if-then format for a robot that stops when it sees a red light."
+  },
+  {
+    "id": "robotics-lesson-010",
+    "channel": "Robotics",
+    "type": "lesson",
+    "level": "Beginner",
+    "title": "What is a power system in robotics?",
+    "hook": "Every robot needs a power plan.",
+    "explanation": "A robot's power system delivers the right voltage and current to each component. Different parts need different voltages: motors might need 12V, a microcontroller needs 5V, and sensors may need 3.3V. Regulators and distribution boards manage this. Battery choice affects run time and weight.",
+    "example": "A small robot might use a 7.4V LiPo battery. A voltage regulator steps it down to 5V for the Arduino. The motor driver takes the full 7.4V directly to spin the wheels at full speed.",
+    "whyItMatters": "Poor power planning causes brownouts, resets, and burned components. The power system is often what separates a working robot from a frustrating one.",
+    "challenge": "Research 'LiPo battery C rating' and write down what the C rating means and how to calculate max current draw."
+  },
+  {
+    "id": "robotics-quiz-001",
+    "channel": "Robotics",
+    "type": "quiz",
+    "level": "Beginner",
+    "question": "Why do you need a motor driver with an Arduino?",
+    "options": ["To make the Arduino faster", "Because Arduino pins cannot supply enough current to drive a motor", "To add more memory", "To connect to WiFi"],
+    "answer": "Because Arduino pins cannot supply enough current to drive a motor",
+    "explanation": "Arduino GPIO pins output only a few milliamps — far too little to run a motor. A motor driver takes this weak signal and uses a separate power source to drive the motor safely."
+  },
+  {
+    "id": "robotics-quiz-002",
+    "channel": "Robotics",
+    "type": "quiz",
+    "level": "Beginner",
+    "question": "What is the main difference between a DC motor and a servo motor?",
+    "options": ["DC motors are digital, servos are analog", "Servos can hold a specific angle, DC motors just spin", "DC motors are more expensive", "Servos are used only underwater"],
+    "answer": "Servos can hold a specific angle, DC motors just spin",
+    "explanation": "DC motors spin continuously when power is applied. Servo motors use feedback to rotate to and hold a specific angle, making them ideal for precise positioning tasks."
+  },
+  {
+    "id": "robotics-quiz-003",
+    "channel": "Robotics",
+    "type": "quiz",
+    "level": "Beginner",
+    "question": "In Arduino, what are the two required functions in every sketch?",
+    "options": ["start() and run()", "begin() and end()", "setup() and loop()", "init() and main()"],
+    "answer": "setup() and loop()",
+    "explanation": "setup() runs once when the Arduino starts or resets. loop() runs continuously forever after that. All Arduino programs are built around these two functions."
+  },
+  {
+    "id": "robotics-quiz-004",
+    "channel": "Robotics",
+    "type": "quiz",
+    "level": "Beginner",
+    "question": "What does PWM stand for?",
+    "options": ["Power Width Management", "Pulse Width Modulation", "Programmable Wave Mode", "Power Wave Method"],
+    "answer": "Pulse Width Modulation",
+    "explanation": "PWM stands for Pulse Width Modulation. It controls power delivery by rapidly switching a signal on and off, with the ratio of on-time (duty cycle) determining effective power output."
+  },
+  {
+    "id": "robotics-quiz-005",
+    "channel": "Robotics",
+    "type": "quiz",
+    "level": "Beginner",
+    "question": "What is the sense-decide-act loop?",
+    "options": ["A startup sequence for robots", "The design cycle for building robots", "The continuous cycle of reading sensors, making decisions, and taking action", "A calibration routine"],
+    "answer": "The continuous cycle of reading sensors, making decisions, and taking action",
+    "explanation": "The sense-decide-act loop is the fundamental behavioral loop of autonomous robots. Read the world with sensors, decide what to do, then act. Repeat forever."
+  },
+  {
+    "id": "robotics-challenge-001",
+    "channel": "Robotics",
+    "type": "challenge",
+    "level": "Beginner",
+    "title": "Design a Robot Behavior",
+    "prompt": "Design the behavior logic for a simple line-following robot. The robot has two IR sensors on the bottom that detect a black line on a white surface. Write out the if-then rules that would make it follow the line. Consider what to do when: both sensors are off the line, left sensor sees the line, right sensor sees the line, both sensors see the line.",
+    "whyItMatters": "Thinking through robot behavior before writing code saves enormous time. Good behavior design is the difference between a robot that works and one that doesn't.",
+    "completionCriteria": "You have written out a complete set of if-then behavior rules for a line-following robot."
+  },
+  {
+    "id": "robotics-challenge-002",
+    "channel": "Robotics",
+    "type": "challenge",
+    "level": "Beginner",
+    "title": "Map Your Robot Power System",
+    "prompt": "Design a power system for a small wheeled robot on paper:\n- 2 DC motors (each needs 6V, 500mA max)\n- 1 Arduino Uno (needs 5V, 50mA)\n- 1 HC-SR04 sensor (needs 5V, 15mA)\nChoose a battery type and voltage. Figure out what voltage regulation you need. Draw a simple block diagram showing power flow.",
+    "whyItMatters": "Power planning before building prevents component damage, unexpected shutdowns, and wasted money. Every professional roboticist does this first.",
+    "completionCriteria": "You have designed and drawn a complete power system block diagram for the robot."
+  },
+  {
+    "id": "robotics-challenge-003",
+    "channel": "Robotics",
+    "type": "challenge",
+    "level": "Beginner",
+    "title": "Write an Arduino Blink Program",
+    "prompt": "Write a simple Arduino program (even on paper or in a text editor) that:\n1. Sets pin 13 as an output in setup()\n2. In loop(), turns the LED on for 500ms\n3. Turns the LED off for 500ms\n4. Repeat\nBonus: Modify it so the LED blinks SOS in Morse code (3 short, 3 long, 3 short).",
+    "whyItMatters": "Writing your first program is a milestone. Even on paper, thinking through the code structure builds the mental model you need for all future robotics work.",
+    "completionCriteria": "You have written a complete Arduino blink program with the setup() and loop() structure."
+  }
+]

@@ -1,4 +1,5 @@
 import { CHANNEL_CONFIG } from '../utils/feed.js';
+import CardVisual from './CardVisual.jsx';
 
 export default function LessonCard({ card, progress, onSave, onLearn }) {
   const config = CHANNEL_CONFIG[card.channel];
@@ -28,7 +29,9 @@ export default function LessonCard({ card, progress, onSave, onLearn }) {
         </div>
       </div>
 
-      <div className="flex-1 px-5 pb-2">
+      <CardVisual card={card} />
+
+      <div className="flex-1 px-5 pt-3 pb-2">
         <h2 className="text-xl font-bold text-white mb-3 leading-tight">{card.title}</h2>
 
         <div

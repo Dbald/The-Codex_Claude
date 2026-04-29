@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { CHANNEL_CONFIG } from '../utils/feed.js';
+import CardVisual from './CardVisual.jsx';
 
 export default function QuizCard({ card, progress, onSave, onAnswer }) {
   const config = CHANNEL_CONFIG[card.channel];
@@ -42,7 +43,9 @@ export default function QuizCard({ card, progress, onSave, onAnswer }) {
         </div>
       </div>
 
-      <div className="px-5 pb-4">
+      <CardVisual card={card} />
+
+      <div className="px-5 pt-3 pb-4">
         <h2 className="text-lg font-bold text-white leading-tight">{card.question}</h2>
       </div>
 

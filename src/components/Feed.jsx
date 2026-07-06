@@ -4,7 +4,7 @@ import QuizCard from './QuizCard.jsx';
 import ChallengeCard from './ChallengeCard.jsx';
 import { CHANNEL_CONFIG } from '../utils/feed.js';
 
-export default function Feed({ cards, progress, channel, onSave, onLearn, onComplete, onAnswer, onView, onBack }) {
+export default function Feed({ cards, progress, settings, channel, onSave, onLearn, onComplete, onAnswer, onView, onBack }) {
   const observerRef = useRef(null);
   const cardRefs = useRef({});
 
@@ -72,18 +72,24 @@ export default function Feed({ cards, progress, channel, onSave, onLearn, onComp
       </div>
 
       <div className="px-4 py-4 flex flex-col gap-5 pb-8">
-        {cards.map(card => {
+        {cards.map((card, i) => {
           const ref = el => { cardRefs.current[card.id] = el; };
           return (
-            <div key={card.id} ref={ref} data-card-id={card.id}>
+            <div
+              key={card.id}
+              ref={ref}
+              data-card-id={card.id}
+              className="card-enter"
+              style={{ animationDelay: `${Math.min(i, 4) * 0.06}s` }}
+            >
               {card.type === 'lesson' && (
-                <LessonCard card={card} progress={progress} onSave={onSave} onLearn={onLearn} />
+                <LessonCard card={card} progress={progress} settings={settings} onSave={onSave} onLearn={onLearn} />
               )}
               {card.type === 'quiz' && (
-                <QuizCard card={card} progress={progress} onSave={onSave} onAnswer={onAnswer} />
+                <QuizCard card={card} progress={progress} settings={settings} onSave={onSave} onAnswer={onAnswer} />
               )}
               {card.type === 'challenge' && (
-                <ChallengeCard card={card} progress={progress} onSave={onSave} onComplete={onComplete} />
+                <ChallengeCard card={card} progress={progress} settings={settings} onSave={onSave} onComplete={onComplete} />
               )}
             </div>
           );

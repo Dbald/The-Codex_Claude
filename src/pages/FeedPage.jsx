@@ -3,7 +3,7 @@ import SessionSelector from '../components/SessionSelector.jsx';
 import Feed from '../components/Feed.jsx';
 import { getChannelFeed, getMixedFeed } from '../utils/feed.js';
 
-export default function FeedPage({ initialChannel, progress, onSave, onLearn, onComplete, onAnswer, onView, onBack }) {
+export default function FeedPage({ initialChannel, progress, settings, onSave, onLearn, onComplete, onAnswer, onView, onBack }) {
   const [session, setSession] = useState(
     initialChannel ? { channel: initialChannel, duration: 10 } : null
   );
@@ -29,6 +29,7 @@ export default function FeedPage({ initialChannel, progress, onSave, onLearn, on
     <Feed
       cards={cards}
       progress={progress}
+      settings={settings}
       channel={session.channel}
       onSave={onSave}
       onLearn={onLearn}

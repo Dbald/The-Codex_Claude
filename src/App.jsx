@@ -1,10 +1,12 @@
-import { useState, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import AppShell from './components/AppShell.jsx';
+import SettingsPanel from './components/SettingsPanel.jsx';
 import Home from './pages/Home.jsx';
 import FeedPage from './pages/FeedPage.jsx';
 import Saved from './pages/Saved.jsx';
 import Progress from './pages/Progress.jsx';
 import { loadProgress } from './utils/storage.js';
+import { loadSettings, saveSettings, applySettings } from './utils/settings.js';
 import {
   markCardViewed,
   toggleSaved,
@@ -17,6 +19,13 @@ export default function App() {
   const [page, setPage] = useState('home');
   const [feedChannel, setFeedChannel] = useState(null);
   const [progress, setProgress] = useState(() => loadProgress());
+  const [settings, setSettings] = useState(() => loadSettings());
+  const [settingsOpen, setSettingsOpen] = useState(false);
+
+  useEffect(() => {
+    applySettings(settings);
+    saveSettings(settings);
+  }, [settings]);
 
   const refreshProgress = useCallback(() => {
     setProgress(loadProgress());
@@ -71,7 +80,12 @@ export default function App() {
   const showNav = page !== 'feed';
 
   return (
-    <AppShell currentPage={showNav ? page : null} onNavigate={handleNavigate} hideNav={!showNav}>
+    <AppShell
+      currentPage={showNav ? page : null}
+      onNavigate={handleNavigate}
+      hideNav={!showNav}
+      onOpenSettings={() => setSettingsOpen(true)}
+    >
       {page === 'home' && (
         <Home
           progress={progress}
@@ -83,6 +97,7 @@ export default function App() {
         <FeedPage
           initialChannel={feedChannel}
           progress={progress}
+          settings={settings}
           onSave={handleSave}
           onLearn={handleLearn}
           onComplete={handleComplete}
@@ -94,6 +109,7 @@ export default function App() {
       {page === 'saved' && (
         <Saved
           progress={progress}
+          settings={settings}
           onSave={handleSave}
           onLearn={handleLearn}
           onComplete={handleComplete}
@@ -103,6 +119,13 @@ export default function App() {
       {page === 'progress' && (
         <Progress progress={progress} />
       )}
+
+      <SettingsPanel
+        open={settingsOpen}
+        settings={settings}
+        onChange={setSettings}
+        onClose={() => setSettingsOpen(false)}
+      />
     </AppShell>
   );
 }

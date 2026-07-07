@@ -18,8 +18,8 @@ const VISUALS = {
     <line x1="148" y1="58" x2="190" y2="42" stroke={a} strokeWidth="1" opacity="0.4" />
     <text x="195" y="38" fontSize="10" fontWeight="bold" fill={a}>75%</text>
     <text x="193" y="50" fontSize="8" fill={a} opacity="0.7">owned</text>
-    <line x1="74" y1="90" x2="68" y2="102" stroke={a} strokeWidth="1" opacity="0.4" />
-    <text x="30" y="107" fontSize="9" fill={a} opacity="0.6">25% owed</text>
+    <line x1="70" y1="86" x2="52" y2="98" stroke={a} strokeWidth="1" opacity="0.4" />
+    <text x="10" y="106" fontSize="9" fill={a} opacity="0.7">25% owed</text>
     <rect x="230" y="30" width="12" height="12" rx="2" fill={a} opacity="0.8" />
     <text x="246" y="41" fontSize="9" fill={a} opacity="0.8">Equity</text>
     <rect x="230" y="48" width="12" height="12" rx="2" fill={a} opacity="0.2" />
@@ -43,15 +43,16 @@ const VISUALS = {
   </>),
 
   'finance-lesson-003': (a) => V(<>
-    {/* Cash Flow: IN vs OUT arrows */}
-    <rect x="18" y="32" width="115" height="30" rx="5" fill={a} opacity="0.75" />
-    <polygon points="133,22 158,47 133,72" fill={a} opacity="0.75" />
-    <text x="72" y="51" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#fff">INCOME →</text>
-    <polygon points="185,33 160,48 185,63" fill={a} opacity="0.22" />
-    <rect x="185" y="38" width="115" height="24" rx="5" fill={a} opacity="0.22" />
-    <text x="248" y="54" textAnchor="middle" fontSize="11" fontWeight="bold" fill={a} opacity="0.7">→ EXPENSES</text>
-    <text x="160" y="20" textAnchor="middle" fontSize="9" fill={a} opacity="0.6">CASH FLOW</text>
-    <text x="160" y="95" textAnchor="middle" fontSize="9" fill={a} opacity="0.5">surplus = income − expenses</text>
+    {/* Cash Flow: stacked IN vs OUT arrows */}
+    <text x="160" y="14" textAnchor="middle" fontSize="9" fill={a} opacity="0.6">CASH FLOW</text>
+    <rect x="30" y="24" width="215" height="28" rx="5" fill={a} opacity="0.75" />
+    <polygon points="245,16 272,38 245,60" fill={a} opacity="0.75" />
+    <text x="137" y="43" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#fff">INCOME IN</text>
+    <rect x="30" y="64" width="140" height="22" rx="5" fill={a} opacity="0.22" />
+    <polygon points="170,60 192,75 170,90" fill={a} opacity="0.22" />
+    <text x="100" y="79" textAnchor="middle" fontSize="10" fontWeight="bold" fill={a} opacity="0.75">EXPENSES OUT</text>
+    <text x="248" y="82" textAnchor="middle" fontSize="9" fontWeight="bold" fill={a} opacity="0.85">the gap = surplus</text>
+    <text x="160" y="104" textAnchor="middle" fontSize="9" fill={a} opacity="0.5">surplus = income − expenses</text>
   </>),
 
   'finance-lesson-004': (a) => V(<>
@@ -130,10 +131,10 @@ const VISUALS = {
     {/* Divider */}
     <line x1="160" y1="10" x2="160" y2="100" stroke={a} strokeWidth="1" opacity="0.2" strokeDasharray="4,4" />
     {/* Right: growing staircase */}
-    <text x="240" y="14" textAnchor="middle" fontSize="9" fontWeight="bold" fill={a} opacity="0.9">WEALTH</text>
-    <polyline points="175,90 175,70 200,70 200,50 225,50 225,30 250,30 250,15" fill="none" stroke={a} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.85" />
-    <circle cx="250" cy="15" r="5" fill={a} opacity="0.9" />
-    <text x="258" y="18" fontSize="9" fill={a} opacity="0.8">↑</text>
+    <text x="212" y="14" textAnchor="middle" fontSize="9" fontWeight="bold" fill={a} opacity="0.9">WEALTH</text>
+    <polyline points="175,90 175,72 202,72 202,54 229,54 229,36 256,36 256,20" fill="none" stroke={a} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.85" />
+    <circle cx="256" cy="20" r="5" fill={a} opacity="0.9" />
+    <text x="266" y="24" fontSize="9" fill={a} opacity="0.8">↑</text>
     <text x="240" y="98" textAnchor="middle" fontSize="8" fill={a} opacity="0.7">growing</text>
   </>),
 
@@ -157,20 +158,19 @@ const VISUALS = {
 
   'finance-lesson-010': (a) => V(<>
     {/* Financial Freedom: sun rising over horizon */}
-    <line x1="20" y1="72" x2="300" y2="72" stroke={a} strokeWidth="1.5" opacity="0.4" />
+    <line x1="20" y1="66" x2="300" y2="66" stroke={a} strokeWidth="1.5" opacity="0.4" />
     {/* Sun */}
-    <circle cx="160" cy="72" r="35" fill={a} opacity="0.15" />
-    <circle cx="160" cy="72" r="26" fill={a} opacity="0.7" />
-    <text x="160" y="78" textAnchor="middle" fontSize="15" fontWeight="bold" fill="#fff">$</text>
+    <circle cx="160" cy="64" r="27" fill={a} opacity="0.15" />
+    <circle cx="160" cy="64" r="20" fill={a} opacity="0.7" />
+    <text x="160" y="69" textAnchor="middle" fontSize="13" fontWeight="bold" fill="#fff">$</text>
     {/* Rays above horizon */}
-    <line x1="160" y1="42" x2="160" y2="30" stroke={a} strokeWidth="2" opacity="0.6" />
-    <line x1="140" y1="47" x2="132" y2="37" stroke={a} strokeWidth="2" opacity="0.5" />
-    <line x1="180" y1="47" x2="188" y2="37" stroke={a} strokeWidth="2" opacity="0.5" />
-    <line x1="126" y1="60" x2="114" y2="54" stroke={a} strokeWidth="1.5" opacity="0.4" />
-    <line x1="194" y1="60" x2="206" y2="54" stroke={a} strokeWidth="1.5" opacity="0.4" />
-    <text x="160" y="20" textAnchor="middle" fontSize="10" fontWeight="bold" fill={a} opacity="0.9">FINANCIAL FREEDOM</text>
-    <text x="160" y="95" textAnchor="middle" fontSize="9" fill={a} opacity="0.6">passive income ≥ living expenses</text>
-    <text x="160" y="107" textAnchor="middle" fontSize="8" fill={a} opacity="0.4">work is optional</text>
+    <line x1="160" y1="38" x2="160" y2="28" stroke={a} strokeWidth="2" opacity="0.6" />
+    <line x1="143" y1="44" x2="135" y2="34" stroke={a} strokeWidth="2" opacity="0.5" />
+    <line x1="177" y1="44" x2="185" y2="34" stroke={a} strokeWidth="2" opacity="0.5" />
+    <line x1="132" y1="57" x2="120" y2="51" stroke={a} strokeWidth="1.5" opacity="0.4" />
+    <line x1="188" y1="57" x2="200" y2="51" stroke={a} strokeWidth="1.5" opacity="0.4" />
+    <text x="160" y="18" textAnchor="middle" fontSize="10" fontWeight="bold" fill={a} opacity="0.9">FINANCIAL FREEDOM</text>
+    <text x="160" y="100" textAnchor="middle" fontSize="9" fill={a} opacity="0.6">passive income ≥ living expenses · work becomes optional</text>
   </>),
 
   /* ── FINANCE QUIZZES ── */
@@ -233,8 +233,8 @@ const VISUALS = {
     <text x="100" y="56" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#fff">50%</text>
     <text x="228" y="56" textAnchor="middle" fontSize="11" fontWeight="bold" fill="#fff">30%</text>
     <text x="290" y="56" textAnchor="middle" fontSize="10" fontWeight="bold" fill="#fff">20%</text>
-    <text x="290" y="85" textAnchor="middle" fontSize="26" fill={a} opacity="0.8">?</text>
-    <text x="160" y="108" textAnchor="middle" fontSize="9" fill={a} opacity="0.6">what does the 20% represent?</text>
+    <text x="290" y="88" textAnchor="middle" fontSize="22" fontWeight="bold" fill={a} opacity="0.85">?</text>
+    <text x="150" y="88" textAnchor="middle" fontSize="9" fill={a} opacity="0.6">what does the 20% represent?</text>
   </>),
 
   /* ── FINANCE CHALLENGES ── */
@@ -436,7 +436,7 @@ const VISUALS = {
     {/* Series vs Parallel: two circuit layouts */}
     <text x="80" y="14" textAnchor="middle" fontSize="9" fontWeight="bold" fill={a} opacity="0.8">SERIES</text>
     <text x="240" y="14" textAnchor="middle" fontSize="9" fontWeight="bold" fill={a} opacity="0.8">PARALLEL</text>
-    <line x1="80" y1="18" x2="80" y2="96" stroke={a} strokeWidth="1" opacity="0.15" strokeDasharray="4,4" />
+    <line x1="158" y1="14" x2="158" y2="100" stroke={a} strokeWidth="1" opacity="0.15" strokeDasharray="4,4" />
     {/* Series circuit left */}
     <line x1="20" y1="22" x2="140" y2="22" stroke={a} strokeWidth="1.8" opacity="0.7" />
     <line x1="20" y1="22" x2="20" y2="88" stroke={a} strokeWidth="1.8" opacity="0.7" />
@@ -485,7 +485,7 @@ const VISUALS = {
     <text x="230" y="42" fontSize="11" fontWeight="bold" fill={a} opacity="0.9">VOLTAGE</text>
     <text x="230" y="57" fontSize="9" fill={a} opacity="0.7">measured in</text>
     <text x="230" y="72" fontSize="14" fontWeight="bold" fill={a} opacity="0.9">Volts (V)</text>
-    <text x="230" y="90" fontSize="9" fill={a} opacity="0.5">not amps, not ohms</text>
+    <text x="312" y="90" textAnchor="end" fontSize="9" fill={a} opacity="0.5">not amps · not ohms</text>
   </>),
 
   'electronics-quiz-002': (a) => V(<>
@@ -579,19 +579,19 @@ const VISUALS = {
 
   'electronics-challenge-003': (a) => V(<>
     {/* Draw a circuit: hand-drawn style */}
-    <text x="160" y="14" textAnchor="middle" fontSize="9" fontWeight="bold" fill={a} opacity="0.8">DRAW THIS CIRCUIT</text>
-    <line x1="50" y1="25" x2="270" y2="25" stroke={a} strokeWidth="2" opacity="0.7" />
-    <line x1="50" y1="25" x2="50" y2="90" stroke={a} strokeWidth="2" opacity="0.7" />
+    <text x="160" y="12" textAnchor="middle" fontSize="9" fontWeight="bold" fill={a} opacity="0.8">DRAW THIS CIRCUIT</text>
+    <line x1="50" y1="28" x2="270" y2="28" stroke={a} strokeWidth="2" opacity="0.7" />
+    <line x1="50" y1="28" x2="50" y2="90" stroke={a} strokeWidth="2" opacity="0.7" />
     <line x1="50" y1="90" x2="270" y2="90" stroke={a} strokeWidth="2" opacity="0.7" />
-    <line x1="270" y1="25" x2="270" y2="90" stroke={a} strokeWidth="2" opacity="0.7" />
+    <line x1="270" y1="28" x2="270" y2="90" stroke={a} strokeWidth="2" opacity="0.7" />
     {/* Battery left */}
     <line x1="38" y1="48" x2="62" y2="48" stroke={a} strokeWidth="3.5" opacity="0.9" />
     <line x1="43" y1="57" x2="57" y2="57" stroke={a} strokeWidth="1.5" opacity="0.7" />
-    <text x="35" y="46" fontSize="7" fill={a}>+</text>
+    <text x="30" y="46" fontSize="7" fill={a}>+</text>
     {/* Switch top */}
-    <circle cx="120" cy="25" r="3.5" fill={a} opacity="0.8" />
-    <circle cx="155" cy="25" r="3.5" fill={a} opacity="0.8" />
-    <line x1="123" y1="25" x2="152" y2="14" stroke={a} strokeWidth="2" opacity="0.7" />
+    <circle cx="120" cy="28" r="3.5" fill={a} opacity="0.8" />
+    <circle cx="155" cy="28" r="3.5" fill={a} opacity="0.8" />
+    <line x1="123" y1="28" x2="152" y2="17" stroke={a} strokeWidth="2" opacity="0.7" />
     {/* Resistor bottom */}
     <polyline points="110,90 116,82 122,98 128,82 134,98 140,82 146,90" fill="none" stroke={a} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.8" />
     {/* LED right */}
@@ -657,16 +657,16 @@ const VISUALS = {
     <text x="85" y="63" textAnchor="middle" fontSize="9" fontWeight="bold" fill="#fff">SERVO</text>
     {/* Output shaft */}
     <circle cx="130" cy="59" r="8" fill={a} opacity="0.8" />
-    {/* Angle arc */}
-    <path d="M170,59 A55,55 0 0,0 225,59" fill="none" stroke={a} strokeWidth="2" opacity="0.5" />
-    <path d="M170,59 A55,55 0 0,1 197,18" fill="none" stroke={a} strokeWidth="1.5" strokeDasharray="4,3" opacity="0.4" />
-    {/* Needle at 90° */}
-    <line x1="170" y1="59" x2="170" y2="20" stroke={a} strokeWidth="2.5" opacity="0.85" />
-    <circle cx="170" cy="59" r="5" fill={a} opacity="0.9" />
+    <line x1="138" y1="59" x2="170" y2="70" stroke={a} strokeWidth="1.5" opacity="0.4" strokeDasharray="3,3" />
+    {/* Protractor dial: pivot at (222,70), radius 40 */}
+    <path d="M182,70 A40,40 0 0,1 262,70" fill="none" stroke={a} strokeWidth="2" opacity="0.45" />
+    {/* Needle pointing to 90° (straight up) */}
+    <line x1="222" y1="70" x2="222" y2="32" stroke={a} strokeWidth="2.5" opacity="0.9" strokeLinecap="round" />
+    <circle cx="222" cy="70" r="5" fill={a} opacity="0.9" />
     {/* Angle markers */}
-    <text x="152" y="67" fontSize="8" fill={a} opacity="0.7">0°</text>
-    <text x="162" y="16" fontSize="8" fill={a} opacity="0.9">90°</text>
-    <text x="218" y="67" fontSize="8" fill={a} opacity="0.7">180°</text>
+    <text x="170" y="78" fontSize="8" fill={a} opacity="0.7">0°</text>
+    <text x="214" y="24" fontSize="8" fontWeight="bold" fill={a} opacity="0.95">90°</text>
+    <text x="266" y="78" fontSize="8" fill={a} opacity="0.7">180°</text>
     <text x="160" y="100" textAnchor="middle" fontSize="9" fill={a} opacity="0.6">holds precise position · PWM controlled</text>
   </>),
 
@@ -867,11 +867,11 @@ const VISUALS = {
     <text x="75" y="98" textAnchor="middle" fontSize="8" fill={a} opacity="0.6">continuous spin</text>
     <line x1="155" y1="10" x2="155" y2="100" stroke={a} strokeWidth="1" opacity="0.2" />
     <text x="240" y="14" textAnchor="middle" fontSize="8" fontWeight="bold" fill={a} opacity="0.9">SERVO</text>
-    <rect x="205" y="28" width="70" height="40" rx="5" fill={a} opacity="0.55" />
-    <text x="240" y="52" textAnchor="middle" fontSize="8" fontWeight="bold" fill="#fff">SERVO</text>
-    <path d="M240,68 A32,32 0 0,0 272,68" fill="none" stroke={a} strokeWidth="1.5" opacity="0.5" />
-    <line x1="240" y1="68" x2="240" y2="42" stroke={a} strokeWidth="2.5" opacity="0.85" />
-    <circle cx="240" cy="68" r="4" fill={a} opacity="0.9" />
+    <rect x="205" y="24" width="70" height="26" rx="5" fill={a} opacity="0.55" />
+    <text x="240" y="41" textAnchor="middle" fontSize="8" fontWeight="bold" fill="#fff">SERVO</text>
+    <path d="M216,84 A24,24 0 0,1 264,84" fill="none" stroke={a} strokeWidth="1.5" opacity="0.5" />
+    <line x1="240" y1="84" x2="240" y2="58" stroke={a} strokeWidth="2.5" opacity="0.85" strokeLinecap="round" />
+    <circle cx="240" cy="84" r="4" fill={a} opacity="0.9" />
     <text x="240" y="98" textAnchor="middle" fontSize="8" fill={a} opacity="0.7">holds angle</text>
   </>),
 
@@ -902,25 +902,23 @@ const VISUALS = {
   </>),
 
   'robotics-quiz-005': (a) => V(<>
-    {/* Sense-decide-act cycle */}
-    <circle cx="160" cy="55" r="48" fill="none" stroke={a} strokeWidth="1.5" opacity="0.2" />
-    {/* SENSE */}
-    <rect x="118" y="14" width="84" height="24" rx="4" fill={a} opacity="0.6" />
-    <text x="160" y="31" textAnchor="middle" fontSize="9" fontWeight="bold" fill="#fff">SENSE</text>
-    {/* Arrow SENSE→DECIDE */}
-    <line x1="202" y1="26" x2="220" y2="50" stroke={a} strokeWidth="2" opacity="0.6" />
-    <polygon points="215,52 224,62 227,50" fill={a} opacity="0.7" />
-    {/* DECIDE */}
-    <polygon points="160,62 210,78 160,94 110,78" fill={a} opacity="0.4" stroke={a} strokeWidth="1.5" strokeOpacity="0.7" />
-    <text x="160" y="83" textAnchor="middle" fontSize="8" fontWeight="bold" fill={a}>DECIDE</text>
-    {/* Arrow DECIDE→ACT */}
-    <line x1="110" y1="78" x2="88" y2="62" stroke={a} strokeWidth="2" opacity="0.6" />
-    <polygon points="90,58 80,68 96,70" fill={a} opacity="0.7" />
-    {/* ACT */}
-    <rect x="52" y="38" width="64" height="24" rx="4" fill={a} opacity="0.55" />
-    <text x="84" y="55" textAnchor="middle" fontSize="9" fontWeight="bold" fill="#fff">ACT</text>
-    {/* Arrow ACT→SENSE */}
-    <line x1="84" y1="38" x2="118" y2="22" stroke={a} strokeWidth="2" opacity="0.5" strokeDasharray="4,3" />
+    {/* Sense-decide-act cycle: three nodes, clean circular flow */}
+    <rect x="122" y="10" width="76" height="24" rx="12" fill={a} opacity="0.65" />
+    <text x="160" y="26" textAnchor="middle" fontSize="9" fontWeight="bold" fill="#fff">SENSE</text>
+    <rect x="212" y="72" width="76" height="24" rx="12" fill={a} opacity="0.45" />
+    <text x="250" y="88" textAnchor="middle" fontSize="9" fontWeight="bold" fill="#fff">DECIDE</text>
+    <rect x="32" y="72" width="76" height="24" rx="12" fill={a} opacity="0.55" />
+    <text x="70" y="88" textAnchor="middle" fontSize="9" fontWeight="bold" fill="#fff">ACT</text>
+    {/* SENSE → DECIDE */}
+    <path d="M202,28 Q248,38 252,66" fill="none" stroke={a} strokeWidth="2" opacity="0.6" />
+    <polygon points="247,64 252,74 257,63" fill={a} opacity="0.8" />
+    {/* DECIDE → ACT */}
+    <path d="M208,88 Q160,100 114,90" fill="none" stroke={a} strokeWidth="2" opacity="0.6" />
+    <polygon points="118,84 108,89 119,95" fill={a} opacity="0.8" />
+    {/* ACT → SENSE */}
+    <path d="M66,68 Q72,38 116,25" fill="none" stroke={a} strokeWidth="2" opacity="0.6" strokeDasharray="5,4" />
+    <polygon points="112,20 122,24 113,31" fill={a} opacity="0.8" />
+    <text x="160" y="60" textAnchor="middle" fontSize="8" fill={a} opacity="0.5">repeat forever</text>
   </>),
 
   /* ── ROBOTICS CHALLENGES ── */
@@ -1048,7 +1046,14 @@ export default function CardVisual({ card }) {
   if (!render) return null;
 
   return (
-    <div aria-hidden="true" style={{ overflow: 'hidden' }}>
+    <div
+      aria-hidden="true"
+      style={{
+        overflow: 'hidden',
+        background: `linear-gradient(160deg, ${accent}14 0%, transparent 60%)`,
+        borderBottom: `1px solid ${accent}1f`,
+      }}
+    >
       {render(accent)}
     </div>
   );

@@ -4,9 +4,17 @@ import QuizCard from './QuizCard.jsx';
 import ChallengeCard from './ChallengeCard.jsx';
 import { CHANNEL_CONFIG } from '../utils/feed.js';
 
-export default function Feed({ cards, progress, channel, onSave, onLearn, onComplete, onAnswer, onView, onBack }) {
+export default function Feed({ cards, progress, settings, channel, onSave, onLearn, onComplete, onAnswer, onView, onBack }) {
   const observerRef = useRef(null);
   const cardRefs = useRef({});
+  // Keep the latest onView without making it an effect dependency —
+  // a changing identity would recreate the observer, whose initial entry
+  // delivery re-fires onView and loops render → observe → render forever.
+  const onViewRef = useRef(onView);
+  useEffect(() => {
+    onViewRef.current = onView;
+  });
+  const notifiedIdsRef = useRef(new Set());
 
   useEffect(() => {
     observerRef.current = new IntersectionObserver(
@@ -14,7 +22,10 @@ export default function Feed({ cards, progress, channel, onSave, onLearn, onComp
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             const cardId = entry.target.dataset.cardId;
-            if (cardId) onView(cardId);
+            if (cardId && !notifiedIdsRef.current.has(cardId)) {
+              notifiedIdsRef.current.add(cardId);
+              onViewRef.current(cardId);
+            }
           }
         });
       },
@@ -26,7 +37,7 @@ export default function Feed({ cards, progress, channel, onSave, onLearn, onComp
     });
 
     return () => observerRef.current?.disconnect();
-  }, [cards, onView]);
+  }, [cards]);
 
   const config = channel !== 'Mixed' ? CHANNEL_CONFIG[channel] : null;
 
@@ -68,29 +79,35 @@ export default function Feed({ cards, progress, channel, onSave, onLearn, onComp
         >
           {config ? `${config.icon} ${channel}` : '✦ Mixed Feed'}
         </div>
-        <div className="text-xs text-slate-600">{cards.length} cards</div>
+        <div className="text-xs text-slate-400">{cards.length} cards</div>
       </div>
 
       <div className="px-4 py-4 flex flex-col gap-5 pb-8">
-        {cards.map(card => {
+        {cards.map((card, i) => {
           const ref = el => { cardRefs.current[card.id] = el; };
           return (
-            <div key={card.id} ref={ref} data-card-id={card.id}>
+            <div
+              key={card.id}
+              ref={ref}
+              data-card-id={card.id}
+              className="card-enter"
+              style={{ animationDelay: `${Math.min(i, 4) * 0.06}s` }}
+            >
               {card.type === 'lesson' && (
-                <LessonCard card={card} progress={progress} onSave={onSave} onLearn={onLearn} />
+                <LessonCard card={card} progress={progress} settings={settings} onSave={onSave} onLearn={onLearn} />
               )}
               {card.type === 'quiz' && (
-                <QuizCard card={card} progress={progress} onSave={onSave} onAnswer={onAnswer} />
+                <QuizCard card={card} progress={progress} settings={settings} onSave={onSave} onAnswer={onAnswer} />
               )}
               {card.type === 'challenge' && (
-                <ChallengeCard card={card} progress={progress} onSave={onSave} onComplete={onComplete} />
+                <ChallengeCard card={card} progress={progress} settings={settings} onSave={onSave} onComplete={onComplete} />
               )}
             </div>
           );
         })}
 
         <div className="text-center py-6">
-          <p className="text-slate-600 text-sm">End of feed</p>
+          <p className="text-slate-400 text-sm">End of feed</p>
           <button
             onClick={onBack}
             className="mt-3 px-6 py-2.5 rounded-xl text-sm font-semibold text-slate-500 border border-slate-800 hover:border-slate-700 transition-colors"

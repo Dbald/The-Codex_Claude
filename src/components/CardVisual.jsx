@@ -1048,7 +1048,7 @@ export default function CardVisual({ card }) {
   if (!render) return null;
 
   return (
-    <div style={{ overflow: 'hidden' }}>
+    <div aria-hidden="true" style={{ overflow: 'hidden' }}>
       {render(accent)}
     </div>
   );

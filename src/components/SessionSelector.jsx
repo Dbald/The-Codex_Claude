@@ -41,7 +41,7 @@ export default function SessionSelector({ onStart, onBack }) {
               style={{
                 background: duration === d.value ? 'rgba(167,139,250,0.15)' : 'rgba(255,255,255,0.03)',
                 borderColor: duration === d.value ? '#a78bfa' : 'rgba(255,255,255,0.08)',
-                color: duration === d.value ? '#a78bfa' : '#64748b',
+                color: duration === d.value ? '#a78bfa' : 'var(--muted)',
               }}
             >
               {d.label}
@@ -70,7 +70,7 @@ export default function SessionSelector({ onStart, onBack }) {
                     : 'rgba(255,255,255,0.08)',
                   color: isSelected
                     ? (config ? config.accent : '#a78bfa')
-                    : '#64748b',
+                    : 'var(--muted)',
                 }}
               >
                 <span className="text-lg">{config ? config.icon : '✦'}</span>

@@ -6,7 +6,7 @@ import ChallengeCard from '../components/ChallengeCard.jsx';
 
 const FILTERS = ['All', 'Finance', 'Electronics', 'Robotics'];
 
-export default function Saved({ progress, onSave, onLearn, onComplete, onAnswer }) {
+export default function Saved({ progress, settings, onSave, onLearn, onComplete, onAnswer }) {
   const [filter, setFilter] = useState('All');
 
   const savedCards = ALL_CARDS.filter(card => progress.savedCardIds.includes(card.id));
@@ -28,7 +28,7 @@ export default function Saved({ progress, onSave, onLearn, onComplete, onAnswer 
               className="flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-200"
               style={{
                 background: isActive ? (config ? config.accentLight : 'rgba(167,139,250,0.15)') : 'rgba(255,255,255,0.04)',
-                color: isActive ? (config ? config.accent : '#a78bfa') : '#64748b',
+                color: isActive ? (config ? config.accent : '#a78bfa') : 'var(--muted)',
                 border: `1px solid ${isActive ? (config ? config.accentBorder : '#a78bfa') : 'transparent'}`,
               }}
             >
@@ -52,9 +52,9 @@ export default function Saved({ progress, onSave, onLearn, onComplete, onAnswer 
 
       <div className="flex flex-col gap-5">
         {filtered.map(card => {
-          if (card.type === 'lesson') return <LessonCard key={card.id} card={card} progress={progress} onSave={onSave} onLearn={onLearn} />;
-          if (card.type === 'quiz') return <QuizCard key={card.id} card={card} progress={progress} onSave={onSave} onAnswer={onAnswer} />;
-          if (card.type === 'challenge') return <ChallengeCard key={card.id} card={card} progress={progress} onSave={onSave} onComplete={onComplete} />;
+          if (card.type === 'lesson') return <LessonCard key={card.id} card={card} progress={progress} settings={settings} onSave={onSave} onLearn={onLearn} />;
+          if (card.type === 'quiz') return <QuizCard key={card.id} card={card} progress={progress} settings={settings} onSave={onSave} onAnswer={onAnswer} />;
+          if (card.type === 'challenge') return <ChallengeCard key={card.id} card={card} progress={progress} settings={settings} onSave={onSave} onComplete={onComplete} />;
           return null;
         })}
       </div>

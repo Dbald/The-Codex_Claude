@@ -27,7 +27,7 @@ export default function Home({ progress, onStartSession, onOpenChannel }) {
           <p className="text-xs text-slate-500 uppercase tracking-widest mb-0.5">Streak</p>
           <p className="text-xl font-black text-white">
             {streak > 0 ? `${streak} day${streak !== 1 ? 's' : ''}` : 'Start today'}
-            {streak > 0 && <span className="ml-1 text-base">🔥</span>}
+            {streak > 0 && <span aria-hidden="true" className="ml-1 text-base flame-pulse">🔥</span>}
           </p>
         </div>
         <div className="w-px h-8 bg-slate-800" />
@@ -94,7 +94,7 @@ export default function Home({ progress, onStartSession, onOpenChannel }) {
                   style={{ background: '#111118', borderColor: 'rgba(255,255,255,0.06)' }}
                 >
                   <span className="text-sm text-slate-300 font-medium">{channel}</span>
-                  <span className="text-xs text-slate-600">
+                  <span className="text-xs text-slate-400">
                     {unviewed.length > 0 ? `${unviewed.length} cards left` : 'All seen ✓'}
                   </span>
                 </button>

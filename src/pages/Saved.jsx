@@ -28,7 +28,7 @@ export default function Saved({ progress, settings, onSave, onLearn, onComplete,
               className="flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-200"
               style={{
                 background: isActive ? (config ? config.accentLight : 'rgba(167,139,250,0.15)') : 'rgba(255,255,255,0.04)',
-                color: isActive ? (config ? config.accent : '#a78bfa') : '#64748b',
+                color: isActive ? (config ? config.accent : '#a78bfa') : 'var(--muted)',
                 border: `1px solid ${isActive ? (config ? config.accentBorder : '#a78bfa') : 'transparent'}`,
               }}
             >

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 const fmt = (n) => (n < 0 ? '-$' : '$') + Math.abs(Math.round(n)).toLocaleString('en-US');
 
@@ -117,8 +117,15 @@ function AssetSortWidget({ accent }) {
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [feedback, setFeedback] = useState('Does it put money IN your pocket, or take it OUT?');
+  const playAgainRef = useRef(null);
   const done = index >= SORT_ITEMS.length;
   const item = SORT_ITEMS[index];
+
+  // Answering the last item unmounts the focused Asset/Liability button —
+  // move keyboard focus to Play again instead of letting it drop to <body>.
+  useEffect(() => {
+    if (done) playAgainRef.current?.focus();
+  }, [done]);
 
   const pick = (choice) => {
     if (done) return;
@@ -147,21 +154,25 @@ function AssetSortWidget({ accent }) {
           </div>
         </>
       ) : (
-        <>
+        <button
+          type="button"
+          ref={playAgainRef}
+          onClick={() => { setIndex(0); setScore(0); setFeedback('Does it put money IN your pocket, or take it OUT?'); }}
+          className="w-full rounded-xl px-4 text-sm font-bold"
+          style={{ minHeight: '44px', background: accent, color: '#111118' }}
+        >
+          Play again
+        </button>
+      )}
+      {/* Persistent live region so screen readers hear each result */}
+      <div aria-live="polite">
+        {done && (
           <p className="text-center text-3xl font-black" style={{ color: accent }}>
             {score} / {SORT_ITEMS.length} sorted right {score === SORT_ITEMS.length ? '🎉' : ''}
           </p>
-          <button
-            type="button"
-            onClick={() => { setIndex(0); setScore(0); setFeedback('Does it put money IN your pocket, or take it OUT?'); }}
-            className="w-full rounded-xl px-4 text-sm font-bold"
-            style={{ minHeight: '44px', background: accent, color: '#111118' }}
-          >
-            Play again
-          </button>
-        </>
-      )}
-      <p className="text-xs text-slate-300">{feedback}</p>
+        )}
+        <p className="text-xs text-slate-300">{feedback}</p>
+      </div>
       {!done && <p className="text-xs font-bold text-slate-100">Score: {score} · Item {index + 1} of {SORT_ITEMS.length}</p>}
     </div>
   );

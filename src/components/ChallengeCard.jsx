@@ -112,7 +112,7 @@ export default function ChallengeCard({ card, progress, settings, onSave, onComp
                           width: 24,
                           height: 24,
                           background: checked ? config.accent : 'rgba(255,255,255,0.08)',
-                          color: checked ? '#fff' : '#64748b',
+                          color: checked ? '#fff' : 'var(--muted)',
                         }}
                       >
                         {checked ? '✓' : i + 1}
@@ -132,11 +132,11 @@ export default function ChallengeCard({ card, progress, settings, onSave, onComp
                 );
               })}
             </ol>
-            {allStepsChecked && !isCompleted && (
-              <p aria-live="polite" className="mt-3 text-sm font-semibold text-center" style={{ color: config.accent }}>
-                All steps done — hit Mark Complete! 🎉
-              </p>
-            )}
+            {/* Permanently-mounted live region — screen readers only announce
+                changes inside a region that already exists in the DOM */}
+            <p aria-live="polite" className="mt-3 text-sm font-semibold text-center" style={{ color: config.accent, minHeight: allStepsChecked && !isCompleted ? undefined : 0, margin: allStepsChecked && !isCompleted ? undefined : 0 }}>
+              {allStepsChecked && !isCompleted ? 'All steps done — hit Mark Complete! 🎉' : ''}
+            </p>
           </div>
         </div>
       )}

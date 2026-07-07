@@ -52,30 +52,30 @@ export default function App() {
     refreshProgress();
   }
 
-  function handleSave(cardId) {
+  const handleSave = useCallback(cardId => {
     toggleSaved(cardId);
     refreshProgress();
-  }
+  }, [refreshProgress]);
 
-  function handleLearn(cardId) {
+  const handleLearn = useCallback(cardId => {
     markLearned(cardId);
     refreshProgress();
-  }
+  }, [refreshProgress]);
 
-  function handleComplete(cardId) {
+  const handleComplete = useCallback(cardId => {
     markChallengeComplete(cardId);
     refreshProgress();
-  }
+  }, [refreshProgress]);
 
-  function handleAnswer(cardId, selectedAnswer, isCorrect) {
+  const handleAnswer = useCallback((cardId, selectedAnswer, isCorrect) => {
     recordQuizResult(cardId, selectedAnswer, isCorrect);
     refreshProgress();
-  }
+  }, [refreshProgress]);
 
-  function handleView(cardId) {
+  const handleView = useCallback(cardId => {
     markCardViewed(cardId);
     refreshProgress();
-  }
+  }, [refreshProgress]);
 
   const showNav = page !== 'feed';
 

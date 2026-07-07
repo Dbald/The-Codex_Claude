@@ -84,10 +84,10 @@ export default function Progress({ progress }) {
                 <span style={{ color: accuracy >= 70 ? '#10b981' : '#ef4444' }}>{accuracy}%</span>
               </div>
               <ProgressBar value={correctQuizzes} max={totalQuizzes} color={accuracy >= 70 ? '#10b981' : '#ef4444'} />
-              <p className="text-xs text-slate-600 mt-2">{correctQuizzes} correct · {totalQuizzes - correctQuizzes} incorrect</p>
+              <p className="text-xs text-slate-400 mt-2">{correctQuizzes} correct · {totalQuizzes - correctQuizzes} incorrect</p>
             </>
           ) : (
-            <p className="text-sm text-slate-600">No quizzes completed yet. Start a feed to answer some!</p>
+            <p className="text-sm text-slate-400">No quizzes completed yet. Start a feed to answer some!</p>
           )}
         </div>
       </div>
@@ -99,7 +99,7 @@ export default function Progress({ progress }) {
             <span className="font-bold text-white">Completed</span>
             <div className="flex items-center gap-2">
               <span className="text-2xl font-black text-white">{totalChallenges}</span>
-              <span className="text-slate-600 text-sm">/ 9</span>
+              <span className="text-slate-400 text-sm">/ 9</span>
             </div>
           </div>
           <ProgressBar value={totalChallenges} max={9} color="#fb923c" height={6} />

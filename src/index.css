@@ -64,7 +64,12 @@ body {
   transition-duration: 0.01ms !important;
 }
 
+/* Muted text used via inline styles — variable so high-contrast can override it.
+   Default #94a3b8 is ~7:1 on the app background (passes WCAG AA for small text). */
+:root { --muted: #94a3b8; }
+
 /* High-contrast mode: lift muted text to readable levels */
+[data-contrast="high"] { --muted: #e2e8f0; }
 [data-contrast="high"] .text-slate-600 { color: #cbd5e1 !important; }
 [data-contrast="high"] .text-slate-500 { color: #e2e8f0 !important; }
 [data-contrast="high"] .text-slate-400 { color: #f1f5f9 !important; }

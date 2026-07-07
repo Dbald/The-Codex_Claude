@@ -17,7 +17,7 @@ export default function AppShell({ currentPage, onNavigate, hideNav, onOpenSetti
           <span className="text-lg font-black tracking-tight text-white">THE CODEX</span>
         </div>
         <div className="flex items-center gap-3">
-          <span className="hidden sm:block text-xs text-slate-600 font-medium tracking-widest uppercase">
+          <span className="hidden sm:block text-xs text-slate-400 font-medium tracking-widest uppercase">
             Scroll with purpose
           </span>
           <button
@@ -47,7 +47,7 @@ export default function AppShell({ currentPage, onNavigate, hideNav, onOpenSetti
               onClick={() => onNavigate(item.id)}
               aria-current={currentPage === item.id ? 'page' : undefined}
               className="flex-1 flex flex-col items-center gap-1 py-2 transition-all duration-200"
-              style={{ color: currentPage === item.id ? '#a78bfa' : '#64748b', minHeight: 52 }}
+              style={{ color: currentPage === item.id ? '#a78bfa' : 'var(--muted)', minHeight: 52 }}
             >
               <span aria-hidden="true" className="text-xl leading-none">{item.icon}</span>
               <span className="text-xs font-medium">{item.label}</span>

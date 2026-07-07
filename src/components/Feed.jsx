@@ -7,6 +7,14 @@ import { CHANNEL_CONFIG } from '../utils/feed.js';
 export default function Feed({ cards, progress, settings, channel, onSave, onLearn, onComplete, onAnswer, onView, onBack }) {
   const observerRef = useRef(null);
   const cardRefs = useRef({});
+  // Keep the latest onView without making it an effect dependency —
+  // a changing identity would recreate the observer, whose initial entry
+  // delivery re-fires onView and loops render → observe → render forever.
+  const onViewRef = useRef(onView);
+  useEffect(() => {
+    onViewRef.current = onView;
+  });
+  const notifiedIdsRef = useRef(new Set());
 
   useEffect(() => {
     observerRef.current = new IntersectionObserver(
@@ -14,7 +22,10 @@ export default function Feed({ cards, progress, settings, channel, onSave, onLea
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             const cardId = entry.target.dataset.cardId;
-            if (cardId) onView(cardId);
+            if (cardId && !notifiedIdsRef.current.has(cardId)) {
+              notifiedIdsRef.current.add(cardId);
+              onViewRef.current(cardId);
+            }
           }
         });
       },
@@ -26,7 +37,7 @@ export default function Feed({ cards, progress, settings, channel, onSave, onLea
     });
 
     return () => observerRef.current?.disconnect();
-  }, [cards, onView]);
+  }, [cards]);
 
   const config = channel !== 'Mixed' ? CHANNEL_CONFIG[channel] : null;
 
@@ -68,7 +79,7 @@ export default function Feed({ cards, progress, settings, channel, onSave, onLea
         >
           {config ? `${config.icon} ${channel}` : '✦ Mixed Feed'}
         </div>
-        <div className="text-xs text-slate-600">{cards.length} cards</div>
+        <div className="text-xs text-slate-400">{cards.length} cards</div>
       </div>
 
       <div className="px-4 py-4 flex flex-col gap-5 pb-8">
@@ -96,7 +107,7 @@ export default function Feed({ cards, progress, settings, channel, onSave, onLea
         })}
 
         <div className="text-center py-6">
-          <p className="text-slate-600 text-sm">End of feed</p>
+          <p className="text-slate-400 text-sm">End of feed</p>
           <button
             onClick={onBack}
             className="mt-3 px-6 py-2.5 rounded-xl text-sm font-semibold text-slate-500 border border-slate-800 hover:border-slate-700 transition-colors"

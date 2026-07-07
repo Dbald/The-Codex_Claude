@@ -2,7 +2,12 @@ import { loadProgress, saveProgress } from './storage.js';
 
 export function markCardViewed(cardId) {
   const progress = loadProgress();
-  if (!progress.viewedCardIds.includes(cardId)) {
+  const alreadyViewed = progress.viewedCardIds.includes(cardId);
+  const streakCurrent = progress.streak.lastActiveDate === new Date().toDateString();
+  if (alreadyViewed && streakCurrent) {
+    return progress; // nothing would change — avoid a redundant localStorage write
+  }
+  if (!alreadyViewed) {
     progress.viewedCardIds.push(cardId);
   }
   updateStreak(progress);

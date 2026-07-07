@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { CHANNEL_CONFIG } from '../utils/feed.js';
 import CardVisual from './CardVisual.jsx';
 import Celebration from './Celebration.jsx';
@@ -17,8 +17,25 @@ export default function QuizCard({ card, progress, settings, onSave, onAnswer })
   const isCorrect = selected === card.answer;
   const explanation = settings?.simpleMode && card.simpleExplanation ? card.simpleExplanation : card.explanation;
 
+  const resultRef = useRef(null);
+  const optionsRef = useRef(null);
+  const interactedRef = useRef(false);
+
+  // Answering disables the focused option button, which would silently drop
+  // keyboard focus to <body> — move it to the result instead. On retry, move
+  // it back to the first option.
+  useEffect(() => {
+    if (!interactedRef.current) return;
+    if (revealed) {
+      resultRef.current?.focus();
+    } else {
+      optionsRef.current?.querySelector('button')?.focus();
+    }
+  }, [revealed, attempt]);
+
   function handleSelect(option) {
     if (revealed) return;
+    interactedRef.current = true;
     setSelected(option);
     setRevealed(true);
     if (option === card.answer) setBurst(Date.now());
@@ -26,6 +43,7 @@ export default function QuizCard({ card, progress, settings, onSave, onAnswer })
   }
 
   function handleRetry() {
+    interactedRef.current = true;
     setSelected(null);
     setRevealed(false);
     setShowHint(false);
@@ -66,36 +84,38 @@ export default function QuizCard({ card, progress, settings, onSave, onAnswer })
         <h2 className="text-lg font-bold text-white leading-tight">{card.question}</h2>
       </div>
 
-      {/* Hint */}
+      {/* Hint — the toggle stays mounted and the hint lands in a persistent
+          live region so screen readers actually announce it */}
       {card.hint && !revealed && (
         <div className="px-5 pb-3">
-          {!showHint ? (
-            <button
-              onClick={() => setShowHint(true)}
-              aria-expanded={showHint}
-              className="flex items-center gap-2 px-3.5 py-2 rounded-full text-xs font-semibold transition-all duration-200"
-              style={{
-                minHeight: 40,
-                background: 'rgba(251,191,36,0.08)',
-                color: '#fbbf24',
-                border: '1px solid rgba(251,191,36,0.25)',
-              }}
-            >
-              <span aria-hidden="true">💡</span> Need a hint?
-            </button>
-          ) : (
-            <div
-              className="px-4 py-3 rounded-xl text-sm leading-relaxed"
-              style={{ background: 'rgba(251,191,36,0.08)', border: '1px solid rgba(251,191,36,0.25)', color: '#fde68a' }}
-            >
-              <span aria-hidden="true">💡 </span>{card.hint}
-            </div>
-          )}
+          <button
+            onClick={() => setShowHint(v => !v)}
+            aria-expanded={showHint}
+            className="flex items-center gap-2 px-3.5 py-2 rounded-full text-xs font-semibold transition-all duration-200"
+            style={{
+              minHeight: 40,
+              background: 'rgba(251,191,36,0.08)',
+              color: '#fbbf24',
+              border: '1px solid rgba(251,191,36,0.25)',
+            }}
+          >
+            <span aria-hidden="true">💡</span> {showHint ? 'Hide hint' : 'Need a hint?'}
+          </button>
+          <div aria-live="polite">
+            {showHint && (
+              <div
+                className="mt-2 px-4 py-3 rounded-xl text-sm leading-relaxed"
+                style={{ background: 'rgba(251,191,36,0.08)', border: '1px solid rgba(251,191,36,0.25)', color: '#fde68a' }}
+              >
+                <span aria-hidden="true">💡 </span>{card.hint}
+              </div>
+            )}
+          </div>
         </div>
       )}
 
       {/* Options */}
-      <div key={attempt} role="group" aria-label="Answer choices" className="px-5 pb-4 flex flex-col gap-2.5">
+      <div key={attempt} ref={optionsRef} role="group" aria-label="Answer choices" className="px-5 pb-4 flex flex-col gap-2.5">
         {card.options.map((option, i) => {
           let borderColor = 'rgba(255,255,255,0.08)';
           let bg = 'rgba(255,255,255,0.03)';
@@ -140,6 +160,8 @@ export default function QuizCard({ card, progress, settings, onSave, onAnswer })
         <Celebration burstKey={burst} />
         {revealed && (
           <div
+            ref={resultRef}
+            tabIndex={-1}
             className="mx-5 mb-4 px-4 py-3 rounded-xl text-sm"
             style={{
               background: isCorrect ? 'rgba(16,185,129,0.08)' : 'rgba(239,68,68,0.08)',

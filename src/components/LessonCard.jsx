@@ -20,20 +20,20 @@ export default function LessonCard({ card, progress, settings, onSave, onLearn }
     if (hasSimple) setSimpleView(!!settings?.simpleMode);
   }, [settings?.simpleMode, hasSimple]);
 
-  useEffect(() => () => stopSpeaking(), []);
+  useEffect(() => () => stopSpeaking(card.id), [card.id]);
 
   const text = simpleView && hasSimple ? { ...card, ...card.simple } : card;
 
   function handleListen() {
     if (speaking) {
-      stopSpeaking();
+      stopSpeaking(card.id);
       setSpeaking(false);
       return;
     }
     const script = [card.title, text.hook, text.explanation, text.example && `For example: ${text.example}`, text.whyItMatters && `Why it matters: ${text.whyItMatters}`]
       .filter(Boolean)
       .join('. ');
-    speak(script, () => setSpeaking(false));
+    speak(script, () => setSpeaking(false), card.id);
     setSpeaking(true);
   }
 
@@ -113,7 +113,7 @@ export default function LessonCard({ card, progress, settings, onSave, onLearn }
                 style={{
                   minHeight: 32,
                   background: simpleView === key ? config.accentLight : 'transparent',
-                  color: simpleView === key ? config.accent : '#64748b',
+                  color: simpleView === key ? config.accent : 'var(--muted)',
                 }}
               >
                 {label}

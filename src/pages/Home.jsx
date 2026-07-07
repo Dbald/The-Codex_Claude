@@ -94,7 +94,7 @@ export default function Home({ progress, onStartSession, onOpenChannel }) {
                   style={{ background: '#111118', borderColor: 'rgba(255,255,255,0.06)' }}
                 >
                   <span className="text-sm text-slate-300 font-medium">{channel}</span>
-                  <span className="text-xs text-slate-600">
+                  <span className="text-xs text-slate-400">
                     {unviewed.length > 0 ? `${unviewed.length} cards left` : 'All seen ✓'}
                   </span>
                 </button>

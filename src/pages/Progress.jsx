@@ -13,21 +13,21 @@ export default function Progress({ progress }) {
   const learnedTotal = progress.learnedCardIds.length;
 
   return (
-    <div className="px-4 py-6 max-w-lg mx-auto">
+    <div className="px-4 py-6 max-w-xl mx-auto">
       <h1 className="text-2xl font-black text-white mb-1">Your Codex</h1>
       <p className="text-slate-500 text-sm mb-6">Evidence of your growth.</p>
 
       <div className="grid grid-cols-3 gap-3 mb-6">
-        <div className="flex flex-col items-center justify-center px-2 py-4 rounded-2xl border text-center" style={{ background: '#111118', borderColor: 'rgba(255,255,255,0.06)' }}>
+        <div className="flex flex-col items-center justify-center px-2 py-4 rounded-2xl border text-center" style={{ background: 'var(--surface)', borderColor: 'rgba(148,163,184,0.15)' }}>
           <p className="text-3xl font-black text-white">{streak}</p>
           <p className="text-xs text-slate-500 mt-0.5">Day streak</p>
           {streak > 0 && <span className="text-base mt-0.5">🔥</span>}
         </div>
-        <div className="flex flex-col items-center justify-center px-2 py-4 rounded-2xl border text-center" style={{ background: '#111118', borderColor: 'rgba(255,255,255,0.06)' }}>
+        <div className="flex flex-col items-center justify-center px-2 py-4 rounded-2xl border text-center" style={{ background: 'var(--surface)', borderColor: 'rgba(148,163,184,0.15)' }}>
           <p className="text-3xl font-black text-white">{learnedTotal}</p>
           <p className="text-xs text-slate-500 mt-0.5">Lessons learned</p>
         </div>
-        <div className="flex flex-col items-center justify-center px-2 py-4 rounded-2xl border text-center" style={{ background: '#111118', borderColor: 'rgba(255,255,255,0.06)' }}>
+        <div className="flex flex-col items-center justify-center px-2 py-4 rounded-2xl border text-center" style={{ background: 'var(--surface)', borderColor: 'rgba(148,163,184,0.15)' }}>
           <p className="text-3xl font-black text-white">{progress.viewedCardIds.length}</p>
           <p className="text-xs text-slate-500 mt-0.5">Cards viewed</p>
         </div>
@@ -42,7 +42,7 @@ export default function Progress({ progress }) {
             const quizzes = ALL_CARDS.filter(c => c.channel === channel && c.type === 'quiz');
             const challenges = ALL_CARDS.filter(c => c.channel === channel && c.type === 'challenge');
             return (
-              <div key={channel} className="rounded-2xl p-4 border" style={{ background: '#111118', borderColor: config.accentBorder }}>
+              <div key={channel} className="rounded-2xl p-4 border" style={{ background: 'var(--surface)', borderColor: config.accentBorder }}>
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2">
                     <span className="text-lg">{config.icon}</span>
@@ -72,7 +72,7 @@ export default function Progress({ progress }) {
 
       <div className="mb-6">
         <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-3">Quiz Performance</p>
-        <div className="rounded-2xl p-4 border" style={{ background: '#111118', borderColor: 'rgba(251,191,36,0.2)' }}>
+        <div className="rounded-2xl p-4 border" style={{ background: 'var(--surface)', borderColor: 'rgba(251,191,36,0.2)' }}>
           <div className="flex items-center justify-between mb-3">
             <span className="font-bold text-white">Quizzes Completed</span>
             <span className="text-xl font-black text-white">{totalQuizzes}</span>
@@ -94,7 +94,7 @@ export default function Progress({ progress }) {
 
       <div className="mb-6">
         <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-3">Challenges</p>
-        <div className="rounded-2xl p-4 border" style={{ background: '#111118', borderColor: 'rgba(251,146,60,0.2)' }}>
+        <div className="rounded-2xl p-4 border" style={{ background: 'var(--surface)', borderColor: 'rgba(251,146,60,0.2)' }}>
           <div className="flex items-center justify-between mb-2">
             <span className="font-bold text-white">Completed</span>
             <div className="flex items-center gap-2">

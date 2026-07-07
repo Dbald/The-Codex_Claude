@@ -144,8 +144,8 @@ const VISUALS = {
     <rect x="20" y="30" width="160" height="32" rx="3" fill={a} opacity="0.85" />
     <rect x="180" y="30" width="96" height="32" rx="0" fill={a} opacity="0.5" />
     <rect x="276" y="30" width="28" height="32" rx="3" fill={a} opacity="0.9" />
-    <line x1="180" y1="30" x2="180" y2="62" stroke="#0a0a0f" strokeWidth="2" />
-    <line x1="276" y1="30" x2="276" y2="62" stroke="#0a0a0f" strokeWidth="2" />
+    <line x1="180" y1="30" x2="180" y2="62" stroke="#161c2c" strokeWidth="2" />
+    <line x1="276" y1="30" x2="276" y2="62" stroke="#161c2c" strokeWidth="2" />
     <text x="100" y="51" textAnchor="middle" fontSize="13" fontWeight="bold" fill="#fff">50%</text>
     <text x="228" y="51" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#fff">30%</text>
     <text x="290" y="51" textAnchor="middle" fontSize="10" fontWeight="bold" fill="#fff">20%</text>
@@ -228,8 +228,8 @@ const VISUALS = {
     <rect x="20" y="35" width="160" height="30" rx="3" fill={a} opacity="0.85" />
     <rect x="180" y="35" width="96" height="30" rx="0" fill={a} opacity="0.5" />
     <rect x="276" y="35" width="28" height="30" rx="3" fill={a} opacity="0.9" />
-    <line x1="180" y1="35" x2="180" y2="65" stroke="#0a0a0f" strokeWidth="2" />
-    <line x1="276" y1="35" x2="276" y2="65" stroke="#0a0a0f" strokeWidth="2" />
+    <line x1="180" y1="35" x2="180" y2="65" stroke="#161c2c" strokeWidth="2" />
+    <line x1="276" y1="35" x2="276" y2="65" stroke="#161c2c" strokeWidth="2" />
     <text x="100" y="56" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#fff">50%</text>
     <text x="228" y="56" textAnchor="middle" fontSize="11" fontWeight="bold" fill="#fff">30%</text>
     <text x="290" y="56" textAnchor="middle" fontSize="10" fontWeight="bold" fill="#fff">20%</text>

@@ -28,7 +28,7 @@ function ModeBtn({ active, accent, onClick, children }) {
       type="button"
       onClick={onClick}
       className="min-h-[44px] flex-1 rounded-xl px-3 text-sm font-bold transition-colors"
-      style={active ? { background: accent, color: '#111118' } : { background: 'rgba(255,255,255,0.08)', color: '#cbd5e1' }}
+      style={active ? { background: accent, color: '#10141f' } : { background: 'rgba(255,255,255,0.08)', color: '#cbd5e1' }}
     >
       {children}
     </button>
@@ -125,7 +125,7 @@ function OhmsLawWidget({ accent }) {
     <div className="flex w-full flex-col gap-3">
       <Slider id="ohm-v" label="Voltage V" display={`${volts} V`} value={volts} min={1} max={24} step={0.5} onChange={setVolts} accent={accent} />
       <Slider id="ohm-r" label="Resistance R" display={`${ohms} Ω`} value={ohms} min={50} max={2000} step={10} onChange={setOhms} accent={accent} />
-      <div className="rounded-xl px-3 py-2 font-mono text-sm text-slate-300" style={{ background: 'rgba(255,255,255,0.06)' }}>
+      <div className="rounded-xl px-3 py-2 font-mono text-sm text-slate-300" style={{ background: 'rgba(148,163,184,0.15)' }}>
         I = V / R = {volts} / {ohms}
       </div>
       <div>
@@ -169,7 +169,7 @@ function CircuitWidget({ accent }) {
         type="button"
         onClick={() => setClosed((c) => !c)}
         className="min-h-[44px] w-full rounded-xl px-3 text-sm font-bold transition-colors"
-        style={closed ? { background: accent, color: '#111118' } : { background: 'rgba(255,255,255,0.08)', color: '#cbd5e1' }}
+        style={closed ? { background: accent, color: '#10141f' } : { background: 'rgba(255,255,255,0.08)', color: '#cbd5e1' }}
       >
         {closed ? 'Switch: ON — tap to open the loop' : 'Switch: OFF — tap to close the loop'}
       </button>
@@ -283,7 +283,7 @@ function MultimeterWidget({ accent }) {
           </ModeBtn>
         ))}
       </div>
-      <div className="rounded-xl px-4 py-3" style={{ background: 'rgba(255,255,255,0.06)' }}>
+      <div className="rounded-xl px-4 py-3" style={{ background: 'rgba(148,163,184,0.15)' }}>
         <p className="text-xs text-slate-300">{m.name}</p>
         <p className="font-mono text-3xl font-black" style={{ color: accent }}>
           {m.reading} <span className="text-xl">{m.unit}</span>
@@ -318,7 +318,7 @@ function SeriesParallelWidget({ accent }) {
         type="button"
         onClick={() => setBroken((b) => !b)}
         className="min-h-[44px] w-full rounded-xl px-3 text-sm font-bold"
-        style={broken ? { background: accent, color: '#111118' } : { background: 'rgba(248,113,113,0.15)', color: '#f87171' }}
+        style={broken ? { background: accent, color: '#10141f' } : { background: 'rgba(248,113,113,0.15)', color: '#f87171' }}
       >
         {broken ? 'Replace bulb 1' : 'Break bulb 1'}
       </button>

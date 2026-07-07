@@ -4,12 +4,37 @@
   box-sizing: border-box;
 }
 
+:root {
+  --bg: #161c2c;        /* page background — lighter blue-slate */
+  --surface: #1f2739;   /* card surfaces */
+  --surface-2: #242d42; /* elevated surfaces (sheets, popovers) */
+}
+
 body {
   margin: 0;
-  background: #0a0a0f;
+  background: var(--bg);
   color: #e2e8f0;
   font-family: system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Tailwind v4 preflight resets buttons to cursor: default — restore pointer */
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+/* Universal hover/press feedback on devices with a mouse */
+@media (hover: hover) and (pointer: fine) {
+  button:not(:disabled) {
+    transition: filter 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  button:not(:disabled):hover {
+    filter: brightness(1.15);
+  }
+  button:not(:disabled):active {
+    transform: scale(0.98);
+    filter: brightness(0.95);
+  }
 }
 
 #root {
@@ -42,10 +67,31 @@ body {
   left: 12px;
   top: 12px;
   background: #a78bfa;
-  color: #0a0a0f;
+  color: var(--bg);
   padding: 10px 16px;
   border-radius: 10px;
   font-weight: 700;
+}
+
+/* Bottom-nav idle items — class-based so :hover can win over it */
+.nav-idle {
+  color: var(--muted);
+}
+@media (hover: hover) {
+  .nav-idle:hover {
+    color: #e2e8f0;
+  }
+}
+
+/* Interactive surface cards lift on hover */
+@media (hover: hover) and (pointer: fine) {
+  .hover-lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  }
 }
 
 /* Kill motion: system preference OR in-app setting */
@@ -98,7 +144,7 @@ body {
   margin-top: -10px;
   border-radius: 999px;
   background: currentColor;
-  border: 3px solid #0a0a0f;
+  border: 3px solid var(--bg);
   box-shadow: 0 0 0 2px currentColor;
 }
 .codex-range::-moz-range-track {
@@ -111,7 +157,7 @@ body {
   height: 24px;
   border-radius: 999px;
   background: currentColor;
-  border: 3px solid #0a0a0f;
+  border: 3px solid var(--bg);
   box-shadow: 0 0 0 2px currentColor;
 }
 

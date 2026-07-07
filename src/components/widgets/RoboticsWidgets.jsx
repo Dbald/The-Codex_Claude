@@ -28,7 +28,7 @@ function Btn({ active, accent, onClick, children }) {
       type="button"
       onClick={onClick}
       className="min-h-[44px] flex-1 rounded-xl px-3 text-sm font-bold transition-colors"
-      style={active ? { background: accent, color: '#111118' } : { background: 'rgba(255,255,255,0.08)', color: '#cbd5e1' }}
+      style={active ? { background: accent, color: '#10141f' } : { background: 'rgba(255,255,255,0.08)', color: '#cbd5e1' }}
     >
       {children}
     </button>

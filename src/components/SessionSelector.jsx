@@ -19,7 +19,7 @@ export default function SessionSelector({ onStart, onBack }) {
   }
 
   return (
-    <div className="flex flex-col min-h-full px-5 py-6 max-w-lg mx-auto">
+    <div className="flex flex-col min-h-full px-5 py-6 max-w-xl mx-auto">
       <button
         onClick={onBack}
         className="flex items-center gap-2 text-slate-500 text-sm mb-6 hover:text-slate-300 transition-colors w-fit"

@@ -61,28 +61,30 @@ export default function Feed({ cards, progress, settings, channel, onSave, onLea
   return (
     <div className="flex flex-col">
       <div
-        className="sticky top-0 z-20 flex items-center justify-between px-5 py-3 border-b"
-        style={{ background: 'rgba(10,10,15,0.95)', backdropFilter: 'blur(12px)', borderColor: 'rgba(255,255,255,0.06)' }}
+        className="sticky top-0 z-20 border-b"
+        style={{ background: 'rgba(22,28,44,0.92)', backdropFilter: 'blur(12px)', borderColor: 'rgba(148,163,184,0.15)' }}
       >
-        <button
-          onClick={onBack}
-          className="text-slate-500 hover:text-slate-300 transition-colors text-sm"
-        >
-          ← Home
-        </button>
-        <div
-          className="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full"
-          style={{
-            background: config ? config.accentLight : 'rgba(167,139,250,0.12)',
-            color: config ? config.accent : '#a78bfa',
-          }}
-        >
-          {config ? `${config.icon} ${channel}` : '✦ Mixed Feed'}
+        <div className="flex items-center justify-between px-5 py-3 w-full max-w-xl mx-auto">
+          <button
+            onClick={onBack}
+            className="text-slate-400 hover:text-slate-200 transition-colors text-sm"
+          >
+            ← Home
+          </button>
+          <div
+            className="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full"
+            style={{
+              background: config ? config.accentLight : 'rgba(167,139,250,0.12)',
+              color: config ? config.accent : '#a78bfa',
+            }}
+          >
+            {config ? `${config.icon} ${channel}` : '✦ Mixed Feed'}
+          </div>
+          <div className="text-xs text-slate-400">{cards.length} cards</div>
         </div>
-        <div className="text-xs text-slate-400">{cards.length} cards</div>
       </div>
 
-      <div className="px-4 py-4 flex flex-col gap-5 pb-8">
+      <div className="px-4 py-4 flex flex-col gap-5 pb-8 w-full max-w-xl mx-auto">
         {cards.map((card, i) => {
           const ref = el => { cardRefs.current[card.id] = el; };
           return (

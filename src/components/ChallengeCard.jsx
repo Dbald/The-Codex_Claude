@@ -32,7 +32,7 @@ export default function ChallengeCard({ card, progress, settings, onSave, onComp
     <article
       aria-label={`Challenge: ${card.title}`}
       className="relative flex flex-col rounded-2xl overflow-hidden border"
-      style={{ borderColor: config.accentBorder, background: '#111118' }}
+      style={{ borderColor: config.accentBorder, background: 'var(--surface)' }}
     >
       {/* Header */}
       <div className="flex items-center justify-between px-5 pt-5 pb-2">

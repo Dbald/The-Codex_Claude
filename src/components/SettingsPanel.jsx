@@ -107,7 +107,7 @@ export default function SettingsPanel({ open, settings, onChange, onClose }) {
         aria-label="Accessibility and learning settings"
         tabIndex={-1}
         className="relative w-full max-w-lg rounded-t-3xl px-5 pt-3 pb-8 border-t"
-        style={{ background: '#15151d', borderColor: 'rgba(255,255,255,0.08)' }}
+        style={{ background: '#242d42', borderColor: 'rgba(255,255,255,0.08)' }}
       >
         <div aria-hidden="true" className="mx-auto mb-4 h-1.5 w-10 rounded-full bg-slate-700" />
 
@@ -117,7 +117,7 @@ export default function SettingsPanel({ open, settings, onChange, onClose }) {
             onClick={onClose}
             aria-label="Close settings"
             className="flex items-center justify-center rounded-full text-slate-400"
-            style={{ width: 44, height: 44, background: 'rgba(255,255,255,0.06)' }}
+            style={{ width: 44, height: 44, background: 'rgba(148,163,184,0.15)' }}
           >
             ✕
           </button>
@@ -151,7 +151,7 @@ export default function SettingsPanel({ open, settings, onChange, onClose }) {
           </div>
         </div>
 
-        <div className="divide-y" style={{ borderColor: 'rgba(255,255,255,0.06)' }}>
+        <div className="divide-y" style={{ borderColor: 'rgba(148,163,184,0.15)' }}>
           <Toggle
             label="Easy read mode"
             description="Lessons use simpler words and everyday examples."

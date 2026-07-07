@@ -136,7 +136,7 @@ function AssetSortWidget({ accent }) {
     setIndex(index + 1);
   };
 
-  const btnStyle = { minHeight: '44px', background: 'rgba(255,255,255,0.06)', border: `2px solid ${accent}`, color: accent };
+  const btnStyle = { minHeight: '44px', background: 'rgba(148,163,184,0.15)', border: `2px solid ${accent}`, color: accent };
   return (
     <div className="flex w-full flex-col gap-3">
       {!done ? (
@@ -159,7 +159,7 @@ function AssetSortWidget({ accent }) {
           ref={playAgainRef}
           onClick={() => { setIndex(0); setScore(0); setFeedback('Does it put money IN your pocket, or take it OUT?'); }}
           className="w-full rounded-xl px-4 text-sm font-bold"
-          style={{ minHeight: '44px', background: accent, color: '#111118' }}
+          style={{ minHeight: '44px', background: accent, color: '#10141f' }}
         >
           Play again
         </button>

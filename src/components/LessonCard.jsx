@@ -46,7 +46,7 @@ export default function LessonCard({ card, progress, settings, onSave, onLearn }
     <article
       aria-label={`Lesson: ${card.title}`}
       className={`relative flex flex-col rounded-2xl overflow-hidden border bg-gradient-to-b ${config.gradient}`}
-      style={{ borderColor: config.accentBorder, background: '#111118' }}
+      style={{ borderColor: config.accentBorder, background: 'var(--surface)' }}
     >
       {/* Channel badge */}
       <div className="flex items-center justify-between px-5 pt-5 pb-2">

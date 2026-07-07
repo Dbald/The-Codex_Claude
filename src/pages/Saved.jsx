@@ -13,7 +13,7 @@ export default function Saved({ progress, settings, onSave, onLearn, onComplete,
   const filtered = filter === 'All' ? savedCards : savedCards.filter(c => c.channel === filter);
 
   return (
-    <div className="px-4 py-6 max-w-lg mx-auto">
+    <div className="px-4 py-6 max-w-xl mx-auto">
       <h1 className="text-2xl font-black text-white mb-1">Saved</h1>
       <p className="text-slate-500 text-sm mb-5">Cards you’ve saved for review.</p>
 

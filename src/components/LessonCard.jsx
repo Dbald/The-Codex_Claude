@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { CHANNEL_CONFIG } from '../utils/feed.js';
+import { CHANNEL_CONFIG, getUnlockState } from '../utils/feed.js';
 import CardVisual from './CardVisual.jsx';
 import LessonWidget from './LessonWidget.jsx';
 import Celebration from './Celebration.jsx';
@@ -14,6 +14,7 @@ export default function LessonCard({ card, progress, settings, onSave, onLearn }
   const [simpleView, setSimpleView] = useState(!!settings?.simpleMode && hasSimple);
   const [speaking, setSpeaking] = useState(false);
   const [burst, setBurst] = useState(null);
+  const [justUnlocked, setJustUnlocked] = useState(false);
 
   // Follow the global setting when it changes
   useEffect(() => {
@@ -38,7 +39,14 @@ export default function LessonCard({ card, progress, settings, onSave, onLearn }
   }
 
   function handleLearn() {
-    if (!isLearned) setBurst(Date.now());
+    if (!isLearned) {
+      setBurst(Date.now());
+      // Does this learn cross the Level 2 threshold for this channel?
+      const before = getUnlockState(card.channel, progress);
+      if (!before.unlocked && before.remaining === 1 && card.level === 'Beginner') {
+        setJustUnlocked(true);
+      }
+    }
     onLearn(card.id);
   }
 
@@ -160,6 +168,18 @@ export default function LessonCard({ card, progress, settings, onSave, onLearn }
           <div className="mb-2 bg-slate-900/60 rounded-xl px-4 py-3 border border-slate-700/30">
             <p className="text-sm font-medium text-slate-400 uppercase tracking-wider mb-1">Quick Challenge</p>
             <p className="text-slate-400 text-sm leading-relaxed italic">{card.challenge}</p>
+          </div>
+        )}
+      </div>
+
+      {/* Level 2 unlock banner (permanently-mounted live region) */}
+      <div aria-live="polite">
+        {justUnlocked && (
+          <div
+            className="mx-5 mb-3 px-4 py-3 rounded-xl text-sm font-bold text-center pop"
+            style={{ background: config.accentLight, color: config.accent, border: `1px solid ${config.accentBorder}` }}
+          >
+            🎉 Level 2 unlocked! 18 new {card.channel} cards just joined your feed.
           </div>
         )}
       </div>

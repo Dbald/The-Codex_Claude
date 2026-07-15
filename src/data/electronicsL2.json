@@ -1,0 +1,293 @@
+[
+  {
+    "id": "electronics-lesson-101",
+    "channel": "Electronics",
+    "type": "lesson",
+    "level": "Intermediate",
+    "title": "What is a capacitor?",
+    "hook": "A capacitor stores energy and releases it in a flash.",
+    "explanation": "A capacitor stores electrical charge between two metal plates separated by an insulator. Its capacity is measured in farads (F), though most are microfarads (µF) or smaller. It charges up when voltage is applied and releases that charge when the circuit needs it.",
+    "example": "A camera flash uses a capacitor. The battery slowly fills it over a few seconds, then it dumps all that energy into the flash bulb in a millisecond — far faster than the battery ever could.",
+    "whyItMatters": "Capacitors smooth out power supplies, filter noisy signals, and create timing circuits. Almost every circuit board has dozens of them.",
+    "challenge": "Find a photo of a circuit board online and count how many cylindrical capacitors you can spot.",
+    "simple": {
+      "hook": "A capacitor is a tiny bucket that holds electricity for later.",
+      "explanation": "Think of a water bucket under a slow tap. The tap fills it drip by drip. Then you can tip the whole bucket out all at once. A capacitor fills up with electricity slowly and can pour it out fast.",
+      "example": "A camera flash needs a huge burst of power for a split second. The battery fills the capacitor bucket for 3 seconds, then whoosh — it all dumps into the flash at once.",
+      "whyItMatters": "Buckets of stored electricity keep circuits steady and make big bursts possible. Almost every gadget uses them."
+    }
+  },
+  {
+    "id": "electronics-lesson-102",
+    "channel": "Electronics",
+    "type": "lesson",
+    "level": "Intermediate",
+    "title": "What is a diode, and why does polarity matter?",
+    "hook": "A diode is a one-way street for electricity.",
+    "explanation": "A diode lets current flow in only one direction: from anode (positive) to cathode (negative). Connect it backwards and it blocks the flow almost completely. This direction-sensitivity is called polarity, and it applies to diodes, LEDs, and many capacitors.",
+    "example": "The stripe printed on a diode marks the cathode (negative end). In a phone charger, four diodes arranged in a 'bridge' force wiggling wall current to flow in just one direction.",
+    "whyItMatters": "Polarity mistakes are the number one beginner error. A backwards diode blocks your circuit, and a backwards polarized capacitor can pop. Learning the markings saves your components.",
+    "challenge": "Look up the schematic symbol for a diode and figure out which way the arrow points relative to current flow.",
+    "simple": {
+      "hook": "A diode is a door that only opens one way.",
+      "explanation": "Imagine a pet door that swings out but never in. Electricity pushing the right way sails through a diode. Electricity pushing the wrong way hits a locked door. Which way you plug it in is called polarity.",
+      "example": "A diode has a painted stripe on one end, like an arrow saying 'exit here'. Put it in backwards and your circuit just sits there, dark and confused.",
+      "whyItMatters": "Some parts care which way around they go. Learn the stripe and you will stop breaking things."
+    }
+  },
+  {
+    "id": "electronics-lesson-103",
+    "channel": "Electronics",
+    "type": "lesson",
+    "level": "Intermediate",
+    "title": "How does a transistor work as a switch?",
+    "hook": "A transistor lets a tiny signal control a big current.",
+    "explanation": "A transistor has three legs: base, collector, and emitter (for the common NPN type). A small current into the base opens a path for a much larger current between collector and emitter. No base current, and the big path stays closed. That makes it an electrically controlled switch.",
+    "example": "A microcontroller pin can only supply about 20mA — not enough for a motor. Send that tiny signal into a transistor's base, and the transistor switches 500mA from the battery straight to the motor.",
+    "whyItMatters": "Transistors are the building blocks of all computing. Your phone's processor contains billions of them, each switching on and off billions of times per second.",
+    "challenge": "Look up an NPN transistor like the 2N2222 and identify which pin is the base, collector, and emitter.",
+    "simple": {
+      "hook": "A transistor is a big door opened by a tiny knock.",
+      "explanation": "Picture a heavy gate on a dam holding back lots of water. You cannot push it open yourself, but a small button raises it. A transistor works like that: a tiny bit of electricity on one leg opens a path for a big flow through the other two legs.",
+      "example": "A little brain chip is too weak to spin a motor. So it taps the transistor's button leg, and the transistor lets the strong battery power flood into the motor.",
+      "whyItMatters": "Your phone has billions of these tiny switches inside. They flip on and off super fast, and that is how computers think."
+    }
+  },
+  {
+    "id": "electronics-lesson-104",
+    "channel": "Electronics",
+    "type": "lesson",
+    "level": "Intermediate",
+    "title": "What is a voltage divider?",
+    "hook": "Two resistors can turn any voltage into a smaller one.",
+    "explanation": "A voltage divider is two resistors in series across a voltage source. The voltage splits between them in proportion to their resistance values. The output taken between the two resistors follows the formula: Vout = Vin × R2 / (R1 + R2).",
+    "example": "You have a 9V battery but a sensor that needs 3V. Use R1 = 10kΩ and R2 = 5kΩ: Vout = 9 × 5000 / 15000 = 3V. Exactly what you needed.",
+    "whyItMatters": "Voltage dividers let you read sensors, scale down signals, and interface parts that run at different voltages. They appear in nearly every real circuit.",
+    "challenge": "Calculate the output of a divider with Vin = 12V, R1 = 6kΩ, and R2 = 6kΩ before checking with the formula.",
+    "simple": {
+      "hook": "A voltage divider shares the push between two speed bumps.",
+      "explanation": "Imagine two kids splitting a 9-slice pizza by size. A bigger kid gets more slices. Two resistors split voltage the same way: the bigger resistor grabs more of the push. Tap a wire between them and you get just the smaller share.",
+      "example": "With a 9-volt battery and two matching resistors, each one takes half. The middle point gives you 4.5 volts, a gentler push for smaller parts.",
+      "whyItMatters": "Sometimes a part needs a smaller push than your battery gives. Two resistors fix that for pennies."
+    }
+  },
+  {
+    "id": "electronics-lesson-105",
+    "channel": "Electronics",
+    "type": "lesson",
+    "level": "Intermediate",
+    "title": "What are pull-up and pull-down resistors?",
+    "hook": "A floating wire is a confused wire. One resistor fixes it.",
+    "explanation": "When an input pin isn't connected to anything, it 'floats' and reads random values from electrical noise. A pull-up resistor gently ties the pin to positive voltage so it reads HIGH by default. A pull-down resistor ties it to ground so it reads LOW by default. Pressing a button then firmly overrides the default.",
+    "example": "A button circuit with a 10kΩ pull-up: the pin normally reads HIGH. Press the button and it connects the pin to ground, reading LOW. Without the resistor, the pin would flicker randomly between the two.",
+    "whyItMatters": "Almost every button, switch, and communication line needs a pull-up or pull-down. Skipping them causes ghost inputs that are maddening to debug.",
+    "challenge": "Search for 'floating pin Arduino' and read about what happens when you forget a pull-up resistor.",
+    "simple": {
+      "hook": "Pull-up resistors give a wire a home position, like a spring on a door.",
+      "explanation": "A wire connected to nothing is like a flag in the wind, flapping between yes and no. A pull-up resistor is like a gentle spring holding a door open until someone pushes it shut. It holds the wire at 'yes' until a button firmly says 'no'.",
+      "example": "A game controller button uses one. Normally the spring holds the answer at 'not pressed'. Push the button and it clearly flips to 'pressed'. No flapping, no ghost presses.",
+      "whyItMatters": "Without a home position, circuits imagine button presses that never happened. One cheap resistor stops the ghosts."
+    }
+  },
+  {
+    "id": "electronics-lesson-106",
+    "channel": "Electronics",
+    "type": "lesson",
+    "level": "Intermediate",
+    "title": "What is the difference between AC and DC?",
+    "hook": "Electricity comes in two flavors: steady and wiggling.",
+    "explanation": "DC (direct current) flows steadily in one direction, like from a battery. AC (alternating current) reverses direction many times per second — 60 times in the US, 50 in Europe. Power grids use AC because it travels long distances efficiently and transforms easily between voltages.",
+    "example": "Your laptop charger is a translator: it takes 120V AC from the wall and converts it to about 19V DC for the laptop. Nearly all electronics run on DC internally.",
+    "whyItMatters": "Knowing which type you are working with is a safety issue and a design issue. Plugging DC electronics into AC without conversion destroys them.",
+    "challenge": "Find the label on a phone charger and identify the AC input rating and the DC output rating.",
+    "simple": {
+      "hook": "DC flows one way like a river. AC sloshes back and forth like a wave.",
+      "explanation": "Battery power is DC: it flows in one direction, steady as a stream. Wall power is AC: it pushes forward, then backward, 60 times every second. It wiggles so fast the lights look steady to your eyes.",
+      "example": "Your tablet wants calm river power, but the wall gives sloshing wave power. The charger brick is a translator that turns waves into a smooth stream.",
+      "whyItMatters": "Give a gadget the wrong flavor of power and it can break. Chargers exist to translate between the two."
+    }
+  },
+  {
+    "id": "electronics-lesson-107",
+    "channel": "Electronics",
+    "type": "lesson",
+    "level": "Intermediate",
+    "title": "What are short circuits and fuses?",
+    "hook": "A short circuit is electricity taking a dangerous shortcut.",
+    "explanation": "A short circuit happens when current finds an accidental low-resistance path, like a bare wire touching another. With almost no resistance, Ohm's Law says current skyrockets, creating heat, melted wires, and fire risk. A fuse is a sacrificial thin wire that melts and breaks the circuit before damage spreads.",
+    "example": "A frayed lamp cord lets its two wires touch. Current jumps from 0.5A to over 100A in an instant. The 15A fuse (or breaker) in your home's panel blows immediately, cutting the power before the cord catches fire.",
+    "whyItMatters": "Shorts are the most common cause of electrical fires and dead projects. Understanding fuses — and never bypassing them — is fundamental electronics safety.",
+    "challenge": "Find your home's breaker panel (with an adult if needed) and read the amp rating printed on three breakers.",
+    "simple": {
+      "hook": "A short circuit is electricity cheating with a shortcut, and a fuse is the guard that stops it.",
+      "explanation": "Electricity is lazy: it always takes the easiest path. If two bare wires touch, it skips all the speed bumps and rushes through in a flood. The flood makes heat, and heat can start fires. A fuse is a skinny wire that melts on purpose, breaking the path before anything else gets hurt.",
+      "example": "It is like a dam with a weak spot built on purpose. If the water rises too high, the weak spot gives way safely instead of the whole dam bursting.",
+      "whyItMatters": "Fuses are tiny heroes that sacrifice themselves to stop fires. Never remove one or swap in a bigger one."
+    }
+  },
+  {
+    "id": "electronics-lesson-108",
+    "channel": "Electronics",
+    "type": "lesson",
+    "level": "Intermediate",
+    "title": "How do you solder?",
+    "hook": "Soldering is how you make circuit connections permanent.",
+    "explanation": "Soldering joins metal parts using melted solder, an alloy that melts around 190–220°C. The technique: heat both the component leg and the pad with the iron tip for a second, then feed solder into the joint — not onto the iron. A good joint looks like a shiny little volcano.",
+    "example": "To solder a resistor to a circuit board: insert the legs, touch the iron to where leg meets pad, count 'one-two', feed in a small amount of solder, remove the solder, then the iron. Done in about four seconds.",
+    "whyItMatters": "Breadboards are for testing; soldering is for keeping. Every finished device you own is held together by thousands of solder joints.",
+    "challenge": "Watch a 2-minute soldering tutorial video and write down what a 'cold joint' looks like and why it fails.",
+    "simple": {
+      "hook": "Soldering is gluing wires together with melted metal.",
+      "explanation": "You use a hot pen called a soldering iron and a special soft metal called solder. Heat the two parts you want to join, touch the solder to them, and it melts like butter in a hot pan. When it cools, it hardens into a strong shiny joint.",
+      "example": "A good joint looks like a tiny shiny mountain. A bad one looks like a dull gray blob, and it can crack loose later.",
+      "whyItMatters": "Breadboards are for practice, but soldering makes it real. Also, the iron is very hot — always hold it like a pencil and never touch the tip."
+    }
+  },
+  {
+    "id": "electronics-lesson-109",
+    "channel": "Electronics",
+    "type": "lesson",
+    "level": "Intermediate",
+    "title": "What is inside an integrated circuit?",
+    "hook": "That little black chip is an entire circuit shrunk onto a sliver of silicon.",
+    "explanation": "An integrated circuit (IC) packs transistors, resistors, and capacitors onto one tiny chip of silicon, sealed in a plastic package with metal legs. Instead of building a circuit from dozens of parts, you use one chip that has it built in. Each leg (pin) has a specific job described in the chip's datasheet.",
+    "example": "The famous 555 timer chip contains about 25 transistors and 15 resistors in an 8-pin package. Wire it with just a couple of external resistors and a capacitor, and it blinks an LED at any speed you choose.",
+    "whyItMatters": "ICs are why a phone fits in your pocket instead of filling a room. Learning to read a chip's pinout and datasheet unlocks thousands of ready-made building blocks.",
+    "challenge": "Look up the 555 timer pinout and find which pin is the output and which two are power.",
+    "simple": {
+      "hook": "A chip is a whole city of tiny circuits inside one little black box.",
+      "explanation": "Imagine shrinking a whole LEGO castle down to the size of a fingernail and sealing it in a box. A chip is like that: dozens or billions of tiny parts, pre-built and wired together. The metal legs are the doors in and out of the city.",
+      "example": "One famous chip, the 555 timer, holds about 25 tiny switches inside. Hook it up with three extra parts and it blinks a light for you, like a metronome.",
+      "whyItMatters": "Chips are why a computer fits in your pocket instead of filling a whole room like they did long ago."
+    }
+  },
+  {
+    "id": "electronics-lesson-110",
+    "channel": "Electronics",
+    "type": "lesson",
+    "level": "Intermediate",
+    "title": "How do you read a schematic?",
+    "hook": "A schematic is the map every circuit is built from.",
+    "explanation": "A schematic is a drawing that shows components as standard symbols and connections as lines. A zigzag or rectangle is a resistor, two parallel lines a capacitor, a triangle with a bar a diode. Lines that cross with a dot are connected; without a dot, they just pass over each other. Read it by following the path from power to ground.",
+    "example": "A flashlight schematic shows a battery symbol, a line to a switch symbol, then a resistor zigzag, then an LED triangle, then back to the battery. Five symbols fully describe the real circuit.",
+    "whyItMatters": "Every datasheet, tutorial, and repair manual speaks in schematics. Once you can read them, the world's circuit designs are open to you.",
+    "challenge": "Find any simple schematic online and identify every symbol in it before reading the parts list.",
+    "simple": {
+      "hook": "A schematic is a treasure map for circuits.",
+      "explanation": "Instead of drawing realistic pictures of parts, engineers use quick symbols, like how a map uses a star for a city. A zigzag means resistor, a triangle means diode, and lines are the wires. Follow the lines with your finger like roads on a map.",
+      "example": "A flashlight map has just 4 symbols: battery, switch, resistor, light. Trace the loop with your finger and you have read your first schematic.",
+      "whyItMatters": "Anyone in any country can read the same circuit map. Learn the symbols and you can build anything ever drawn."
+    }
+  },
+  {
+    "id": "electronics-quiz-101",
+    "channel": "Electronics",
+    "type": "quiz",
+    "level": "Intermediate",
+    "question": "What does a capacitor do in a circuit?",
+    "options": ["Blocks current in one direction", "Stores electrical charge and releases it later", "Converts AC to DC by itself", "Increases the battery's voltage permanently"],
+    "answer": "Stores electrical charge and releases it later",
+    "explanation": "A capacitor stores charge between two plates and releases it when the circuit needs it. That is how a camera flash builds up a burst of energy from a small battery.",
+    "hint": "Think of a bucket that fills slowly and can empty fast.",
+    "simpleExplanation": "A capacitor is like a little bucket for electricity. It fills up slowly and can pour all its power out fast, like a camera flash going off."
+  },
+  {
+    "id": "electronics-quiz-102",
+    "channel": "Electronics",
+    "type": "quiz",
+    "level": "Intermediate",
+    "question": "What happens if you connect a diode backwards in a simple circuit?",
+    "options": ["It blocks the current and the circuit does not work", "It explodes immediately", "Current flows twice as fast", "It converts the voltage to AC"],
+    "answer": "It blocks the current and the circuit does not work",
+    "explanation": "A diode only conducts from anode to cathode. Reversed, it blocks current almost completely, so the circuit simply does nothing. The stripe on the package marks the cathode.",
+    "hint": "A diode is a one-way street — what happens when you drive up to it the wrong way?",
+    "simpleExplanation": "A diode is a one-way door. Put it in backwards and the door stays locked, so no electricity gets through and nothing turns on."
+  },
+  {
+    "id": "electronics-quiz-103",
+    "channel": "Electronics",
+    "type": "quiz",
+    "level": "Intermediate",
+    "question": "In a voltage divider with Vin = 10V, R1 = 3kΩ, and R2 = 2kΩ, what is Vout across R2?",
+    "options": ["4V", "6V", "2V", "10V"],
+    "answer": "4V",
+    "explanation": "Vout = Vin × R2 / (R1 + R2) = 10 × 2000 / 5000 = 4V. R2 gets 2/5 of the total voltage because it is 2/5 of the total resistance.",
+    "hint": "R2 is 2 parts out of 5 total parts of resistance — it gets that same share of the voltage.",
+    "simpleExplanation": "The two resistors split the 10 volts like slices of pizza. R2 is 2 out of 5 total parts, so it gets 2 fifths of 10 volts, which is 4 volts."
+  },
+  {
+    "id": "electronics-quiz-104",
+    "channel": "Electronics",
+    "type": "quiz",
+    "level": "Intermediate",
+    "question": "Why does an unconnected (floating) input pin need a pull-up or pull-down resistor?",
+    "options": ["To make the pin output more current", "To protect the pin from lightning", "To give the pin a stable default value instead of random noise", "To increase the circuit's voltage"],
+    "answer": "To give the pin a stable default value instead of random noise",
+    "explanation": "A floating pin picks up electrical noise and reads random HIGH/LOW values. A pull-up or pull-down resistor gently holds it at a known default until a button or signal deliberately overrides it.",
+    "hint": "A wire connected to nothing is like a flag flapping in the wind.",
+    "simpleExplanation": "A wire connected to nothing flip-flops between yes and no like a flag in the wind. The resistor is a gentle spring that holds it steady until a button really gets pressed."
+  },
+  {
+    "id": "electronics-quiz-105",
+    "channel": "Electronics",
+    "type": "quiz",
+    "level": "Intermediate",
+    "question": "What does a fuse do when a short circuit occurs?",
+    "options": ["It stores the extra current for later", "Its thin wire melts and breaks the circuit to prevent damage", "It converts the extra current into light", "It reverses the direction of the current"],
+    "answer": "Its thin wire melts and breaks the circuit to prevent damage",
+    "explanation": "A fuse contains a thin wire designed to melt when current exceeds its rating. By melting, it breaks the circuit and stops the dangerous overcurrent before wires overheat or catch fire.",
+    "hint": "The fuse sacrifices itself — think about what heat does to a very thin wire.",
+    "simpleExplanation": "A fuse is a skinny wire that melts on purpose when too much electricity rushes through. It breaks the path like cutting a rope, stopping the flood before it starts a fire."
+  },
+  {
+    "id": "electronics-challenge-101",
+    "channel": "Electronics",
+    "type": "challenge",
+    "level": "Intermediate",
+    "title": "Voltage Divider Workout",
+    "prompt": "Calculate the output voltage (Vout across R2) for these three voltage dividers using Vout = Vin × R2 / (R1 + R2):\n1. Vin = 9V, R1 = 6kΩ, R2 = 3kΩ\n2. Vin = 12V, R1 = 10kΩ, R2 = 10kΩ\n3. Vin = 5V, R1 = 1kΩ, R2 = 4kΩ\nWrite each answer with units, then check: does the bigger resistor always get the bigger share?",
+    "whyItMatters": "Voltage dividers appear everywhere — sensor circuits, volume knobs, level shifters. Being able to calculate them quickly is a core intermediate skill.",
+    "completionCriteria": "You have calculated all three output voltages correctly and written them down with units.",
+    "steps": [
+      "Write the formula Vout = Vin x R2 / (R1 + R2).",
+      "Problem 1: compute 9 x 3 / 9.",
+      "Problem 2: compute 12 x 10 / 20.",
+      "Problem 3: compute 5 x 4 / 5.",
+      "Check which resistor got the bigger voltage share."
+    ]
+  },
+  {
+    "id": "electronics-challenge-102",
+    "channel": "Electronics",
+    "type": "challenge",
+    "level": "Intermediate",
+    "title": "Circuit Board Safari",
+    "prompt": "Find a real circuit board — inside an old toy, a broken gadget (unplugged and battery removed!), or a detailed photo online. Hunt for and identify at least 4 different component types: capacitors (small cylinders or tiny tan discs), resistors (striped tubes or tiny black rectangles), diodes (look for the stripe), and at least one integrated circuit (black rectangle with legs). Write down where you found each one.",
+    "whyItMatters": "Recognizing components on real boards bridges the gap between theory and the physical world. It is the first skill of every repair technician and hardware engineer.",
+    "completionCriteria": "You have identified and recorded at least 4 different component types on a real circuit board or detailed photo.",
+    "steps": [
+      "Find a circuit board or a sharp photo of one.",
+      "Spot the cylinders — those are capacitors.",
+      "Find striped tubes or tiny rectangles — resistors.",
+      "Look for a small part with one painted stripe — a diode.",
+      "Find the biggest black chip and note its printed name."
+    ]
+  },
+  {
+    "id": "electronics-challenge-103",
+    "channel": "Electronics",
+    "type": "challenge",
+    "level": "Intermediate",
+    "title": "Trace the Schematic",
+    "prompt": "Find a simple schematic online (search '555 timer LED blinker schematic' or 'basic transistor switch schematic'). Print it or copy it by hand onto paper. Then, starting at the positive power symbol, trace the complete current path with a colored pencil until you return to ground. Label every component symbol you pass: resistor, capacitor, diode, transistor, or IC.",
+    "whyItMatters": "Tracing current paths by hand is how engineers actually read schematics. It turns a page of mysterious symbols into a story you can follow.",
+    "completionCriteria": "You have copied or printed a schematic, traced the full current path in color, and labeled every component symbol.",
+    "steps": [
+      "Find and print or copy a simple schematic.",
+      "Locate the positive power symbol and ground symbol.",
+      "Trace the path from power to ground in color.",
+      "Label every symbol you pass along the way.",
+      "Explain the circuit out loud in one sentence."
+    ]
+  }
+]

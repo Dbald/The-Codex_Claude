@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import LessonCard from './LessonCard.jsx';
 import QuizCard from './QuizCard.jsx';
 import ChallengeCard from './ChallengeCard.jsx';
-import { CHANNEL_CONFIG } from '../utils/feed.js';
+import { CHANNEL_CONFIG, getUnlockState } from '../utils/feed.js';
 
 export default function Feed({ cards, progress, settings, channel, onSave, onLearn, onComplete, onAnswer, onView, onBack }) {
   const observerRef = useRef(null);
@@ -109,10 +109,34 @@ export default function Feed({ cards, progress, settings, channel, onSave, onLea
         })}
 
         <div className="text-center py-6">
-          <p className="text-slate-400 text-sm">End of feed</p>
+          {(() => {
+            const lockedChannels = (channel === 'Mixed'
+              ? ['Finance', 'Electronics', 'Robotics']
+              : [channel]
+            )
+              .map(ch => ({ ch, state: getUnlockState(ch, progress) }))
+              .filter(({ state }) => !state.unlocked);
+            if (lockedChannels.length === 0) return <p className="text-slate-400 text-sm">End of feed — you've unlocked everything here. 🏆</p>;
+            return (
+              <div
+                className="mx-auto max-w-sm rounded-2xl px-5 py-4 border text-left"
+                style={{ background: 'var(--surface)', borderColor: 'rgba(251,191,36,0.3)' }}
+              >
+                <p className="text-sm font-bold text-white mb-2">
+                  <span aria-hidden="true">🔓</span> More is waiting for you
+                </p>
+                {lockedChannels.map(({ ch, state }) => (
+                  <p key={ch} className="text-xs text-slate-400 leading-relaxed">
+                    <span style={{ color: CHANNEL_CONFIG[ch].accent }} className="font-semibold">{ch}</span>
+                    {' '}— mark {state.remaining} more lesson{state.remaining !== 1 ? 's' : ''} as Learned to unlock 18 Level 2 cards
+                  </p>
+                ))}
+              </div>
+            );
+          })()}
           <button
             onClick={onBack}
-            className="mt-3 px-6 py-2.5 rounded-xl text-sm font-semibold text-slate-500 border border-slate-800 hover:border-slate-700 transition-colors"
+            className="mt-4 px-6 py-2.5 rounded-xl text-sm font-semibold text-slate-400 border border-slate-700 hover:border-slate-500 transition-colors"
           >
             ← Back to Home
           </button>

@@ -9,6 +9,7 @@ export default function Progress({ progress }) {
   const correctQuizzes = progress.quizResults.filter(r => r.isCorrect).length;
   const accuracy = totalQuizzes > 0 ? Math.round((correctQuizzes / totalQuizzes) * 100) : 0;
   const totalChallenges = progress.completedChallengeIds.length;
+  const challengeCount = ALL_CARDS.filter(c => c.type === 'challenge').length;
   const streak = progress.streak.current;
   const learnedTotal = progress.learnedCardIds.length;
 
@@ -99,10 +100,10 @@ export default function Progress({ progress }) {
             <span className="font-bold text-white">Completed</span>
             <div className="flex items-center gap-2">
               <span className="text-2xl font-black text-white">{totalChallenges}</span>
-              <span className="text-slate-400 text-sm">/ 9</span>
+              <span className="text-slate-400 text-sm">/ {challengeCount}</span>
             </div>
           </div>
-          <ProgressBar value={totalChallenges} max={9} color="#fb923c" height={6} />
+          <ProgressBar value={totalChallenges} max={challengeCount} color="#fb923c" height={6} />
         </div>
       </div>
 

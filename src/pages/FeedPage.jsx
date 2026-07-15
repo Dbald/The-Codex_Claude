@@ -10,18 +10,18 @@ export default function FeedPage({ initialChannel, progress, settings, onSave, o
     initialChannel ? { channel: initialChannel, duration: 10 } : null
   );
   const [cards, setCards] = useState(() =>
-    initialChannel ? buildFeed(initialChannel, progress.viewedCardIds) : []
+    initialChannel ? buildFeed(initialChannel, progress) : []
   );
 
-  function buildFeed(channel, viewedCardIds) {
+  function buildFeed(channel, prog) {
     if (channel === 'Mixed') {
-      return getMixedFeed(viewedCardIds);
+      return getMixedFeed(prog.viewedCardIds, prog);
     }
-    return getChannelFeed(channel, viewedCardIds);
+    return getChannelFeed(channel, prog.viewedCardIds, prog);
   }
 
   function handleStart(sessionConfig) {
-    setCards(buildFeed(sessionConfig.channel, progress.viewedCardIds));
+    setCards(buildFeed(sessionConfig.channel, progress));
     setSession(sessionConfig);
   }
 

@@ -1,12 +1,13 @@
-import { CHANNEL_CONFIG, ALL_CARDS } from '../utils/feed.js';
+import { CHANNEL_CONFIG, getUnlockedCards, getUnlockState } from '../utils/feed.js';
 import ProgressBar from './ProgressBar.jsx';
 
 export default function ChannelCard({ channel, progress, onClick }) {
   const config = CHANNEL_CONFIG[channel];
-  const channelCards = ALL_CARDS.filter(c => c.channel === channel);
-  const lessons = channelCards.filter(c => c.type === 'lesson');
+  const unlock = getUnlockState(channel, progress);
+  const availableCards = getUnlockedCards(channel, progress);
+  const lessons = availableCards.filter(c => c.type === 'lesson');
   const learned = lessons.filter(c => progress.learnedCardIds.includes(c.id));
-  const quizzes = channelCards.filter(c => c.type === 'quiz');
+  const quizzes = availableCards.filter(c => c.type === 'quiz');
   const quizzed = quizzes.filter(c => progress.quizResults.some(r => r.cardId === c.id));
 
   return (
@@ -33,10 +34,10 @@ export default function ChannelCard({ channel, progress, onClick }) {
           </div>
         </div>
         <div
-          className="text-xs font-semibold px-2.5 py-1 rounded-full"
+          className="text-xs font-semibold px-2.5 py-1 rounded-full whitespace-nowrap"
           style={{ background: config.accentLight, color: config.accent }}
         >
-          {channelCards.length} cards
+          {availableCards.length} cards
         </div>
       </div>
 
@@ -51,6 +52,26 @@ export default function ChannelCard({ channel, progress, onClick }) {
           <span style={{ color: config.accent }}>{quizzed.length}/{quizzes.length}</span>
         </div>
       </div>
+
+      {/* Level 2 progression */}
+      {unlock.unlocked ? (
+        <div
+          className="mt-3 flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-semibold"
+          style={{ background: config.accentLight, color: config.accent }}
+        >
+          <span aria-hidden="true">🏆</span> Level 2 unlocked — 18 new cards in your feed!
+        </div>
+      ) : (
+        <div className="mt-3">
+          <div className="flex justify-between text-xs mb-1">
+            <span className="text-slate-500">
+              <span aria-hidden="true">🔒</span> Level 2 · {unlock.remaining} more lesson{unlock.remaining !== 1 ? 's' : ''} to unlock
+            </span>
+            <span className="text-slate-500">{unlock.learned}/{unlock.threshold}</span>
+          </div>
+          <ProgressBar value={unlock.learned} max={unlock.threshold} color="#fbbf24" height={4} />
+        </div>
+      )}
     </button>
   );
 }

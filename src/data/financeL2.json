@@ -1,0 +1,292 @@
+[
+  {
+    "id": "finance-lesson-101",
+    "channel": "Finance",
+    "type": "lesson",
+    "level": "Intermediate",
+    "title": "What is an emergency fund?",
+    "hook": "An emergency fund is your financial airbag.",
+    "explanation": "An emergency fund is cash set aside for surprises like a job loss, car repair, or medical bill. Most experts recommend 3 to 6 months of living expenses in a separate savings account. It keeps one bad day from becoming a debt spiral.",
+    "example": "If your expenses are $2,500/month, a $7,500 fund covers 3 months. Even a starter fund of $1,000 can absorb most common emergencies like a $600 car repair.",
+    "whyItMatters": "Without a cushion, every surprise goes on a credit card at 25% interest. With one, emergencies are inconveniences, not disasters.",
+    "challenge": "Calculate 3 months of your essential expenses. That is your emergency fund target.",
+    "simple": {
+      "hook": "An emergency fund is a rainy-day money jar.",
+      "explanation": "Sometimes bad surprises happen, like a broken bike or a lost jacket. A rainy-day jar holds money just for those surprises. You never touch it for toys or snacks.",
+      "example": "You save $2 a week in a special jar. After 10 weeks you have $20. When your bike tire pops, the jar pays for it.",
+      "whyItMatters": "With a rainy-day jar, a bad surprise does not ruin your plans. You fix the problem and keep going."
+    }
+  },
+  {
+    "id": "finance-lesson-102",
+    "channel": "Finance",
+    "type": "lesson",
+    "level": "Intermediate",
+    "title": "Index funds vs stock picking: which wins?",
+    "hook": "Most professionals lose to a simple index fund. Seriously.",
+    "explanation": "Stock picking means choosing individual companies you hope will win. An index fund simply buys the whole market, like all 500 companies in the S&P 500, for a tiny fee. Over 15 years, roughly 90% of professional fund managers fail to beat the index.",
+    "example": "Investor A spends hours picking 5 stocks and earns 6% per year. Investor B buys an S&P 500 index fund and earns 8%. On $10,000 over 20 years, B ends up with about $14,000 more.",
+    "whyItMatters": "You do not need to be a genius to invest well. Owning the whole market beats guessing which players will star.",
+    "challenge": "Look up the 10-year return of an S&P 500 index fund and compare it to one stock you would have picked.",
+    "simple": {
+      "hook": "Instead of betting on one runner, bet on the whole race.",
+      "explanation": "Picking stocks is like guessing which one kid will win the race. An index fund is like getting a small prize whenever anyone in the race does well. Guessing one winner is really hard, even for grown-up experts.",
+      "example": "You put $10 on the whole class team instead of one kid. Some kids do badly, but the team wins overall, and your $10 grows.",
+      "whyItMatters": "Betting on the whole team wins more often than guessing one star. Easy usually beats clever here."
+    }
+  },
+  {
+    "id": "finance-lesson-103",
+    "channel": "Finance",
+    "type": "lesson",
+    "level": "Intermediate",
+    "title": "What is dollar-cost averaging?",
+    "hook": "Invest the same amount on a schedule and stop guessing the market.",
+    "explanation": "Dollar-cost averaging (DCA) means investing a fixed amount at regular intervals, like $200 on the 1st of every month, no matter what the market is doing. When prices drop, your money buys more shares. When prices rise, it buys fewer. It removes emotion and timing from investing.",
+    "example": "You invest $100/month in a fund. In January shares cost $10, so you buy 10. In February they drop to $5, so you buy 20. Your average cost per share is $6.67, not $10.",
+    "whyItMatters": "Nobody can predict the market consistently. DCA turns market drops into discounts and makes investing automatic instead of stressful.",
+    "challenge": "Pick a fixed amount you could invest every month, even if it is just $25, and write it down.",
+    "simple": {
+      "hook": "Buy a little bit every month, like a snack subscription for your money.",
+      "explanation": "Instead of guessing the perfect day to buy, you buy the same amount every month. When prices are low, your money grabs more. When prices are high, it grabs less. No guessing needed.",
+      "example": "You spend $10 on trading cards every month. When cards cost $1, you get 10. When they cost $2, you get 5. Over time you pay a fair average price.",
+      "whyItMatters": "Guessing the perfect moment is impossible. A steady habit beats a lucky guess almost every time."
+    }
+  },
+  {
+    "id": "finance-lesson-104",
+    "channel": "Finance",
+    "type": "lesson",
+    "level": "Intermediate",
+    "title": "What are tax-advantaged accounts?",
+    "hook": "The government offers you a deal: invest here and pay less tax.",
+    "explanation": "Accounts like a 401(k) and Roth IRA are special containers for investments that come with tax breaks. A 401(k) lets you invest money before taxes, lowering your tax bill today. A Roth IRA uses money you already paid tax on, but everything it grows into is tax-free forever.",
+    "example": "You put $6,000 into a Roth IRA and it grows to $60,000 over 30 years. In a normal account you might owe $8,000+ in taxes on that growth. In the Roth, you owe $0.",
+    "whyItMatters": "Taxes are one of the biggest drags on wealth. Using these accounts is like getting a legal discount on building your future.",
+    "challenge": "Check if your employer offers a 401(k) match, or look up the current annual Roth IRA contribution limit.",
+    "simple": {
+      "hook": "Some piggy banks come with a superpower: less tax.",
+      "explanation": "Normally, when your money grows, you give a slice to the government as tax. Special accounts protect your money from that slice. It is like a shield around your piggy bank.",
+      "example": "Two kids each grow $100 into $200. One has a shield account and keeps all $200. The other has to give away $20.",
+      "whyItMatters": "Keeping more of your own money means it grows faster. Free shields are worth using."
+    }
+  },
+  {
+    "id": "finance-lesson-105",
+    "channel": "Finance",
+    "type": "lesson",
+    "level": "Intermediate",
+    "title": "What is inflation?",
+    "hook": "Inflation is a silent thief shrinking your money while you sleep.",
+    "explanation": "Inflation means prices rise over time, so each dollar buys less than it used to. At 3% inflation, prices roughly double every 24 years. Cash sitting under a mattress loses buying power every single year.",
+    "example": "A movie ticket that cost $5 in 2000 costs around $12 today. If you hid $100 in a drawer in 2000, it still says $100, but it buys less than half of what it did.",
+    "whyItMatters": "Saving alone is not enough. Your money must grow faster than inflation, which is exactly why people invest instead of just hoarding cash.",
+    "challenge": "Look up what one item you buy often cost 20 years ago and compare it to today's price.",
+    "simple": {
+      "hook": "Inflation makes your money slowly shrink, like a melting ice cream cone.",
+      "explanation": "Every year, most things cost a little more. Your dollar stays the same, but the candy bar it used to buy now costs more. So the dollar quietly buys less and less.",
+      "example": "A candy bar costs $1 today. In a few years it costs $1.50. Your dollar did not change, but now it cannot buy the candy.",
+      "whyItMatters": "Money hiding in a drawer gets weaker every year. Money that grows can outrun the melting."
+    }
+  },
+  {
+    "id": "finance-lesson-106",
+    "channel": "Finance",
+    "type": "lesson",
+    "level": "Intermediate",
+    "title": "What is a credit score?",
+    "hook": "Your credit score is your financial reputation, written as a number.",
+    "explanation": "A credit score (usually 300 to 850) tells lenders how reliably you repay borrowed money. It is built mostly from paying bills on time, keeping credit card balances low, and having a long history of responsible borrowing. A higher score means cheaper loans and easier approvals.",
+    "example": "On a $300,000 mortgage, a 760 score might get a rate that saves you over $50,000 in interest compared to a 620 score. Same house, very different price.",
+    "whyItMatters": "A good score makes borrowing cheaper for homes, cars, and even affects renting apartments. It is one number worth protecting.",
+    "challenge": "Find out your current credit score using a free service or your bank's app.",
+    "simple": {
+      "hook": "A credit score is like a trust badge for borrowing money.",
+      "explanation": "When you borrow and pay back on time, grown-up companies give you a higher trust number. A high number means people happily lend to you at a fair deal. A low number means they worry and charge you extra.",
+      "example": "Two friends want to borrow your bike. One always returns things on time, one loses stuff. You trust the first friend more. Banks feel the same way.",
+      "whyItMatters": "A strong trust badge saves you real money later. Paying on time is how you earn it."
+    }
+  },
+  {
+    "id": "finance-lesson-107",
+    "channel": "Finance",
+    "type": "lesson",
+    "level": "Intermediate",
+    "title": "Snowball vs avalanche: which debt payoff wins?",
+    "hook": "There are two proven ways to crush debt. Pick your weapon.",
+    "explanation": "The snowball method pays off your smallest debt first for quick wins that keep you motivated. The avalanche method pays off the highest-interest debt first, which saves the most money mathematically. Both work; the best method is the one you will actually stick with.",
+    "example": "You owe $500 on a store card (10% interest) and $3,000 on a credit card (25% interest). Snowball attacks the $500 first for a fast victory. Avalanche attacks the $3,000 first and saves more in interest.",
+    "whyItMatters": "Debt with high interest grows faster than most investments. Having a clear attack plan turns an overwhelming pile into a beatable game.",
+    "challenge": "List your debts from smallest to largest and by interest rate. Circle which one you would attack first.",
+    "simple": {
+      "hook": "Two ways to beat debt monsters: smallest first, or meanest first.",
+      "explanation": "Imagine you owe money to a few friends. Snowball means paying back the smallest one first, so your list gets shorter fast. Avalanche means paying the one charging you the most extra first. Both plans work if you keep going.",
+      "example": "You owe $5 to one friend and $20 to another who charges extra each week. Pay the $5 first for a quick win, or the $20 first to stop the extra charges.",
+      "whyItMatters": "A plan you follow beats a perfect plan you quit. Either way, the monsters shrink."
+    }
+  },
+  {
+    "id": "finance-lesson-108",
+    "channel": "Finance",
+    "type": "lesson",
+    "level": "Intermediate",
+    "title": "What is diversification?",
+    "hook": "Never bet your whole future on one horse.",
+    "explanation": "Diversification means spreading your money across many investments, like different companies, industries, and asset types, so no single failure can sink you. Risk is the chance of losing money; diversification is your main defense against it. A diversified portfolio grows more smoothly and survives more storms.",
+    "example": "You invest $1,000 in one company and it collapses: you lose $1,000. You spread $1,000 across 100 companies and one collapses: you lose about $10.",
+    "whyItMatters": "Even great companies fail unexpectedly. Diversification means one bad surprise dents your wealth instead of destroying it.",
+    "challenge": "List where your money currently sits. Is it spread out, or is it riding on one or two things?",
+    "simple": {
+      "hook": "Do not put all your eggs in one basket. Really.",
+      "explanation": "If you carry 10 eggs in one basket and trip, all 10 break. If you use 5 baskets and trip, only 2 break. Spreading your money works the same way.",
+      "example": "You put $10 into 10 different lemonade stands instead of $100 into one. If one stand closes, you only lose $10.",
+      "whyItMatters": "Spreading out keeps one bad day from wrecking everything. It is the safest trick in investing."
+    }
+  },
+  {
+    "id": "finance-lesson-109",
+    "channel": "Finance",
+    "type": "lesson",
+    "level": "Intermediate",
+    "title": "Why build multiple income streams?",
+    "hook": "The average millionaire has 7 income streams. Most people have 1.",
+    "explanation": "An income stream is any source of money flowing to you: a job, a side business, rental income, dividends, or royalties. Relying on one stream means one boss or one bad month can cut off 100% of your income. Adding streams builds both safety and speed toward your goals.",
+    "example": "Someone earns $4,000/month from a job, $300 from freelance design, and $100 from stock dividends. If the job disappears, they still have $400/month flowing while they recover.",
+    "whyItMatters": "Multiple streams protect you like a safety net and accelerate you like extra engines. Start small; even $50/month extra compounds.",
+    "challenge": "Brainstorm 3 income streams you could realistically start within 6 months.",
+    "simple": {
+      "hook": "One faucet is risky. Many faucets keep the tub full.",
+      "explanation": "Most people get money from just one place, like one job. If that faucet turns off, the money stops. Having a few small faucets, like a lemonade stand plus dog walking, keeps money flowing even if one stops.",
+      "example": "You earn $5 a week walking dogs and $3 a week selling drawings. If dog walking ends, you still make $3 every week.",
+      "whyItMatters": "More faucets means more safety and faster savings. You never depend on just one."
+    }
+  },
+  {
+    "id": "finance-lesson-110",
+    "channel": "Finance",
+    "type": "lesson",
+    "level": "Intermediate",
+    "title": "What is the 4% rule?",
+    "hook": "One simple rule tells you when work becomes optional.",
+    "explanation": "The 4% rule says you can withdraw about 4% of your investment portfolio each year and, historically, it lasts 30+ years because the rest keeps growing. Flip it around: multiply your annual expenses by 25 and you get the amount you need invested to retire. It is a guideline, not a guarantee, but it makes 'enough' a concrete number.",
+    "example": "You spend $40,000/year. Multiply by 25: you need $1,000,000 invested. Withdrawing 4% ($40,000) each year covers your life while the portfolio keeps working.",
+    "whyItMatters": "The 4% rule turns 'someday I'll be free' into a real target you can measure progress toward every month.",
+    "challenge": "Multiply your yearly expenses by 25 and write down your personal freedom number.",
+    "simple": {
+      "hook": "Grow a money tree big enough that you only ever pick 4 of every 100 fruits.",
+      "explanation": "If your savings are big enough, you can take a small slice each year and it keeps growing back. The rule says take about 4 pennies from every 100 saved each year. The tree stays healthy while feeding you.",
+      "example": "If you need $4 a year, you want $100 saved. Take $4 each year and the $100 keeps growing back on its own.",
+      "whyItMatters": "It tells you exactly how big your money tree must grow. Then working becomes a choice, not a must."
+    }
+  },
+  {
+    "id": "finance-quiz-101",
+    "channel": "Finance",
+    "type": "quiz",
+    "level": "Intermediate",
+    "question": "How much do most experts recommend keeping in an emergency fund?",
+    "options": ["1 week of expenses", "3 to 6 months of expenses", "10 years of expenses", "Whatever fits in your wallet"],
+    "answer": "3 to 6 months of expenses",
+    "explanation": "An emergency fund of 3 to 6 months of living expenses covers most surprises like job loss or major repairs without forcing you into high-interest debt.",
+    "hint": "Think in months, not weeks or decades.",
+    "simpleExplanation": "A rainy-day fund should be big enough to pay your bills for a few months if the money stops. That way a bad surprise cannot knock you down."
+  },
+  {
+    "id": "finance-quiz-102",
+    "channel": "Finance",
+    "type": "quiz",
+    "level": "Intermediate",
+    "question": "What is dollar-cost averaging?",
+    "options": ["Buying stocks only when prices drop", "Investing a fixed amount on a regular schedule", "Converting all savings to dollar bills", "Selling everything once a year"],
+    "answer": "Investing a fixed amount on a regular schedule",
+    "explanation": "Dollar-cost averaging means investing the same amount at regular intervals regardless of market conditions. You automatically buy more shares when prices are low and fewer when prices are high.",
+    "hint": "The key words are 'same amount' and 'every time'.",
+    "simpleExplanation": "It means buying a little bit every month, like clockwork. When prices are low your money grabs more, and you never have to guess the perfect day to buy."
+  },
+  {
+    "id": "finance-quiz-103",
+    "channel": "Finance",
+    "type": "quiz",
+    "level": "Intermediate",
+    "question": "What does inflation do to cash sitting in a drawer?",
+    "options": ["Makes it grow slowly", "Nothing at all", "Reduces what it can buy over time", "Doubles it every 10 years"],
+    "answer": "Reduces what it can buy over time",
+    "explanation": "Inflation means prices rise over time, so each dollar buys less. Cash that just sits still loses buying power every year, which is why investing matters.",
+    "hint": "Compare what $5 bought your grandparents versus what it buys you.",
+    "simpleExplanation": "Prices go up a little every year, but a hidden dollar stays a dollar. So over time, that dollar buys less candy than it used to. Money needs to grow just to keep up."
+  },
+  {
+    "id": "finance-quiz-104",
+    "channel": "Finance",
+    "type": "quiz",
+    "level": "Intermediate",
+    "question": "In the avalanche method of paying off debt, which debt do you attack first?",
+    "options": ["The smallest balance", "The one with the highest interest rate", "The newest one", "The one owed to family"],
+    "answer": "The one with the highest interest rate",
+    "explanation": "The avalanche method targets the highest-interest debt first because it grows the fastest. This saves the most money overall, while the snowball method targets the smallest balance for motivation.",
+    "hint": "An avalanche hits the biggest, steepest danger first.",
+    "simpleExplanation": "Avalanche means paying off the meanest debt first: the one charging you the most extra money. Stopping the biggest extra charges saves you the most in the end."
+  },
+  {
+    "id": "finance-quiz-105",
+    "channel": "Finance",
+    "type": "quiz",
+    "level": "Intermediate",
+    "question": "Using the 4% rule, how much do you need invested to cover $40,000 of yearly expenses?",
+    "options": ["$100,000", "$400,000", "$1,000,000", "$4,000,000"],
+    "answer": "$1,000,000",
+    "explanation": "The 4% rule says multiply your annual expenses by 25. $40,000 x 25 = $1,000,000. Withdrawing 4% of that each year gives you $40,000 while the rest keeps growing.",
+    "hint": "Multiply the yearly expenses by 25.",
+    "simpleExplanation": "The rule says your savings should be 25 times what you spend in a year. 25 times $40,000 is $1,000,000. Then taking a small 4% slice each year covers your life."
+  },
+  {
+    "id": "finance-challenge-101",
+    "channel": "Finance",
+    "type": "challenge",
+    "level": "Intermediate",
+    "title": "Start Your Starter Emergency Fund",
+    "prompt": "Open or pick a separate savings account just for emergencies. Set a starter goal of $500 to $1,000, then set up an automatic transfer of any amount, even $10 per week, so the fund builds itself.",
+    "whyItMatters": "A starter emergency fund is the foundation everything else stands on. It keeps one surprise bill from wiping out your progress or pushing you into debt.",
+    "completionCriteria": "You have a dedicated savings account with an automatic transfer scheduled toward a written starter goal.",
+    "steps": [
+      "Pick or open a separate savings account.",
+      "Write down a starter goal like $1,000.",
+      "Choose a weekly or monthly transfer amount.",
+      "Set the transfer to happen automatically.",
+      "Name the account 'Emergencies Only'."
+    ]
+  },
+  {
+    "id": "finance-challenge-102",
+    "channel": "Finance",
+    "type": "challenge",
+    "level": "Intermediate",
+    "title": "Check Your Credit Score",
+    "prompt": "Look up your credit score for free through your bank's app or a free credit monitoring service. Write down the number, note what factors are helping or hurting it, and pick one action to improve it this month.",
+    "whyItMatters": "Your credit score quietly decides how much loans cost you for years. Knowing your number and what drives it puts you back in control.",
+    "completionCriteria": "You have found your current credit score and written down one specific action to improve or protect it.",
+    "steps": [
+      "Open your bank app or a free credit tool.",
+      "Find and write down your score.",
+      "Read what is helping or hurting it.",
+      "Pick one improvement action for this month."
+    ]
+  },
+  {
+    "id": "finance-challenge-103",
+    "channel": "Finance",
+    "type": "challenge",
+    "level": "Intermediate",
+    "title": "Map Your Debts and Pick a Payoff Strategy",
+    "prompt": "List every debt you owe with its balance, interest rate, and minimum payment. Sort the list two ways: smallest balance first (snowball) and highest interest first (avalanche). Choose the strategy you will actually stick with and mark your first target.",
+    "whyItMatters": "Debt feels overwhelming when it is vague. Once it is mapped on paper with a clear first target, it becomes a game you can win step by step.",
+    "completionCriteria": "You have a complete list of your debts and have chosen either the snowball or avalanche strategy with a first target circled.",
+    "steps": [
+      "List every debt you owe.",
+      "Write each balance, rate, and minimum payment.",
+      "Sort by smallest balance, then by highest rate.",
+      "Choose snowball or avalanche.",
+      "Circle the first debt you will attack."
+    ]
+  }
+]

@@ -1,0 +1,293 @@
+[
+  {
+    "id": "robotics-lesson-101",
+    "channel": "Robotics",
+    "type": "lesson",
+    "level": "Intermediate",
+    "title": "What is an encoder?",
+    "hook": "Your robot's motors are lying to you — encoders reveal the truth.",
+    "explanation": "An encoder is a sensor attached to a motor shaft that measures how much the shaft has actually rotated. Most use a slotted disc and an optical or magnetic sensor that produces pulses as the shaft spins. Counting pulses tells you position; counting pulses per second tells you speed. This is called feedback — the robot measures what really happened instead of assuming.",
+    "example": "You command both motors at 50% power, but one motor is slightly weaker and your robot curves left. With encoders you see the left wheel spun 980 ticks while the right spun 1040, so you boost the left motor until both counts match and the robot drives straight.",
+    "whyItMatters": "Without feedback, a robot is driving blind. Encoders are the foundation of precise movement, odometry, and every closed-loop control technique you will learn next.",
+    "challenge": "Search 'quadrature encoder' and find out how it detects direction of rotation, not just speed.",
+    "simple": {
+      "hook": "An encoder is like a step counter for a robot's wheel.",
+      "explanation": "When you tell a motor to spin, it does not always spin exactly how much you asked. An encoder counts the wheel's tiny turns, like clicks. Now the robot knows how far it really went, not just how far it hoped to go.",
+      "example": "The robot tells both wheels to spin the same. The encoder says the left wheel made 980 clicks but the right made 1040. Oops — the robot fixes it so both wheels match.",
+      "whyItMatters": "Counting your steps is the only way to know where you really are. Robots need that too, or they get lost."
+    }
+  },
+  {
+    "id": "robotics-lesson-102",
+    "channel": "Robotics",
+    "type": "lesson",
+    "level": "Intermediate",
+    "title": "What is a stepper motor?",
+    "hook": "A stepper motor moves in exact clicks — no encoder needed.",
+    "explanation": "A stepper motor rotates in small fixed increments called steps, typically 200 steps per full revolution (1.8° each). By sending pulses to its coils in a precise sequence, you control exactly how far and how fast it turns. Unlike a DC motor, you know its position just by counting the steps you commanded.",
+    "example": "A 3D printer moves its print head with stepper motors. To move 10mm, the controller calculates that this needs exactly 800 steps and sends exactly 800 pulses. That is how a printer places plastic within a fraction of a millimeter.",
+    "whyItMatters": "Steppers power 3D printers, CNC machines, camera sliders, and any project needing repeatable precise motion. Knowing when to pick a stepper versus a DC motor or servo is a core robotics skill.",
+    "challenge": "Look up the A4988 stepper driver and find out what 'microstepping' does to the 1.8° step size.",
+    "simple": {
+      "hook": "A stepper motor moves in tiny clicks, like the second hand of a clock.",
+      "explanation": "A normal motor just spins smoothly and you never know exactly where it stopped. A stepper moves one small click at a time. Want to turn halfway around? Send exactly 100 clicks. The motor obeys, click by click.",
+      "example": "A 3D printer uses steppers to move its nozzle. It counts clicks to land in exactly the right spot, over and over, thousands of times.",
+      "whyItMatters": "When a machine must hit the exact same spot every time, clicks beat guessing. That is why printers and cutting machines use steppers."
+    }
+  },
+  {
+    "id": "robotics-lesson-103",
+    "channel": "Robotics",
+    "type": "lesson",
+    "level": "Intermediate",
+    "title": "How do chips talk to each other?",
+    "hook": "Your microcontroller and its sensors have entire conversations — over just a few wires.",
+    "explanation": "Serial communication sends data one bit at a time over a small number of wires. UART is a simple two-wire chat between exactly two devices (like Arduino and your computer). I2C uses two shared wires where one controller can talk to many sensors, each with its own address. SPI is faster, uses more wires, and picks devices with a 'select' line.",
+    "example": "A typical robot uses all three: UART to print debug messages to your laptop, I2C to read an IMU sensor at address 0x68, and SPI to talk to a fast SD card logger. Each protocol fits a different job.",
+    "whyItMatters": "Almost every interesting sensor — IMUs, GPS, displays, distance sensors — speaks UART, I2C, or SPI. Understanding these protocols unlocks the entire sensor catalog for your builds.",
+    "challenge": "Search 'I2C scanner Arduino sketch' and learn how it discovers the addresses of every device on the bus.",
+    "simple": {
+      "hook": "Robot parts talk to each other by sending messages down wires, like passing notes.",
+      "explanation": "A robot brain and its sensors need to share information. They send it one tiny piece at a time down a wire, super fast. There are a few 'languages' they can use. One is for private chats between two parts. Another lets one brain talk to lots of sensors on the same wires, calling each one by its own address, like names in a classroom.",
+      "example": "The brain asks, 'Sensor number 68, how tilted are we?' Only that sensor answers, even though other sensors share the same wires.",
+      "whyItMatters": "If parts cannot talk, the robot is just a pile of pieces. These wire languages let everything work as a team."
+    }
+  },
+  {
+    "id": "robotics-lesson-104",
+    "channel": "Robotics",
+    "type": "lesson",
+    "level": "Intermediate",
+    "title": "What is an IMU?",
+    "hook": "An IMU gives your robot an inner ear — it can feel tilting, turning, and shaking.",
+    "explanation": "An IMU (Inertial Measurement Unit) combines an accelerometer and a gyroscope on one chip. The accelerometer measures acceleration, including gravity, so it can tell which way is down and detect bumps. The gyroscope measures how fast the robot is rotating around each axis. Combined, they let a robot estimate its orientation in space.",
+    "example": "The MPU-6050 is a popular IMU that speaks I2C. A self-balancing robot reads it hundreds of times per second: the accelerometer says 'we are tilted 3° forward' and the gyro says 'and tipping faster' — so the wheels drive forward to catch the fall.",
+    "whyItMatters": "IMUs are inside drones, phones, game controllers, and every balancing robot. They are the key sensor for any project where the robot needs to know its own orientation and motion.",
+    "challenge": "Research 'complementary filter IMU' and find out why accelerometer and gyro data are blended together.",
+    "simple": {
+      "hook": "An IMU lets a robot feel when it is tipping over, just like your inner ear does.",
+      "explanation": "When you close your eyes, you can still feel if you are leaning or spinning. An IMU chip gives robots that same feeling. One part feels which way is down. Another part feels how fast the robot is turning. Together they tell the robot how it is sitting in the world.",
+      "example": "A robot standing on two wheels feels itself tipping forward. It quickly rolls its wheels forward to catch itself, the same way you step forward when someone nudges you.",
+      "whyItMatters": "Drones, phones, and balancing robots all need to feel their tilt. Without it, they would fall over or fly upside down."
+    }
+  },
+  {
+    "id": "robotics-lesson-105",
+    "channel": "Robotics",
+    "type": "lesson",
+    "level": "Intermediate",
+    "title": "What is PID control?",
+    "hook": "PID is the secret sauce that turns jerky robots into smooth ones.",
+    "explanation": "PID control constantly compares where you are to where you want to be — the difference is called the error. The P (proportional) term pushes harder when the error is big. The I (integral) term slowly fixes small stubborn errors that P alone leaves behind. The D (derivative) term acts like a brake, easing off as you approach the target so you do not overshoot.",
+    "example": "A robot should drive at 100 encoder ticks per second but measures only 80. Error is 20, so P adds power. As speed climbs to 98, the error shrinks and the push gets gentler. D notices the fast approach and softens the push so the speed settles at 100 instead of shooting past it.",
+    "whyItMatters": "PID runs your car's cruise control, your home thermostat, drone flight controllers, and industrial machines everywhere. It is the single most-used control algorithm in the world.",
+    "challenge": "Search 'PID tuning by hand' and learn why you tune P first, then D, then I.",
+    "simple": {
+      "hook": "PID is how a robot fixes mistakes smoothly instead of jerking back and forth.",
+      "explanation": "Think of a thermostat. If the room is way too cold, the heater blasts. As the room gets close to the right temperature, the heater eases off so it does not overshoot and roast you. PID works the same way: push hard when far from the goal, push gently when close, and slow down before arriving.",
+      "example": "Riding a bike, you do not yank the handlebars to fix a small lean. You make a small steer for a small lean and a bigger steer for a bigger lean. That is PID thinking.",
+      "whyItMatters": "Without PID, robots wobble, overshoot, and shake. With it, they glide. Cruise control in cars uses the exact same trick."
+    }
+  },
+  {
+    "id": "robotics-lesson-106",
+    "channel": "Robotics",
+    "type": "lesson",
+    "level": "Intermediate",
+    "title": "How does a robot steer with two wheels?",
+    "hook": "Your robot has no steering wheel — it steers with math.",
+    "explanation": "A differential drive robot has two independently powered wheels. The difference in wheel speeds determines the turn: equal speeds go straight, unequal speeds curve toward the slower wheel, and opposite speeds spin the robot in place. You can calculate the exact turning radius from the two wheel speeds and the distance between the wheels.",
+    "example": "Left wheel at 100% and right wheel at 100%: straight ahead. Left 100%, right 50%: a smooth arc to the right. Left 100%, right -100%: the robot pivots on the spot. A common code pattern is leftPower = throttle + steering and rightPower = throttle - steering.",
+    "whyItMatters": "Differential drive is the most common robot layout — Roombas, warehouse robots, and most hobby robots use it. Mastering the speed math means you can make any two-wheeled robot go exactly where you want.",
+    "challenge": "Using leftPower = throttle + steering, work out the wheel powers for throttle 60 and steering -20, and predict which way the robot turns.",
+    "simple": {
+      "hook": "A two-wheeled robot steers like a rowboat: pull harder on one side to turn.",
+      "explanation": "The robot has one motor for each wheel. If both wheels spin the same speed, it goes straight. If the right wheel spins slower, the robot curves right, toward the slow side. If the wheels spin opposite ways, the robot spins in place like a top.",
+      "example": "Think of rowing a boat. Row hard with just your left arm and the boat turns right. The robot's wheels work exactly the same way.",
+      "whyItMatters": "Robot vacuums and most hobby robots steer this way. Once you know the trick, you can drive them anywhere."
+    }
+  },
+  {
+    "id": "robotics-lesson-107",
+    "channel": "Robotics",
+    "type": "lesson",
+    "level": "Intermediate",
+    "title": "How does line following actually work?",
+    "hook": "A line follower makes hundreds of tiny corrections per second — and that is the whole trick.",
+    "explanation": "A line-following robot uses reflectance sensors that tell dark from light. The logic runs in a fast loop: figure out where the line is under the sensor array, compute how far off-center the robot is (the error), then steer proportionally to that error. With more sensors you get a finer position estimate, and with PID on the error you get buttery-smooth tracking instead of zigzagging.",
+    "example": "With 5 sensors, if only the middle one sees the line, error is 0 — drive straight. If the second-from-left sees it, error is -2 — steer left a little. A weighted average of all 5 readings gives a smooth error value that feeds straight into a PID controller.",
+    "whyItMatters": "Line following is the classic gateway into closed-loop robotics: it combines sensors, error calculation, and steering into one satisfying project. Warehouse robots guide themselves along floor markers using the same principle.",
+    "challenge": "Sketch a 5-sensor array and write the error value you would assign to each sensor position, from far left to far right.",
+    "simple": {
+      "hook": "A line-following robot plays a fast game of 'stay on the path.'",
+      "explanation": "The robot has little eyes on its belly that see dark or light. If the dark line is right in the middle, drive straight. If the line slides to the left, steer left to catch it. The robot checks and fixes hundreds of times each second, so it looks smooth.",
+      "example": "It is like walking along a painted line on the playground while looking down. Drift a little right? Take a small step left. You fix it before you ever leave the line.",
+      "whyItMatters": "Big warehouse robots follow lines on the floor to deliver packages. It all starts with this simple check-and-fix game."
+    }
+  },
+  {
+    "id": "robotics-lesson-108",
+    "channel": "Robotics",
+    "type": "lesson",
+    "level": "Intermediate",
+    "title": "What is a state machine?",
+    "hook": "The cleanest robot brains are built from states, not spaghetti.",
+    "explanation": "A state machine organizes robot behavior into named states — like SEARCHING, FOLLOWING, or AVOIDING — where only one state is active at a time. Each state defines what the robot does, and transitions define which events switch it to another state. Instead of one giant tangle of if-statements, you get a clear map of behaviors and the rules for moving between them.",
+    "example": "A robot vacuum might have states CLEANING, AVOIDING_OBSTACLE, RETURNING_HOME, and CHARGING. Hitting a wall transitions CLEANING to AVOIDING_OBSTACLE. Low battery transitions anything to RETURNING_HOME. Reaching the dock transitions to CHARGING.",
+    "whyItMatters": "State machines are how professionals structure robot logic, game AI, and even network protocols. They make complex behavior easy to design on paper, debug, and extend without breaking what already works.",
+    "challenge": "Pick any appliance at home (washing machine, microwave) and list its states and what causes each transition.",
+    "simple": {
+      "hook": "A state machine gives a robot different 'modes,' like a game character.",
+      "explanation": "The robot can only be in one mode at a time, like cleaning mode or go-home mode. Each mode has its own simple rules. Certain events flip the switch to a new mode. It is like your day: sleep mode, school mode, play mode — and the school bell switches your mode.",
+      "example": "A robot vacuum is in cleaning mode. Its battery gets low — switch to go-home mode. It reaches the charger — switch to charging mode. It is full again — back to cleaning mode.",
+      "whyItMatters": "Modes keep the robot's brain tidy. Without them, all the rules jumble together and the robot gets confused."
+    }
+  },
+  {
+    "id": "robotics-lesson-109",
+    "channel": "Robotics",
+    "type": "lesson",
+    "level": "Intermediate",
+    "title": "How do you handle LiPo batteries safely?",
+    "hook": "LiPo batteries pack serious power — and they demand serious respect.",
+    "explanation": "LiPo (Lithium Polymer) batteries deliver high current in a light package, which is why robots love them. But they have strict rules: never discharge a cell below about 3.0V, never charge with anything but a proper balance charger, and stop using any pack that is puffy, dented, or damaged. Store them around half charge in a fireproof bag, and always charge where you can watch them.",
+    "example": "A 2S LiPo has two cells, giving 7.4V nominal and 8.4V fully charged. A robot with a low-voltage alarm beeps when the pack hits 3.3V per cell, telling you to land or stop before the battery is damaged beyond recovery.",
+    "whyItMatters": "An over-discharged LiPo is ruined; a punctured or badly charged one can catch fire. Good battery habits protect your robot, your wallet, and your workbench — this is non-negotiable safety knowledge.",
+    "challenge": "Look up 'LiPo storage voltage' and write down the recommended per-cell voltage for storing a pack you will not use for a month.",
+    "simple": {
+      "hook": "LiPo batteries are super strong, so they come with super important safety rules.",
+      "explanation": "These batteries give robots lots of power in a small, light pack. But treat them with care. Never drain them all the way empty. Only charge them with their special charger, and stay nearby while charging. If one looks puffy like a little pillow, stop using it and tell an adult.",
+      "example": "Good robot builders use a little beeper that yells when the battery gets low. That way they stop in time, and the battery stays healthy for many more runs.",
+      "whyItMatters": "Treated well, a LiPo powers your robot for years. Treated badly, it can be ruined or even start a fire. The rules keep you and your robot safe."
+    }
+  },
+  {
+    "id": "robotics-lesson-110",
+    "channel": "Robotics",
+    "type": "lesson",
+    "level": "Intermediate",
+    "title": "How do you plan and build a full robot?",
+    "hook": "You now know all the pieces — time to build the whole puzzle.",
+    "explanation": "Building a full robot follows a repeatable process: define one clear mission, list the subsystems it needs (drive, sensing, power, brain, code), then build and test each subsystem alone before connecting anything. Integration comes last and in small steps — add one subsystem at a time and test after each. Expect problems; finding them one at a time is the whole point of this order.",
+    "example": "For a line-following robot: mission is 'complete the track without leaving the line.' Test the motors with simple forward/back code. Test the sensors by printing their values. Test the battery under load. Only then combine them, add the PID line logic, and tune on the real track.",
+    "whyItMatters": "Most failed robot projects die from building everything at once and drowning in mystery bugs. The subsystem-first process is how professionals ship working machines — and how you will finish yours.",
+    "challenge": "Write a one-sentence mission for a robot you want to build, then list its 5 subsystems.",
+    "simple": {
+      "hook": "Building a robot is like building with LEGO: make each part work, then snap them together.",
+      "explanation": "First decide one job for your robot, like following a line. Then split the robot into parts: wheels, sensors, battery, brain, and code. Test each part by itself first. Then connect them one at a time, testing after each. That way, if something breaks, you know exactly which part did it.",
+      "example": "Test the wheels alone: do they spin? Test the sensors alone: do they see the line? Only when each part works do you put them together for the first full run.",
+      "whyItMatters": "If you build everything at once and it fails, you cannot tell what went wrong. One part at a time turns a huge scary project into small easy wins."
+    }
+  },
+  {
+    "id": "robotics-quiz-101",
+    "channel": "Robotics",
+    "type": "quiz",
+    "level": "Intermediate",
+    "question": "What does an encoder attached to a motor actually measure?",
+    "options": ["The motor's temperature", "How much the shaft has actually rotated", "The battery voltage", "The weight of the robot"],
+    "answer": "How much the shaft has actually rotated",
+    "explanation": "An encoder produces pulses as the motor shaft spins. Counting those pulses tells you the real rotation — position and speed — instead of just assuming the motor did what you commanded. This measured truth is called feedback.",
+    "hint": "Think of a step counter clipped to the spinning shaft.",
+    "simpleExplanation": "An encoder counts the wheel's tiny turns, like clicks. So the robot knows how far the wheel really turned, not just how far it was told to turn. That real answer is called feedback."
+  },
+  {
+    "id": "robotics-quiz-102",
+    "channel": "Robotics",
+    "type": "quiz",
+    "level": "Intermediate",
+    "question": "In a PID controller, what is the job of the D (derivative) term?",
+    "options": ["It pushes harder when the error is bigger", "It slowly fixes small leftover errors", "It acts like a brake to prevent overshooting the target", "It resets the controller every second"],
+    "answer": "It acts like a brake to prevent overshooting the target",
+    "explanation": "The derivative term watches how fast the error is changing. If you are closing in on the target quickly, D eases off the push so you settle smoothly instead of shooting past. P handles the big push and I handles stubborn small errors.",
+    "hint": "One of these describes slowing down as you get close, like a heater easing off near the right temperature.",
+    "simpleExplanation": "D is the gentle brake. When the robot is rushing toward its goal, D softens the push so it does not zoom past and have to come back. It is like easing off your bike pedals as you roll up to the stop line."
+  },
+  {
+    "id": "robotics-quiz-103",
+    "channel": "Robotics",
+    "type": "quiz",
+    "level": "Intermediate",
+    "question": "A differential drive robot's left wheel spins at full speed forward and its right wheel spins at full speed backward. What does the robot do?",
+    "options": ["It drives straight forward", "It curves gently to the left", "It spins in place", "It stops moving"],
+    "answer": "It spins in place",
+    "explanation": "When the two wheels move at equal speed in opposite directions, the robot pivots around a point between them. Equal speeds in the same direction go straight, and unequal speeds curve toward the slower wheel.",
+    "hint": "Picture the wheels pushing the two sides of the robot in opposite directions.",
+    "simpleExplanation": "One wheel pushes forward and the other pulls backward, so the robot twirls around like a spinning top. It turns without moving anywhere. Robots do this to face a new direction in a tight spot."
+  },
+  {
+    "id": "robotics-quiz-104",
+    "channel": "Robotics",
+    "type": "quiz",
+    "level": "Intermediate",
+    "question": "In a state machine, how many states can be active at the same time?",
+    "options": ["Exactly one", "Two — one main and one backup", "All of them at once", "It depends on the battery level"],
+    "answer": "Exactly one",
+    "explanation": "A state machine's core rule is that exactly one state is active at any moment. Events trigger transitions from the current state to a new one. This single-active-state rule is what keeps the behavior clear and debuggable.",
+    "hint": "Think of a robot's 'mode' — can it be in cleaning mode and charging mode at the same time?",
+    "simpleExplanation": "A robot can only be in one mode at a time, like you can only be asleep or awake, not both. Events flip it from one mode to another. That one-mode rule keeps the robot's brain from getting confused."
+  },
+  {
+    "id": "robotics-quiz-105",
+    "channel": "Robotics",
+    "type": "quiz",
+    "level": "Intermediate",
+    "question": "Which of these is a critical LiPo battery safety rule?",
+    "options": ["Always drain the battery completely before recharging", "Never discharge a cell below about 3.0V", "Charge it with any phone charger", "Store it fully charged in a hot car"],
+    "answer": "Never discharge a cell below about 3.0V",
+    "explanation": "Discharging a LiPo cell below about 3.0V permanently damages it. LiPos also require a proper balance charger, storage at around half charge, and retirement of any puffy or damaged pack — the opposite of the other options.",
+    "hint": "Three of these options would damage the battery — one protects it.",
+    "simpleExplanation": "Draining a LiPo all the way empty ruins it forever. So robot builders always stop before the battery gets too low, often using a little beeper that warns them. Never run it down to zero."
+  },
+  {
+    "id": "robotics-challenge-101",
+    "channel": "Robotics",
+    "type": "challenge",
+    "level": "Intermediate",
+    "title": "Design a Vacuum Robot State Machine",
+    "prompt": "Design a complete state machine on paper for a robot vacuum. Include at least these states: CLEANING, AVOIDING_OBSTACLE, RETURNING_HOME, and CHARGING. For each state, write what the robot does while in it. Then draw arrows between states and label each arrow with the event that triggers the transition (bumper hit, battery low, dock detected, battery full). Check that the robot can never get stuck in a state forever.",
+    "whyItMatters": "Designing states and transitions on paper before coding is exactly how professional roboticists work. A clear state diagram catches logic holes before they become mysterious bugs.",
+    "completionCriteria": "You have drawn a state diagram with at least 4 states, labeled transitions for every event, and verified there are no dead-end states.",
+    "steps": [
+      "List at least 4 states as named boxes.",
+      "Write what the robot does in each state.",
+      "Draw arrows and label each with its trigger event.",
+      "Check every state has a way out.",
+      "Trace one full day of the robot through your diagram."
+    ]
+  },
+  {
+    "id": "robotics-challenge-102",
+    "channel": "Robotics",
+    "type": "challenge",
+    "level": "Intermediate",
+    "title": "Write Pseudocode for PID Line Following",
+    "prompt": "Write pseudocode (plain-language code, no exact syntax needed) for a line-following robot with 5 reflectance sensors using PID steering. Your loop should: read the 5 sensors, compute a position error from -2 (line far left) to +2 (line far right), compute the PID output using Kp, Ki, and Kd constants, then set leftPower = base + correction and rightPower = base - correction. Include what happens when no sensor sees the line.",
+    "whyItMatters": "PID line following is the rite of passage that ties sensors, error math, and motor control into one program. Writing it in pseudocode first means the real code almost writes itself.",
+    "completionCriteria": "You have written a complete pseudocode loop with sensor reading, error calculation, PID math, motor commands, and a lost-line case.",
+    "steps": [
+      "Write the loop that reads all 5 sensors.",
+      "Turn the readings into one error number.",
+      "Compute the P, I, and D terms from the error.",
+      "Apply the correction to both motor powers.",
+      "Add a rule for when the line disappears."
+    ]
+  },
+  {
+    "id": "robotics-challenge-103",
+    "channel": "Robotics",
+    "type": "challenge",
+    "level": "Intermediate",
+    "title": "Build a Parts List and Budget for Your First Robot",
+    "prompt": "Plan a real, buildable two-wheeled robot on paper. Create a parts list covering every subsystem: microcontroller, motor driver, 2 motors with wheels, at least one sensor, battery with charger, chassis, and wiring. Research an actual price for each part online and total the budget. Then write one sentence per part explaining why you chose it over an alternative. Aim for a complete robot under a budget you set yourself.",
+    "whyItMatters": "Every real robot starts as a parts list and a budget. Researching real components teaches you specs, trade-offs, and costs — and turns 'someday I'll build a robot' into a plan you can actually order.",
+    "completionCriteria": "You have a complete parts list with real prices, a total budget, and a one-sentence justification for every part.",
+    "steps": [
+      "List every subsystem your robot needs.",
+      "Find one real part and price for each.",
+      "Write why you picked each part.",
+      "Add up the total cost.",
+      "Trim or swap parts to hit your budget."
+    ]
+  }
+]

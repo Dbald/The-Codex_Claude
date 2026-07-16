@@ -1,3 +1,7 @@
+import FinanceVisualsL2 from './visuals/FinanceVisualsL2.jsx';
+import ElectronicsVisualsL2 from './visuals/ElectronicsVisualsL2.jsx';
+import RoboticsVisualsL2 from './visuals/RoboticsVisualsL2.jsx';
+
 const V = (children) => (
   <svg viewBox="0 0 320 110" width="100%" style={{ display: 'block' }}>
     {children}
@@ -1042,7 +1046,12 @@ export default function CardVisual({ card }) {
     card.channel === 'Electronics' ? '#3b82f6' :
     '#a78bfa';
 
-  const render = VISUALS[card.id] || CHANNEL_FALLBACK[card.channel];
+  const render =
+    VISUALS[card.id] ||
+    FinanceVisualsL2[card.id] ||
+    ElectronicsVisualsL2[card.id] ||
+    RoboticsVisualsL2[card.id] ||
+    CHANNEL_FALLBACK[card.channel];
   if (!render) return null;
 
   return (

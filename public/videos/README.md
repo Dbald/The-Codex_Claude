@@ -21,3 +21,21 @@ Card ids are in `src/data/*.json` — e.g. `finance-lesson-001`,
 - `.mp4` (H.264) plays everywhere; `.webm` also works.
 
 Anything without a video simply shows its card — no gaps in the feed.
+
+## Placeholders
+
+`finance-lesson-001.webm` is a generated placeholder so you can preview the
+Watch-mode flow before recording. Delete it when your real video lands.
+
+To make more (one-off dependency, not needed at runtime):
+
+```
+npm i -D playwright-core
+node scripts/make-placeholder.mjs finance-lesson-002
+node scripts/make-placeholder.mjs --all-lessons
+npm un playwright-core
+```
+
+The placeholder draws the safe-area guides: everything below the dashed
+horizontal line and right of the vertical line is covered by the app's title
+overlay and action rail.

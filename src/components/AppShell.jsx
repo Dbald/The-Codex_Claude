@@ -1,4 +1,4 @@
-export default function AppShell({ currentPage, onNavigate, hideNav, onOpenSettings, children }) {
+export default function AppShell({ currentPage, onNavigate, hideNav, fullBleed, onOpenSettings, children }) {
   const navItems = [
     { id: 'home', label: 'Home', icon: '◈' },
     { id: 'saved', label: 'Saved', icon: '★' },
@@ -9,7 +9,7 @@ export default function AppShell({ currentPage, onNavigate, hideNav, onOpenSetti
     <div className="flex flex-col min-h-svh" style={{ background: 'var(--bg)' }}>
       <a href="#main-content" className="skip-link">Skip to content</a>
 
-      <header
+      {!fullBleed && <header
         className="sticky top-0 z-30 flex items-center justify-between px-5 py-3 border-b"
         style={{ background: 'rgba(22,28,44,0.9)', backdropFilter: 'blur(16px)', borderColor: 'rgba(148,163,184,0.15)' }}
       >
@@ -29,7 +29,7 @@ export default function AppShell({ currentPage, onNavigate, hideNav, onOpenSetti
             <span aria-hidden="true" className="text-lg">⚙</span>
           </button>
         </div>
-      </header>
+      </header>}
 
       <main id="main-content" className="flex-1 overflow-auto">
         {children}

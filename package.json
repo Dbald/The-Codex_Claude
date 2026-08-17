@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "sync:videos": "node scripts/sync-videos.mjs",
+    "predev": "npm run sync:videos",
+    "prebuild": "npm run sync:videos"
   },
   "dependencies": {
     "react": "^19.2.5",

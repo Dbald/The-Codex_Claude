@@ -21,6 +21,7 @@ export default function App() {
   const [progress, setProgress] = useState(() => loadProgress());
   const [settings, setSettings] = useState(() => loadSettings());
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [feedMode, setFeedMode] = useState(null);
 
   useEffect(() => {
     applySettings(settings);
@@ -34,10 +35,12 @@ export default function App() {
   function handleNavigate(newPage) {
     setPage(newPage);
     setFeedChannel(null);
+    setFeedMode(null);
   }
 
   function handleStartSession() {
     setFeedChannel(null);
+    setFeedMode(null);
     setPage('feed');
   }
 
@@ -49,6 +52,7 @@ export default function App() {
   function handleBack() {
     setPage('home');
     setFeedChannel(null);
+    setFeedMode(null);
     refreshProgress();
   }
 
@@ -78,12 +82,14 @@ export default function App() {
   }, [refreshProgress]);
 
   const showNav = page !== 'feed';
+  const fullBleed = page === 'feed' && feedMode === 'watch';
 
   return (
     <AppShell
       currentPage={showNav ? page : null}
       onNavigate={handleNavigate}
       hideNav={!showNav}
+      fullBleed={fullBleed}
       onOpenSettings={() => setSettingsOpen(true)}
     >
       {page === 'home' && (
@@ -104,6 +110,7 @@ export default function App() {
           onAnswer={handleAnswer}
           onView={handleView}
           onBack={handleBack}
+          onModeChange={setFeedMode}
         />
       )}
       {page === 'saved' && (

@@ -10,12 +10,18 @@ const DURATIONS = [
 
 const CHANNELS = ['Finance', 'Electronics', 'Robotics', 'Mixed'];
 
+const MODES = [
+  { value: 'watch', label: '▶ Watch', hint: 'Full-screen videos + cards' },
+  { value: 'read', label: '📖 Read', hint: 'Scrollable card feed' },
+];
+
 export default function SessionSelector({ onStart, onBack }) {
   const [duration, setDuration] = useState(10);
   const [channel, setChannel] = useState('Mixed');
+  const [mode, setMode] = useState('watch');
 
   function handleStart() {
-    onStart({ duration, channel });
+    onStart({ duration, channel, mode });
   }
 
   return (
@@ -29,6 +35,32 @@ export default function SessionSelector({ onStart, onBack }) {
 
       <h1 className="text-2xl font-black text-white mb-1">Set your intention.</h1>
       <p className="text-slate-500 text-sm mb-8">Instagram doesn’t ask you why you’re opening it. The Codex does.</p>
+
+      <div className="mb-8">
+        <p id="mode-label" className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-3">How do you want to learn?</p>
+        <div role="group" aria-labelledby="mode-label" className="grid grid-cols-2 gap-3">
+          {MODES.map(m => {
+            const active = mode === m.value;
+            return (
+              <button
+                key={m.value}
+                onClick={() => setMode(m.value)}
+                aria-pressed={active}
+                className="rounded-xl px-3 py-3 text-left transition-all duration-200 border"
+                style={{
+                  minHeight: 64,
+                  background: active ? 'rgba(167,139,250,0.15)' : 'rgba(255,255,255,0.03)',
+                  borderColor: active ? '#a78bfa' : 'rgba(255,255,255,0.08)',
+                  color: active ? '#a78bfa' : 'var(--muted)',
+                }}
+              >
+                <div className="text-sm font-bold">{m.label}</div>
+                <div className="text-xs opacity-75 font-normal mt-0.5">{m.hint}</div>
+              </button>
+            );
+          })}
+        </div>
+      </div>
 
       <div className="mb-8">
         <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-3">How long are you learning?</p>

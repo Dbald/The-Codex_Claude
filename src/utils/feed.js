@@ -49,44 +49,59 @@ export function getUnlockedCards(channel, progress) {
   );
 }
 
-export function getMixedFeed(viewedCardIds = [], progress = null) {
-  const channels = ['Finance', 'Electronics', 'Robotics'];
-  let feed = [];
+const TIERS = ['Beginner', 'Intermediate'];
+const byId = (a, b) => a.id.localeCompare(b.id);
 
-  channels.forEach(channel => {
-    const cards = progress
-      ? getUnlockedCards(channel, progress)
-      : getCardsByChannel(channel).filter(c => c.level === 'Beginner');
-    feed.push(...cards);
-  });
+/**
+ * Fixed curriculum order: within each tier, a quiz lands after every second
+ * lesson, then that tier's challenges close it out.
+ *
+ * This is deliberately deterministic — it never depends on what has been
+ * viewed or learned. A feed that reorders itself between visits makes it
+ * impossible to know how far along you are, or to pick up where you stopped.
+ */
+function curriculumOrder(cards) {
+  const out = [];
+  for (const tier of TIERS) {
+    const tierCards = cards.filter(c => c.level === tier);
+    const lessons = tierCards.filter(c => c.type === 'lesson').sort(byId);
+    const quizzes = tierCards.filter(c => c.type === 'quiz').sort(byId);
+    const challenges = tierCards.filter(c => c.type === 'challenge').sort(byId);
 
-  const unviewed = feed.filter(c => !viewedCardIds.includes(c.id));
-  const viewed = feed.filter(c => viewedCardIds.includes(c.id));
-
-  return [...shuffle(unviewed), ...shuffle(viewed)];
+    let q = 0;
+    lessons.forEach((lesson, i) => {
+      out.push(lesson);
+      if ((i + 1) % 2 === 0 && q < quizzes.length) out.push(quizzes[q++]);
+    });
+    while (q < quizzes.length) out.push(quizzes[q++]);
+    out.push(...challenges);
+  }
+  return out;
 }
 
-export function getChannelFeed(channel, viewedCardIds = [], progress = null) {
-  const cards = progress
+function availableCards(channel, progress) {
+  return progress
     ? getUnlockedCards(channel, progress)
     : getCardsByChannel(channel).filter(c => c.level === 'Beginner');
-  const unviewed = cards.filter(c => !viewedCardIds.includes(c.id));
-  const viewed = cards.filter(c => viewedCardIds.includes(c.id));
-  return [...unviewed, ...viewed];
 }
 
-export function getContinueFeed(viewedCardIds = []) {
-  const unviewed = ALL_CARDS.filter(c => !viewedCardIds.includes(c.id));
-  return unviewed.length > 0 ? unviewed : ALL_CARDS;
+export function getChannelFeed(channel, progress = null) {
+  return curriculumOrder(availableCards(channel, progress));
 }
 
-function shuffle(arr) {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
+/** Mixed rotates the three channels in a fixed round-robin — varied, but stable. */
+export function getMixedFeed(progress = null) {
+  const lanes = ['Finance', 'Electronics', 'Robotics'].map(ch =>
+    curriculumOrder(availableCards(ch, progress))
+  );
+  const out = [];
+  const longest = Math.max(...lanes.map(l => l.length));
+  for (let i = 0; i < longest; i++) {
+    for (const lane of lanes) {
+      if (lane[i]) out.push(lane[i]);
+    }
   }
-  return a;
+  return out;
 }
 
 export const CHANNEL_CONFIG = {

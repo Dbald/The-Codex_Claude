@@ -84,6 +84,28 @@ function updateStreak(progress) {
   progress.streak.lastActiveDate = today;
 }
 
+/**
+ * Remembers where you stopped in a feed. Written straight to storage rather
+ * than through React state — this fires on every panel change and must not
+ * re-render the feed underneath the person scrolling it.
+ */
+export function saveFeedPosition(channel, index) {
+  const progress = loadProgress();
+  if (progress.feedPositions[channel] === index) return;
+  progress.feedPositions[channel] = index;
+  saveProgress(progress);
+}
+
+export function loadFeedPosition(channel) {
+  return loadProgress().feedPositions[channel] ?? 0;
+}
+
+export function clearFeedPosition(channel) {
+  const progress = loadProgress();
+  delete progress.feedPositions[channel];
+  saveProgress(progress);
+}
+
 export function getChannelStats(progress, allCards) {
   const channels = ['Finance', 'Electronics', 'Robotics'];
   return channels.map(channel => {

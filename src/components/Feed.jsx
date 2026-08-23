@@ -1,8 +1,9 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 import LessonCard from './LessonCard.jsx';
 import QuizCard from './QuizCard.jsx';
 import ChallengeCard from './ChallengeCard.jsx';
 import { CHANNEL_CONFIG, getUnlockState } from '../utils/feed.js';
+import { saveFeedPosition, loadFeedPosition } from '../utils/progress.js';
 
 export default function Feed({ cards, progress, settings, channel, onSave, onLearn, onComplete, onAnswer, onView, onBack }) {
   const observerRef = useRef(null);
@@ -15,6 +16,17 @@ export default function Feed({ cards, progress, settings, channel, onSave, onLea
     onViewRef.current = onView;
   });
   const notifiedIdsRef = useRef(new Set());
+  const restored = useRef(false);
+
+  // Resume at the card this channel was left on.
+  useLayoutEffect(() => {
+    if (restored.current || cards.length === 0) return;
+    restored.current = true;
+    const saved = Math.min(loadFeedPosition(channel), cards.length - 1);
+    if (saved > 0) {
+      cardRefs.current[cards[saved].id]?.scrollIntoView({ behavior: 'instant', block: 'start' });
+    }
+  }, [cards, channel]);
 
   useEffect(() => {
     observerRef.current = new IntersectionObserver(
@@ -22,7 +34,12 @@ export default function Feed({ cards, progress, settings, channel, onSave, onLea
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             const cardId = entry.target.dataset.cardId;
-            if (cardId && !notifiedIdsRef.current.has(cardId)) {
+            if (!cardId) return;
+            if (restored.current) {
+              const idx = cards.findIndex(c => c.id === cardId);
+              if (idx >= 0) saveFeedPosition(channel, idx);
+            }
+            if (!notifiedIdsRef.current.has(cardId)) {
               notifiedIdsRef.current.add(cardId);
               onViewRef.current(cardId);
             }
@@ -37,7 +54,7 @@ export default function Feed({ cards, progress, settings, channel, onSave, onLea
     });
 
     return () => observerRef.current?.disconnect();
-  }, [cards]);
+  }, [cards, channel]);
 
   const config = channel !== 'Mixed' ? CHANNEL_CONFIG[channel] : null;
 

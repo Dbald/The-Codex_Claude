@@ -6,6 +6,8 @@ const defaultProgress = {
   completedChallengeIds: [],
   quizResults: [],
   viewedCardIds: [],
+  // Where you stopped in each feed, e.g. { Finance: 7, Mixed: 3 }
+  feedPositions: {},
   streak: {
     current: 0,
     lastActiveDate: null,

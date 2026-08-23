@@ -1,11 +1,11 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import VideoPanel from './VideoPanel.jsx';
 import LessonCard from './LessonCard.jsx';
 import QuizCard from './QuizCard.jsx';
 import ChallengeCard from './ChallengeCard.jsx';
 import { CHANNEL_CONFIG, getUnlockState } from '../utils/feed.js';
-import { getVideo } from '../utils/video.js';
-import { loadMuted, saveMuted } from '../utils/video.js';
+import { getVideo, loadMuted, saveMuted } from '../utils/video.js';
+import { saveFeedPosition, loadFeedPosition, clearFeedPosition } from '../utils/progress.js';
 
 /**
  * Full-screen vertical feed. Each card becomes one snap panel, or two when a
@@ -48,6 +48,25 @@ export default function ReelsFeed({
     onViewRef.current = onView;
   });
   const seen = useRef(new Set());
+  const restored = useRef(false);
+
+  // Pick up exactly where this channel was left off. Runs before paint so the
+  // feed never flashes at the top before jumping.
+  useLayoutEffect(() => {
+    if (restored.current || panels.length === 0) return;
+    restored.current = true;
+    const saved = Math.min(loadFeedPosition(channel), panels.length - 1);
+    if (saved > 0) {
+      panelRefs.current[saved]?.scrollIntoView({ behavior: 'instant', block: 'start' });
+      setActive(saved);
+    }
+  }, [panels, channel]);
+
+  // Remember the spot as they move through the feed.
+  useEffect(() => {
+    if (!restored.current) return;
+    saveFeedPosition(channel, active);
+  }, [active, channel]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -78,6 +97,11 @@ export default function ReelsFeed({
 
   function advance() {
     goTo(Math.min(active + 1, panels.length - 1));
+  }
+
+  function startOver() {
+    clearFeedPosition(channel);
+    goTo(0);
   }
 
   function toggleMute() {
@@ -113,6 +137,8 @@ export default function ReelsFeed({
 
   const config = channel !== 'Mixed' ? CHANNEL_CONFIG[channel] : null;
   const activeCard = panels[active]?.card;
+  // Count cards, not panels — a lesson's video and its card are one card.
+  const cardNumber = activeCard ? cards.findIndex(c => c.id === activeCard.id) + 1 : 1;
   const lockState = activeCard && channel !== 'Mixed' ? getUnlockState(channel, progress) : null;
 
   if (panels.length === 0) {
@@ -138,15 +164,25 @@ export default function ReelsFeed({
         >
           ← Home
         </button>
-        <div
-          className="rounded-full px-3 py-1.5 text-xs font-bold uppercase tracking-widest"
-          style={{
-            background: 'rgba(0,0,0,0.5)',
-            color: config ? config.accent : '#a78bfa',
-            backdropFilter: 'blur(8px)',
-          }}
-        >
-          {config ? `${config.icon} ${channel}` : '✦ Mixed'}
+        <div className="flex items-center gap-2">
+          <div
+            className="rounded-full px-3 py-1.5 text-xs font-bold uppercase tracking-widest"
+            style={{
+              background: 'rgba(0,0,0,0.5)',
+              color: config ? config.accent : '#a78bfa',
+              backdropFilter: 'blur(8px)',
+            }}
+          >
+            {config ? `${config.icon} ${channel}` : '✦ Mixed'}
+          </div>
+          <div
+            aria-live="polite"
+            className="rounded-full px-3 py-1.5 text-xs font-semibold tabular-nums"
+            style={{ background: 'rgba(0,0,0,0.5)', color: '#e2e8f0', backdropFilter: 'blur(8px)' }}
+          >
+            <span className="sr-only">Card </span>{cardNumber}
+            <span className="opacity-60"> / {cards.length}</span>
+          </div>
         </div>
       </div>
 
@@ -233,13 +269,22 @@ export default function ReelsFeed({
                     ) : (
                       <p className="text-sm text-slate-300">That’s the whole feed. Nice work. 🏆</p>
                     )}
-                    <button
-                      onClick={onBack}
-                      className="mt-3 w-full rounded-xl py-3 text-sm font-semibold"
-                      style={{ background: 'rgba(255,255,255,0.06)', color: '#cbd5e1', minHeight: 48 }}
-                    >
-                      ← Back to Home
-                    </button>
+                    <div className="mt-3 flex gap-3">
+                      <button
+                        onClick={startOver}
+                        className="flex-1 rounded-xl py-3 text-sm font-semibold"
+                        style={{ background: 'rgba(255,255,255,0.06)', color: '#cbd5e1', minHeight: 48 }}
+                      >
+                        ↻ Start over
+                      </button>
+                      <button
+                        onClick={onBack}
+                        className="flex-1 rounded-xl py-3 text-sm font-semibold"
+                        style={{ background: 'rgba(255,255,255,0.06)', color: '#cbd5e1', minHeight: 48 }}
+                      >
+                        ← Home
+                      </button>
+                    </div>
                   </div>
                 )}
               </div>

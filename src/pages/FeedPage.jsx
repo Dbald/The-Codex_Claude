@@ -17,10 +17,7 @@ export default function FeedPage({ initialChannel, progress, settings, onSave, o
   );
 
   function buildFeed(channel, prog) {
-    if (channel === 'Mixed') {
-      return getMixedFeed(prog.viewedCardIds, prog);
-    }
-    return getChannelFeed(channel, prog.viewedCardIds, prog);
+    return channel === 'Mixed' ? getMixedFeed(prog) : getChannelFeed(channel, prog);
   }
 
   function handleStart(sessionConfig) {

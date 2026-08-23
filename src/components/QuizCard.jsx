@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { CHANNEL_CONFIG } from '../utils/feed.js';
 import CardVisual from './CardVisual.jsx';
 import Celebration from './Celebration.jsx';
+import { playSound } from '../utils/sound.js';
 
 export default function QuizCard({ card, progress, settings, onSave, onAnswer }) {
   const config = CHANNEL_CONFIG[card.channel];
@@ -36,14 +37,17 @@ export default function QuizCard({ card, progress, settings, onSave, onAnswer })
   function handleSelect(option) {
     if (revealed) return;
     interactedRef.current = true;
+    const right = option === card.answer;
     setSelected(option);
     setRevealed(true);
-    if (option === card.answer) setBurst(Date.now());
-    onAnswer(card.id, option, option === card.answer);
+    if (right) setBurst(Date.now());
+    playSound(right ? 'correct' : 'wrong');
+    onAnswer(card.id, option, right);
   }
 
   function handleRetry() {
     interactedRef.current = true;
+    playSound('tap');
     setSelected(null);
     setRevealed(false);
     setShowHint(false);
@@ -89,7 +93,7 @@ export default function QuizCard({ card, progress, settings, onSave, onAnswer })
       {card.hint && !revealed && (
         <div className="px-5 pb-3">
           <button
-            onClick={() => setShowHint(v => !v)}
+            onClick={() => { playSound('tap'); setShowHint(v => !v); }}
             aria-expanded={showHint}
             className="flex items-center gap-2 px-3.5 py-2 rounded-full text-xs font-semibold transition-all duration-200"
             style={{
@@ -193,7 +197,7 @@ export default function QuizCard({ card, progress, settings, onSave, onAnswer })
       {/* Save button */}
       <div className="flex gap-3 px-5 py-4 border-t border-slate-800">
         <button
-          onClick={() => onSave(card.id)}
+          onClick={() => { playSound(isSaved ? 'unsave' : 'save'); onSave(card.id); }}
           aria-pressed={isSaved}
           className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200"
           style={{

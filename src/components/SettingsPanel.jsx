@@ -165,6 +165,12 @@ export default function SettingsPanel({ open, settings, onChange, onClose }) {
             onChange={v => set('highContrast', v)}
           />
           <Toggle
+            label="Sound effects"
+            description="Short sounds when you save, answer, or finish something."
+            checked={settings.sound}
+            onChange={v => set('sound', v)}
+          />
+          <Toggle
             label="Reduce motion"
             description="Turns off animations and celebrations."
             checked={settings.reduceMotion}

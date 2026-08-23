@@ -1,5 +1,6 @@
 import { CHANNEL_CONFIG, getUnlockedCards, getUnlockState } from '../utils/feed.js';
 import ProgressBar from './ProgressBar.jsx';
+import { playSound } from '../utils/sound.js';
 
 export default function ChannelCard({ channel, progress, onClick }) {
   const config = CHANNEL_CONFIG[channel];
@@ -12,7 +13,7 @@ export default function ChannelCard({ channel, progress, onClick }) {
 
   return (
     <button
-      onClick={onClick}
+      onClick={() => { playSound('tap'); onClick(); }}
       className="w-full text-left rounded-2xl p-5 hover-lift active:scale-[0.98] border"
       style={{
         background: 'var(--surface)',

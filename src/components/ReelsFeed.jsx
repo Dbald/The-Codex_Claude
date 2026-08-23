@@ -6,6 +6,7 @@ import ChallengeCard from './ChallengeCard.jsx';
 import { CHANNEL_CONFIG, getUnlockState } from '../utils/feed.js';
 import { getVideo, loadMuted, saveMuted } from '../utils/video.js';
 import { saveFeedPosition, loadFeedPosition, clearFeedPosition } from '../utils/progress.js';
+import { playSound } from '../utils/sound.js';
 
 /**
  * Full-screen vertical feed. Each card becomes one snap panel, or two when a
@@ -92,6 +93,7 @@ export default function ReelsFeed({
   function goTo(index) {
     const el = panelRefs.current[index];
     if (!el) return;
+    if (index !== active) playSound('swipe');
     el.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
   }
 
@@ -221,8 +223,14 @@ export default function ReelsFeed({
                   onToggleMute={toggleMute}
                   reduceMotion={reduceMotion}
                   progress={progress}
-                  onSave={onSave}
-                  onLearn={onLearn}
+                  onSave={id => {
+                    playSound(progress.savedCardIds.includes(id) ? 'unsave' : 'save');
+                    onSave(id);
+                  }}
+                  onLearn={id => {
+                    if (!progress.learnedCardIds.includes(id)) playSound('learn');
+                    onLearn(id);
+                  }}
                   onEnded={advance}
                   onAdvance={advance}
                 />

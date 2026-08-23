@@ -5,6 +5,7 @@ export const defaultSettings = {
   simpleMode: false,   // plain-language lesson text by default
   reduceMotion: false, // kill animations (system preference also respected via CSS)
   highContrast: false, // brighter text on dark surfaces
+  sound: true,         // short audio feedback on interactions
 };
 
 export function loadSettings() {

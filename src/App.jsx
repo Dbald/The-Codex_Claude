@@ -7,6 +7,7 @@ import Saved from './pages/Saved.jsx';
 import Progress from './pages/Progress.jsx';
 import { loadProgress } from './utils/storage.js';
 import { loadSettings, saveSettings, applySettings } from './utils/settings.js';
+import { setSoundEnabled, playSound } from './utils/sound.js';
 import {
   markCardViewed,
   toggleSaved,
@@ -26,6 +27,7 @@ export default function App() {
   useEffect(() => {
     applySettings(settings);
     saveSettings(settings);
+    setSoundEnabled(settings.sound);
   }, [settings]);
 
   const refreshProgress = useCallback(() => {
@@ -33,6 +35,7 @@ export default function App() {
   }, []);
 
   function handleNavigate(newPage) {
+    playSound('tap');
     setPage(newPage);
     setFeedChannel(null);
     setFeedMode(null);

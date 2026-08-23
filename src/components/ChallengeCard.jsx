@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { CHANNEL_CONFIG } from '../utils/feed.js';
 import CardVisual from './CardVisual.jsx';
 import Celebration from './Celebration.jsx';
+import { playSound } from '../utils/sound.js';
 
 export default function ChallengeCard({ card, progress, settings, onSave, onComplete }) {
   const config = CHANNEL_CONFIG[card.channel];
@@ -21,10 +22,14 @@ export default function ChallengeCard({ card, progress, settings, onSave, onComp
       else next.add(i);
       return next;
     });
+    playSound('check');
   }
 
   function handleComplete() {
-    if (!isCompleted) setBurst(Date.now());
+    if (!isCompleted) {
+      setBurst(Date.now());
+      playSound('complete');
+    }
     onComplete(card.id);
   }
 
@@ -169,7 +174,7 @@ export default function ChallengeCard({ card, progress, settings, onSave, onComp
       <div className="relative flex gap-3 px-5 py-4 border-t border-slate-800">
         <Celebration burstKey={burst} />
         <button
-          onClick={() => onSave(card.id)}
+          onClick={() => { playSound(isSaved ? 'unsave' : 'save'); onSave(card.id); }}
           aria-pressed={isSaved}
           className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200"
           style={{

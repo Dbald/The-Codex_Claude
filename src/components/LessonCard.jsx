@@ -4,6 +4,7 @@ import CardVisual from './CardVisual.jsx';
 import LessonWidget from './LessonWidget.jsx';
 import Celebration from './Celebration.jsx';
 import { speechAvailable, speak, stopSpeaking } from '../utils/speech.js';
+import { playSound } from '../utils/sound.js';
 
 export default function LessonCard({ card, progress, settings, onSave, onLearn }) {
   const config = CHANNEL_CONFIG[card.channel];
@@ -43,11 +44,17 @@ export default function LessonCard({ card, progress, settings, onSave, onLearn }
       setBurst(Date.now());
       // Does this learn cross the Level 2 threshold for this channel?
       const before = getUnlockState(card.channel, progress);
-      if (!before.unlocked && before.remaining === 1 && card.level === 'Beginner') {
-        setJustUnlocked(true);
-      }
+      const unlocking =
+        !before.unlocked && before.remaining === 1 && card.level === 'Beginner';
+      if (unlocking) setJustUnlocked(true);
+      playSound(unlocking ? 'unlock' : 'learn');
     }
     onLearn(card.id);
+  }
+
+  function handleSave() {
+    playSound(isSaved ? 'unsave' : 'save');
+    onSave(card.id);
   }
 
   return (
@@ -188,7 +195,7 @@ export default function LessonCard({ card, progress, settings, onSave, onLearn }
       <div className="relative flex gap-3 px-5 py-4 border-t border-slate-800">
         <Celebration burstKey={burst} />
         <button
-          onClick={() => onSave(card.id)}
+          onClick={handleSave}
           aria-pressed={isSaved}
           className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200"
           style={{

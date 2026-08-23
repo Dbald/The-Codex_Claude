@@ -57,6 +57,27 @@ export default function VideoPanel({
     else el.pause();
   }
 
+  /**
+   * Unmuting has to happen synchronously inside the click handler. Browsers
+   * only honour it while the user activation from the tap is still live, and
+   * routing it through React state applies it an effect too late — the tap
+   * appears to do nothing. Calling play() here for the same reason: some
+   * browsers pause a muted-autoplaying video the moment it gains audio.
+   */
+  function handleMuteClick() {
+    const el = videoRef.current;
+    const next = !muted;
+    if (el) {
+      el.muted = next;
+      if (!next) {
+        el.volume = 1;
+        const p = el.play();
+        if (p?.catch) p.catch(() => {});
+      }
+    }
+    onToggleMute();
+  }
+
   function handleTime() {
     const el = videoRef.current;
     if (el?.duration) setPct((el.currentTime / el.duration) * 100);
@@ -121,6 +142,17 @@ export default function VideoPanel({
         )}
       </button>
 
+      {/* Sound is off by default (browsers require it for autoplay), so say so */}
+      {muted && !failed && (
+        <button
+          onClick={handleMuteClick}
+          className="absolute left-1/2 top-20 flex -translate-x-1/2 items-center gap-2 rounded-full px-4 py-2 text-xs font-bold"
+          style={{ background: 'rgba(0,0,0,0.55)', color: '#fff', backdropFilter: 'blur(8px)' }}
+        >
+          <span aria-hidden="true">🔇</span> Tap for sound
+        </button>
+      )}
+
       {/* Legibility scrim */}
       <div
         aria-hidden="true"
@@ -128,8 +160,8 @@ export default function VideoPanel({
         style={{ height: '55%', background: 'linear-gradient(to top, rgba(0,0,0,0.85), transparent)' }}
       />
 
-      {/* Action rail */}
-      <div className="absolute right-3 bottom-32 flex flex-col gap-3">
+      {/* Action rail — above the title block, which spans the full width */}
+      <div className="absolute right-3 bottom-32 z-20 flex flex-col gap-3">
         <button
           onClick={() => onSave(card.id)}
           aria-pressed={isSaved}
@@ -149,17 +181,19 @@ export default function VideoPanel({
           {isLearned ? '✓' : '○'}
         </button>
         <button
-          onClick={onToggleMute}
+          onClick={handleMuteClick}
           aria-label={muted ? 'Unmute video' : 'Mute video'}
           className="flex items-center justify-center rounded-full text-lg"
-          style={railBtn(false)}
+          style={railBtn(!muted)}
         >
           {muted ? '🔇' : '🔊'}
         </button>
       </div>
 
-      {/* Title block */}
-      <div className="absolute inset-x-0 bottom-0 px-5 pb-16">
+      {/* Title block. Spans the full width and sits under the action rail, so
+          it must not swallow taps meant for the rail buttons — only its own
+          button opts back into pointer events. */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 px-5 pb-16 pr-20">
         <div
           className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-2"
           style={{ background: config.accentLight, color: config.accent, backdropFilter: 'blur(8px)' }}
@@ -173,7 +207,7 @@ export default function VideoPanel({
 
         <button
           onClick={onAdvance}
-          className="mt-3 flex items-center gap-2 text-xs font-semibold text-white/90"
+          className="pointer-events-auto mt-3 flex items-center gap-2 text-xs font-semibold text-white/90"
         >
           <span className="swipe-hint" aria-hidden="true">↑</span> Swipe up for the lesson
         </button>

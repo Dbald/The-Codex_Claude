@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { CHANNEL_CONFIG } from '../utils/feed.js';
+import { playSound } from '../utils/sound.js';
 
 const DURATIONS = [
   { label: '5 min', value: 5 },
@@ -21,6 +22,7 @@ export default function SessionSelector({ onStart, onBack }) {
   const [mode, setMode] = useState('watch');
 
   function handleStart() {
+    playSound('learn');
     onStart({ duration, channel, mode });
   }
 

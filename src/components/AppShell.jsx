@@ -1,3 +1,5 @@
+import { Link } from '../utils/router.jsx';
+
 export default function AppShell({ currentPage, onNavigate, hideNav, fullBleed, onOpenSettings, children }) {
   const navItems = [
     { id: 'home', label: 'Home', icon: '◈' },
@@ -14,7 +16,9 @@ export default function AppShell({ currentPage, onNavigate, hideNav, fullBleed, 
         style={{ background: 'rgba(22,28,44,0.9)', backdropFilter: 'blur(16px)', borderColor: 'rgba(148,163,184,0.15)' }}
       >
         <div className="flex items-center gap-2">
-          <span className="text-lg font-black tracking-tight text-white">THE CODEX</span>
+          <Link to="/" className="text-lg font-black tracking-tight text-white" aria-label="The Codex — back to the homepage">
+            THE CODEX
+          </Link>
         </div>
         <div className="flex items-center gap-3">
           <span className="hidden sm:block text-xs text-slate-400 font-medium tracking-widest uppercase">

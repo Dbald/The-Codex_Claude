@@ -3,7 +3,28 @@
 **Against:** Codex Learning Platform — Update PRD v1.0 (25 Oct 2026)
 **Repository inspected:** `dbald/the-codex_claude` @ `ece043b`
 **Date:** 25 Oct 2026
-**Status:** Inspection complete. One blocking scope question open (§1).
+**Status:** Inspection complete. §1 resolved 28 Oct 2026 — see the update below.
+
+> **Update, 28 Oct 2026 — §1 resolved as reading 3.** This repository becomes
+> the platform shell. The catalog is three worlds — Ocean Explorer, Orbit
+> Atlas, Power a City — with Ocean Explorer ("Exploring Reef Ecosystems") as the
+> first course to complete and validate. Devinci Global remains the home for the
+> platforms; The Devinci Code is the creator and teaching identity.
+>
+> **Implemented from the Homepage v6 design:** a public homepage at `/`, and a
+> course overview route at `/courses/:id` for each world. This moves **U01** to
+> partial-plus (catalog with audience-facing status labels; unfinished courses
+> are labelled as such) and **U02** from missing to partial (objectives,
+> outline, estimated time, completion approach, access and help are shown;
+> audience, prior knowledge and scoring rule are displayed as pending educator
+> review rather than filled in). **U07**'s two gaps are closed: a reset control
+> and a plain disclosure of device-local storage now live at `/your-data`.
+> The existing card-feed app is unchanged at `/app`.
+>
+> **Still open:** the Finance/Electronics/Robotics material's role in the new
+> catalog; Ocean Explorer's hosting URL and the interactions it actually
+> supports (PRD §6 requires lessons to use only those); the first learner
+> audience and reading level; the lesson content itself.
 
 PRD §9 requires each requirement be recorded as already present, partially
 present, or missing. PRD §11 Stage 0 exit condition is a written reuse/gap list

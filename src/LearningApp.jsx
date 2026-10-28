@@ -1,0 +1,128 @@
+import { useState, useCallback } from 'react';
+import AppShell from './components/AppShell.jsx';
+import Home from './pages/Home.jsx';
+import FeedPage from './pages/FeedPage.jsx';
+import Saved from './pages/Saved.jsx';
+import Progress from './pages/Progress.jsx';
+import { loadProgress } from './utils/storage.js';
+import { playSound } from './utils/sound.js';
+import {
+  markCardViewed,
+  toggleSaved,
+  markLearned,
+  markChallengeComplete,
+  recordQuizResult,
+} from './utils/progress.js';
+
+/**
+ * The card-feed learning app, mounted at /app. Settings are owned by the root
+ * so they apply across the public site as well.
+ */
+export default function LearningApp({ settings, onOpenSettings }) {
+  const [page, setPage] = useState('home');
+  const [feedChannel, setFeedChannel] = useState(null);
+  const [progress, setProgress] = useState(() => loadProgress());
+  const [feedMode, setFeedMode] = useState(null);
+
+  const refreshProgress = useCallback(() => {
+    setProgress(loadProgress());
+  }, []);
+
+  function handleNavigate(newPage) {
+    playSound('tap');
+    setPage(newPage);
+    setFeedChannel(null);
+    setFeedMode(null);
+  }
+
+  function handleStartSession() {
+    setFeedChannel(null);
+    setFeedMode(null);
+    setPage('feed');
+  }
+
+  function handleOpenChannel(channel) {
+    setFeedChannel(channel);
+    setPage('feed');
+  }
+
+  function handleBack() {
+    setPage('home');
+    setFeedChannel(null);
+    setFeedMode(null);
+    refreshProgress();
+  }
+
+  const handleSave = useCallback(cardId => {
+    toggleSaved(cardId);
+    refreshProgress();
+  }, [refreshProgress]);
+
+  const handleLearn = useCallback(cardId => {
+    markLearned(cardId);
+    refreshProgress();
+  }, [refreshProgress]);
+
+  const handleComplete = useCallback(cardId => {
+    markChallengeComplete(cardId);
+    refreshProgress();
+  }, [refreshProgress]);
+
+  const handleAnswer = useCallback((cardId, selectedAnswer, isCorrect) => {
+    recordQuizResult(cardId, selectedAnswer, isCorrect);
+    refreshProgress();
+  }, [refreshProgress]);
+
+  const handleView = useCallback(cardId => {
+    markCardViewed(cardId);
+    refreshProgress();
+  }, [refreshProgress]);
+
+  const showNav = page !== 'feed';
+  const fullBleed = page === 'feed' && feedMode === 'watch';
+
+  return (
+    <AppShell
+      currentPage={showNav ? page : null}
+      onNavigate={handleNavigate}
+      hideNav={!showNav}
+      fullBleed={fullBleed}
+      onOpenSettings={onOpenSettings}
+    >
+      {page === 'home' && (
+        <Home
+          progress={progress}
+          onStartSession={handleStartSession}
+          onOpenChannel={handleOpenChannel}
+        />
+      )}
+      {page === 'feed' && (
+        <FeedPage
+          initialChannel={feedChannel}
+          progress={progress}
+          settings={settings}
+          onSave={handleSave}
+          onLearn={handleLearn}
+          onComplete={handleComplete}
+          onAnswer={handleAnswer}
+          onView={handleView}
+          onBack={handleBack}
+          onModeChange={setFeedMode}
+        />
+      )}
+      {page === 'saved' && (
+        <Saved
+          progress={progress}
+          settings={settings}
+          onSave={handleSave}
+          onLearn={handleLearn}
+          onComplete={handleComplete}
+          onAnswer={handleAnswer}
+        />
+      )}
+      {page === 'progress' && (
+        <Progress progress={progress} />
+      )}
+    </AppShell>
+  );
+}

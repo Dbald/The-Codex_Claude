@@ -1,0 +1,81 @@
+[
+  {
+    "id": "ocean-explorer",
+    "door": 1,
+    "world": "Ocean Explorer",
+    "subject": "Marine science",
+    "accent": "teal",
+    "status": "first-course",
+    "statusLabel": "First course",
+    "image": "/images/worlds/ocean-explorer.jpg",
+    "imageAlt": "A sea turtle swimming above a coral reef in sunlit blue water",
+    "summary": "Reef ecosystems, the organisms in them, food and shelter, and conservation.",
+    "worldSummary": "Predict, change the conditions, observe the results, and explain what happened.",
+    "worldCta": "Explore the reef",
+
+    "courseTitle": "Exploring Reef Ecosystems",
+    "intro": "Built on the Ocean Explorer world already used with students. Learn how a reef works, then go in and test it.",
+    "topics": [
+      "How reef ecosystems work",
+      "The organisms that live there",
+      "Who feeds and shelters whom",
+      "What it takes to protect a reef"
+    ],
+    "insideTheWorld": [
+      { "verb": "Predict", "detail": "what will change" },
+      { "verb": "Change", "detail": "the conditions" },
+      { "verb": "Observe", "detail": "what happens" },
+      { "verb": "Explain", "detail": "why it happened" }
+    ],
+    "estimatedMinutes": [20, 30],
+    "objectives": [
+      "Identify key living and nonliving parts of a reef ecosystem.",
+      "Explain a relationship between organisms and their environment.",
+      "Predict a plausible effect of a specified change to the ecosystem.",
+      "Use evidence to explain an ecosystem relationship."
+    ],
+    "lessons": [
+      { "title": "Meet the ecosystem", "objective": 0, "activity": "Short introduction, a labeled visual, and a guided observation." },
+      { "title": "Explore relationships", "objective": 1, "activity": "A guided task in Ocean Explorer, or an equivalent text-and-visual activity." },
+      { "title": "Investigate a change", "objective": 2, "activity": "A scenario prompt, then exploration or a structured alternative." },
+      { "title": "Apply and reflect", "objective": 3, "activity": "A final scenario and a short reflection." }
+    ],
+    "access": [
+      "Runs in your web browser — no install.",
+      "Every world activity will have an accessible alternative that keeps the same objective."
+    ],
+
+    "audience": null,
+    "prerequisites": null,
+    "completionRule": null,
+    "review": "draft"
+  },
+  {
+    "id": "orbit-atlas",
+    "door": 2,
+    "world": "Orbit Atlas",
+    "subject": "Earth & space",
+    "accent": "violet",
+    "status": "coming-next",
+    "statusLabel": "Course coming next",
+    "image": "/images/worlds/orbit-atlas.jpg",
+    "imageAlt": "A satellite with extended solar panels orbiting above the curve of the Earth",
+    "summary": "Satellites, orbital infrastructure, and how we observe Earth from space.",
+    "worldSummary": "Explore Earth and its satellites in 3D, on desktop or in WebXR, then solve real scenarios.",
+    "worldCta": "Preview the world"
+  },
+  {
+    "id": "power-a-city",
+    "door": 3,
+    "world": "Power a City",
+    "subject": "Electricity",
+    "accent": "amber",
+    "status": "in-development",
+    "statusLabel": "In development",
+    "image": "/images/worlds/power-a-city.jpg",
+    "imageAlt": "A miniature city with wind turbines, roads, and a bridge at sunset",
+    "summary": "How power is generated, moved, and delivered, and how supply meets demand.",
+    "worldSummary": "Build a neighborhood's grid, balance supply and demand, and restore power when things change.",
+    "worldCta": "Preview the world"
+  }
+]

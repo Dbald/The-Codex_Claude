@@ -79,6 +79,36 @@ export default function Home({ progress, onStartSession, onOpenChannel }) {
         </div>
       </div>
 
+      <section
+        aria-labelledby="ocean-early-title"
+        className="rounded-2xl p-5 mb-6 border"
+        style={{ background: 'linear-gradient(135deg, #0b3a50 0%, #0f1f33 70%)', borderColor: 'rgba(61,214,198,0.3)' }}
+      >
+        <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: '#3DD6C6' }}>
+          Coming next · Ocean Explorer
+        </p>
+        <h2 id="ocean-early-title" className="text-xl font-black text-white mb-1">Exploring Reef Ecosystems</h2>
+        <p className="text-slate-300 text-sm mb-4">
+          Short lessons from a real teacher, plus an interactive reef you can explore on any screen.
+        </p>
+        <div className="flex flex-wrap gap-2">
+          <a
+            href="/early-access/?interest=early&src=codex-app"
+            className="inline-flex items-center rounded-full px-4 font-bold text-sm"
+            style={{ background: '#FFC857', color: '#0B1020', minHeight: 44 }}
+          >
+            Get early access
+          </a>
+          <a
+            href="/early-access/?interest=pilot&src=codex-app"
+            className="inline-flex items-center rounded-full px-4 font-semibold text-sm text-white border"
+            style={{ borderColor: 'rgba(255,255,255,0.25)', minHeight: 44 }}
+          >
+            Pilot it with your class
+          </a>
+        </div>
+      </section>
+
       {continueChannels.length > 0 && (
         <div className="mb-6">
           <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-3">Continue Learning</p>

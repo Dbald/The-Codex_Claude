@@ -1,26 +1,30 @@
 // Every outbound destination on the site, in one place.
 //
 // A value of null means "not connected yet". Links that resolve to null fall
-// back to the most useful in-site destination where one exists (usually the
-// course overview), or announce that the link isn't connected yet — never a
-// dead or invented URL.
+// back to the most useful in-site destination where one exists, or announce
+// that the link isn't connected yet — never a dead or invented URL.
+
+const signup = (interest, src) => `/early-access/?interest=${interest}&src=${src}`;
 
 export const SITE = {
-  // Where each 3D world is hosted. Used by "Try the reef now",
-  // "Explore the world first", and the door cards' world links.
-  worlds: {
-    'ocean-explorer': null,
+  // Worlds that don't run inside The Codex yet. (Ocean Explorer does — its
+  // lesson is wired in src/utils/worlds.js.)
+  previews: {
     'orbit-atlas': null,
     'power-a-city': null,
   },
 
-  // "Get early access" — falls back to the Ocean Explorer course overview.
-  earlyAccessUrl: null,
+  // The early-access sign-up (public/early-access/, Netlify Forms).
+  // `src` records which button a sign-up came from.
+  signup,
+  earlyAccessUrl: signup('early', 'homepage'),
+  pilotUrl: signup('pilot', 'homepage'),
+  workshopUrl: signup('workshop', 'homepage'),
 
-  // Teachers & schools section.
-  pilotUrl: null,
+  // The guide's photo, e.g. '/images/guide/devin.jpg'. Until it's set, the
+  // "Your guide" section shows a neutral placeholder.
+  guidePhoto: null,
+
   contactUrl: null,
-
-  // Footer.
   aboutUrl: null,
 };

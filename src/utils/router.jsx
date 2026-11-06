@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 // A deliberately small history router. The site needs shareable URLs — a
-// teacher sending /courses/ocean-explorer to a class — but not nested routes,
+// teacher sending /trips/ocean-explorer to a class — but not nested routes,
 // loaders or transitions, so this stays dependency-free.
 
 const listeners = new Set();
@@ -31,6 +31,15 @@ export function navigate(to, { replace = false } = {}) {
   notify();
 }
 
+/**
+ * True once the visitor has moved within the site, so "back" stays on the
+ * site. False on a direct visit — someone who opened a shared lesson link
+ * should exit to the homepage, not to whatever they were on before.
+ */
+export function canGoBack() {
+  return navKey > 0;
+}
+
 function read() {
   return { pathname: window.location.pathname, hash: window.location.hash, key: navKey };
 }
@@ -46,8 +55,17 @@ export function useLocation() {
   return loc;
 }
 
-export function isInternal(href) {
+// Same-site pages that are NOT part of this app (static HTML served next to
+// it). They need a real page load; routing to them client-side would 404.
+const STATIC_PAGES = ['/early-access'];
+
+export function isSameSite(href) {
   return typeof href === 'string' && href.startsWith('/') && !href.startsWith('//');
+}
+
+/** True for paths this app renders itself. */
+export function isInternal(href) {
+  return isSameSite(href) && !STATIC_PAGES.some(p => href === p || href.startsWith(p + '/') || href.startsWith(p + '?'));
 }
 
 /**

@@ -1,5 +1,6 @@
 import ChannelCard from '../components/ChannelCard.jsx';
 import { ALL_CARDS } from '../utils/feed.js';
+import { WORLDS, loadWorldProgress } from '../utils/worlds.js';
 
 const STAT_TILES = [
   { key: 'streak', label: 'Day streak', icon: '🔥', color: '#fb923c', bg: 'rgba(251,146,60,0.12)' },
@@ -7,7 +8,14 @@ const STAT_TILES = [
   { key: 'learned', label: 'Learned', icon: '✓', color: '#10b981', bg: 'rgba(16,185,129,0.12)' },
 ];
 
-export default function Home({ progress, onStartSession, onOpenChannel }) {
+export default function Home({ progress, onStartSession, onOpenChannel, onOpenWorld }) {
+  const reef = WORLDS['ocean-explorer'];
+  const reefProgress = loadWorldProgress(reef.lesson);
+  const reefAction = reefProgress.completed
+    ? 'Revisit the reef lesson'
+    : reefProgress.started
+      ? `Continue · Step ${reefProgress.index + 1} of ${reefProgress.total}`
+      : 'Start the reef lesson';
   const streak = progress.streak.current;
   const totalViewed = progress.viewedCardIds.length;
   const totalLearned = progress.learnedCardIds.length;
@@ -90,6 +98,47 @@ export default function Home({ progress, onStartSession, onOpenChannel }) {
           ))}
         </div>
       </div>
+
+      <section
+        aria-labelledby="ocean-early-title"
+        className="rounded-2xl p-5 mb-6 border"
+        style={{ background: 'linear-gradient(135deg, #0b3a50 0%, #0f1f33 70%)', borderColor: 'rgba(61,214,198,0.3)' }}
+      >
+        <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: '#3DD6C6' }}>
+          Ocean Explorer · First lesson open
+        </p>
+        <h2 id="ocean-early-title" className="text-xl font-black text-white mb-1">Exploring Reef Ecosystems</h2>
+        <p className="text-slate-300 text-sm mb-4">
+          Short lessons from a real teacher, plus an interactive reef you can explore on any screen.
+        </p>
+        <button
+          onClick={() => onOpenWorld?.('ocean-explorer')}
+          className="w-full flex items-center justify-between rounded-xl px-4 mb-3 font-bold text-sm text-left"
+          style={{ background: '#3DD6C6', color: '#0B1020', minHeight: 52 }}
+        >
+          <span>
+            <span className="block">{reefAction}</span>
+            <span className="block text-xs font-semibold opacity-80">{reef.title}</span>
+          </span>
+          <span aria-hidden="true">→</span>
+        </button>
+        <div className="flex flex-wrap gap-2">
+          <a
+            href="/early-access/?interest=early&src=codex-app"
+            className="inline-flex items-center rounded-full px-4 font-bold text-sm"
+            style={{ background: '#FFC857', color: '#0B1020', minHeight: 44 }}
+          >
+            Get early access
+          </a>
+          <a
+            href="/early-access/?interest=pilot&src=codex-app"
+            className="inline-flex items-center rounded-full px-4 font-semibold text-sm text-white border"
+            style={{ borderColor: 'rgba(255,255,255,0.25)', minHeight: 44 }}
+          >
+            Pilot it with your class
+          </a>
+        </div>
+      </section>
 
       {/* Continue learning */}
       {continueChannels.length > 0 && (

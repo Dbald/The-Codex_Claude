@@ -6,6 +6,8 @@ import Saved from './pages/Saved.jsx';
 import Progress from './pages/Progress.jsx';
 import { loadProgress } from './utils/storage.js';
 import { playSound } from './utils/sound.js';
+import { navigate } from './utils/router.jsx';
+import { lessonPath } from './utils/worlds.js';
 import {
   markCardViewed,
   toggleSaved,
@@ -94,6 +96,7 @@ export default function LearningApp({ settings, onOpenSettings }) {
           progress={progress}
           onStartSession={handleStartSession}
           onOpenChannel={handleOpenChannel}
+          onOpenWorld={id => navigate(lessonPath(id))}
         />
       )}
       {page === 'feed' && (

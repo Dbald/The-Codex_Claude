@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Get Early Access · The Codex</title>
+<meta name="description" content="Sign up for early access to The Codex: short lessons taught by a real teacher, paired with an interactive reef kids can explore on any screen.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0B1020; --surface: #141B2E; --line: #273152; --line-2: #3A4562;
+    --ink: #EEF1F7; --soft: #C9D1E2; --muted: #8D97AD;
+    --amber: #FFC857; --amber-ink: #0B1020; --teal: #3DD6C6; --error: #F4A3C0;
+    --display: 'Bricolage Grotesque', system-ui, sans-serif;
+    --body: 'Atkinson Hyperlegible', system-ui, sans-serif;
+    --mono: 'IBM Plex Mono', ui-monospace, monospace;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background:
+      radial-gradient(1200px 600px at 85% -10%, rgba(142, 164, 255, 0.16), transparent 60%),
+      radial-gradient(900px 500px at -10% 110%, rgba(61, 214, 198, 0.10), transparent 60%),
+      var(--bg);
+    color: var(--ink); font-family: var(--body); font-size: 18px; line-height: 1.5;
+    min-height: 100vh;
+  }
+  a { color: var(--teal); }
+  :focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; border-radius: 6px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 28px 16px 64px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); font-family: var(--display); font-weight: 800; font-size: 20px; }
+  .brand-door { width: 22px; height: 28px; border: 2px solid var(--amber); border-bottom: 0; border-radius: 11px 11px 0 0; }
+  .grid { display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 40px; }
+  @media (min-width: 900px) { .grid { grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: start; } .intro { position: sticky; top: 32px; } }
+  .eyebrow { font-family: var(--mono); font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin: 0 0 12px; }
+  h1 { font-family: var(--display); font-weight: 800; font-size: clamp(34px, 5vw, 54px); line-height: 1.04; margin: 0 0 16px; letter-spacing: -0.01em; }
+  .lede { color: var(--soft); font-size: 19px; margin: 0 0 24px; max-width: 34em; }
+  .perks { list-style: none; margin: 0 0 24px; padding: 0; display: grid; gap: 12px; }
+  .perks li { display: flex; gap: 12px; align-items: flex-start; color: var(--soft); }
+  .perks li::before { content: ''; flex: none; width: 10px; height: 10px; margin-top: 9px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 0 4px rgba(255, 200, 87, 0.15); }
+  .try { display: inline-flex; align-items: center; gap: 8px; color: var(--ink); text-decoration: none; font-weight: 700; padding: 12px 18px; border: 1.5px solid var(--line-2); border-radius: 999px; }
+  .try:hover { border-color: var(--teal); }
+
+  .card { background: var(--surface); border: 1.5px solid var(--line); border-radius: 22px; padding: 28px 24px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35); }
+  @media (min-width: 600px) { .card { padding: 32px; } }
+  .card h2 { font-family: var(--display); font-weight: 800; font-size: 24px; margin: 0 0 4px; }
+  .card .sub { color: var(--muted); margin: 0 0 24px; font-size: 16px; }
+  .field { margin: 0 0 18px; }
+  .row2 { display: grid; gap: 0 16px; grid-template-columns: 1fr; }
+  @media (min-width: 600px) { .row2 { grid-template-columns: 1fr 1fr; } }
+  label, legend { display: block; font-weight: 700; margin: 0 0 6px; font-size: 16px; }
+  .opt { font-weight: 400; color: var(--muted); }
+  input[type=text], input[type=email], select, textarea {
+    width: 100%; font: inherit; font-size: 17px; color: var(--ink); background: var(--bg);
+    border: 1.5px solid var(--line-2); border-radius: 12px; padding: 12px 14px; min-height: 50px;
+  }
+  textarea { min-height: 96px; resize: vertical; }
+  input:focus, select:focus, textarea:focus { border-color: var(--amber); outline: none; box-shadow: 0 0 0 3px rgba(255, 200, 87, 0.25); }
+  fieldset { border: 0; padding: 0; margin: 0 0 18px; }
+  .checks { display: grid; gap: 10px; }
+  .check { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border: 1.5px solid var(--line-2); border-radius: 12px; cursor: pointer; font-weight: 400; margin: 0; }
+  .check:has(input:checked) { border-color: var(--amber); background: rgba(255, 200, 87, 0.06); }
+  .check input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--amber); flex: none; }
+  .check strong { display: block; }
+  .check span span { color: var(--muted); font-size: 15px; }
+  .consent { border: 0; padding: 0; }
+  .consent:has(input:checked) { background: none; }
+  .note { font-size: 14px; color: var(--muted); margin: 0 0 18px; }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  button[type=submit] {
+    width: 100%; font: inherit; font-weight: 700; font-size: 19px; min-height: 58px; border: 0; border-radius: 999px;
+    background: var(--amber); color: var(--amber-ink); cursor: pointer;
+  }
+  button[type=submit]:hover { filter: brightness(1.06); }
+  button[type=submit]:disabled { opacity: 0.6; cursor: progress; }
+  .error { color: var(--error); font-weight: 700; margin: 12px 0 0; }
+  .done { text-align: center; padding: 24px 8px; }
+  .done .big-door { width: 56px; height: 72px; margin: 0 auto 18px; border: 3px solid var(--amber); border-bottom: 0; border-radius: 28px 28px 0 0; background: linear-gradient(rgba(255, 200, 87, 0.25), transparent); }
+  .done h2 { font-size: 30px; }
+  .done p { color: var(--soft); }
+  footer { margin-top: 48px; color: var(--muted); font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="brand" href="/"><span class="brand-door" aria-hidden="true"></span>The Codex</a>
+
+  <div class="grid">
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow" id="eyebrow">Early access</p>
+      <h1 id="page-title">Be first through the door to Exploring Reef Ecosystems.</h1>
+      <p class="lede" id="lede">Short lessons taught by a real teacher, paired with an interactive reef kids can explore on any screen, from a classroom touchscreen to an iPad at home.</p>
+      <ul class="perks">
+        <li>A first look at the course before it opens to everyone</li>
+        <li>Pilot materials for classrooms, libraries and homeschool groups</li>
+        <li>Notice of family ocean workshops near you</li>
+      </ul>
+      <a class="try" href="https://oceanexp.netlify.app/">Explore the reef now <span aria-hidden="true">→</span></a>
+    </section>
+
+    <section class="card" aria-labelledby="form-title">
+      <div id="form-wrap">
+        <h2 id="form-title">Count me in</h2>
+        <p class="sub">Takes about a minute. We'll only email when there's real news.</p>
+
+        <form id="signup" name="codex-early-access" method="POST" action="/early-access/thanks.html" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="codex-early-access">
+          <input type="hidden" name="source" id="source" value="direct">
+          <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+          <div class="row2">
+            <div class="field">
+              <label for="name">Your name</label>
+              <input type="text" id="name" name="name" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" autocomplete="email" inputmode="email" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="role">I'm a…</label>
+            <select id="role" name="role" required>
+              <option value="" selected disabled>Choose one</option>
+              <option>Parent or guardian</option>
+              <option>Teacher</option>
+              <option>Librarian or museum educator</option>
+              <option>School or district leader</option>
+              <option>Homeschool educator</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <fieldset>
+            <legend>What are you interested in?</legend>
+            <div class="checks">
+              <label class="check"><input type="checkbox" name="interest_early" value="yes" id="i-early"><span><strong>Early access to the course</strong><span>Get the first Codex lessons before launch.</span></span></label>
+              <label class="check"><input type="checkbox" name="interest_pilot" value="yes" id="i-pilot"><span><strong>Piloting it with my learners</strong><span>A classroom, club or homeschool group.</span></span></label>
+              <label class="check"><input type="checkbox" name="interest_workshop" value="yes" id="i-workshop"><span><strong>Hosting a family ocean workshop</strong><span>At a library, school or community space.</span></span></label>
+            </div>
+          </fieldset>
+
+          <div class="row2">
+            <div class="field">
+              <label for="org">Organization <span class="opt">(optional)</span></label>
+              <input type="text" id="org" name="organization" autocomplete="organization" placeholder="School, library or group">
+            </div>
+            <div class="field">
+              <label for="place">City or ZIP <span class="opt">(optional)</span></label>
+              <input type="text" id="place" name="city_or_zip" autocomplete="postal-code">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="grades">Learners' grades <span class="opt">(optional)</span></label>
+            <select id="grades" name="grades">
+              <option value="">Choose one</option>
+              <option>TK–2</option>
+              <option>3–5</option>
+              <option>6–8</option>
+              <option>9–12</option>
+              <option>Mixed ages / family</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="msg">Anything else? <span class="opt">(optional)</span></label>
+            <textarea id="msg" name="message"></textarea>
+          </div>
+
+          <p class="note">This form is for adults. Please don't include children's names or details.</p>
+
+          <div class="field">
+            <label class="check consent"><input type="checkbox" name="consent" value="yes" required><span>It's OK to email me about The Codex and Ocean Explorer. My info won't be sold or shared.</span></label>
+          </div>
+
+          <button type="submit" id="submit">Count me in</button>
+          <p class="error" id="error" role="alert" hidden></p>
+        </form>
+      </div>
+
+      <div class="done" id="done" hidden tabindex="-1">
+        <div class="big-door" aria-hidden="true"></div>
+        <h2>You're on the list.</h2>
+        <p>Thanks for signing up. We'll be in touch when the first course opens.</p>
+        <p><a class="try" href="https://oceanexp.netlify.app/">Explore the reef while you wait <span aria-hidden="true">→</span></a></p>
+      </div>
+    </section>
+  </div>
+
+  <footer>The Codex · a Devinci Global learning platform</footer>
+</div>
+
+<script>
+  // ?interest=early|pilot|workshop pre-selects a box and tunes the headline.
+  // ?src=library (or any short tag) records where the person came from, e.g. a flyer QR code.
+  (function () {
+    var params = new URLSearchParams(location.search);
+    var copy = {
+      early: ['Early access', 'Be first through the door to Exploring Reef Ecosystems.'],
+      pilot: ['Pilot the first course', 'Bring the reef to your learners.', 'Run Exploring Reef Ecosystems with your class, club or homeschool group. You get the lessons, the interactive reef and a teacher-built pilot plan.'],
+      workshop: ['Family ocean workshop', 'Bring an ocean workshop to your community.', 'Kids explore a living reef on screens and learn how it works, led by a real teacher. Great for libraries, schools and community spaces.'],
+    };
+    var interest = params.get('interest');
+    if (copy[interest]) {
+      document.getElementById('i-' + interest).checked = true;
+      document.getElementById('eyebrow').textContent = copy[interest][0];
+      document.getElementById('page-title').textContent = copy[interest][1];
+      if (copy[interest][2]) document.getElementById('lede').textContent = copy[interest][2];
+      document.title = copy[interest][0] + ' · The Codex';
+    }
+    var src = (params.get('src') || '').replace(/[^\w-]/g, '').slice(0, 40);
+    if (src) document.getElementById('source').value = src;
+
+    var form = document.getElementById('signup');
+    var submit = document.getElementById('submit');
+    var error = document.getElementById('error');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+      error.hidden = true;
+      submit.disabled = true;
+      submit.textContent = 'Sending…';
+      // Post to this static page itself: Netlify Forms reads the submission there,
+      // and the React app's routes never get in the way.
+      fetch('/early-access/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString(),
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error('status ' + res.status);
+          document.getElementById('form-wrap').hidden = true;
+          var done = document.getElementById('done');
+          done.hidden = false;
+          done.focus();
+        })
+        .catch(function () {
+          error.textContent = "That didn't go through. Please check your connection and try again.";
+          error.hidden = false;
+          submit.disabled = false;
+          submit.textContent = 'Count me in';
+        });
+    });
+  })();
+</script>
+</body>
+</html>

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import courses from './data/courses.json';
-import { useLocation } from './utils/router.jsx';
+import { useLocation, navigate, canGoBack } from './utils/router.jsx';
+import { worldForLesson } from './utils/worlds.js';
 import { loadSettings, saveSettings, applySettings } from './utils/settings.js';
 import { setSoundEnabled } from './utils/sound.js';
 import SettingsPanel from './components/SettingsPanel.jsx';
@@ -12,6 +13,7 @@ import CourseOverview from './pages/CourseOverview.jsx';
 import YourData from './pages/YourData.jsx';
 import NotFound from './pages/NotFound.jsx';
 import LearningApp from './LearningApp.jsx';
+import WorldLesson from './pages/WorldLesson.jsx';
 import './styles/site.css';
 
 function match(pathname) {
@@ -19,8 +21,13 @@ function match(pathname) {
   if (p === '/') return { name: 'landing' };
   if (p === '/app') return { name: 'app' };
   if (p === '/your-data') return { name: 'data' };
-  const course = p.match(/^\/courses\/([a-z0-9-]+)$/);
-  if (course) return { name: 'course', id: course[1] };
+  const lesson = p.match(/^\/trips\/([a-z0-9-]+)\/([a-z0-9-]+)$/);
+  if (lesson) return { name: 'lesson', id: lesson[1], lesson: lesson[2] };
+  const trip = p.match(/^\/trips\/([a-z0-9-]+)$/);
+  if (trip) return { name: 'course', id: trip[1] };
+  // Earlier links used /courses/:id
+  const legacy = p.match(/^\/courses\/([a-z0-9-]+)$/);
+  if (legacy) return { name: 'redirect', to: `/trips/${legacy[1]}` };
   return { name: 'notfound' };
 }
 
@@ -28,7 +35,11 @@ function titleFor(route) {
   const suffix = 'The Codex';
   switch (route.name) {
     case 'landing':
-      return 'The Codex — Every lesson is a door';
+      return 'The Codex — Field trips, minus the bus';
+    case 'lesson': {
+      const w = worldForLesson(route.id, route.lesson);
+      return w ? `${w.title} · ${w.world} — ${suffix}` : `Not found — ${suffix}`;
+    }
     case 'app':
       return `Learn — ${suffix}`;
     case 'data':
@@ -92,6 +103,11 @@ export default function App() {
     }
   }, [location.key]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // Old /courses/:id links forward to /trips/:id
+  useEffect(() => {
+    if (route.name === 'redirect') navigate(route.to, { replace: true });
+  }, [route.name, route.to]);
+
   const settingsPanel = (
     <SettingsPanel
       open={settingsOpen}
@@ -101,10 +117,28 @@ export default function App() {
     />
   );
 
+  if (route.name === 'redirect') return null;
+
   if (route.name === 'app') {
     return (
       <>
         <LearningApp settings={settings} onOpenSettings={() => setSettingsOpen(true)} />
+        {settingsPanel}
+        <NoticeHost />
+      </>
+    );
+  }
+
+  // A world lesson takes the whole screen and brings its own header.
+  const world = route.name === 'lesson' ? worldForLesson(route.id, route.lesson) : null;
+  if (world) {
+    return (
+      <>
+        <WorldLesson
+          world={world}
+          onOpenSettings={() => setSettingsOpen(true)}
+          onExit={() => (canGoBack() ? window.history.back() : navigate('/'))}
+        />
         {settingsPanel}
         <NoticeHost />
       </>
@@ -121,7 +155,7 @@ export default function App() {
         {route.name === 'landing' && <Landing />}
         {route.name === 'course' && <CourseOverview courseId={route.id} />}
         {route.name === 'data' && <YourData />}
-        {route.name === 'notfound' && <NotFound />}
+        {(route.name === 'notfound' || route.name === 'lesson') && <NotFound />}
       </main>
       <SiteFooter />
       {settingsPanel}

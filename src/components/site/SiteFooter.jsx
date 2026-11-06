@@ -4,7 +4,7 @@ import SmartLink from './SmartLink.jsx';
 
 export default function SiteFooter() {
   return (
-    <footer className="footer">
+    <footer className="footer on-dark">
       <div className="wrap footer__inner">
         <p style={{ margin: 0 }}>© 2026 The Codex · a Devinci Global studio</p>
         <nav aria-label="Footer">

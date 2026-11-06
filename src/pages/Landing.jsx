@@ -1,200 +1,339 @@
 import courses from '../data/courses.json';
 import { SITE } from '../config/site.js';
-import SmartLink from '../components/site/SmartLink.jsx';
-import Portal from '../components/site/Portal.jsx';
-import DoorCard from '../components/site/DoorCard.jsx';
 import { Link } from '../utils/router.jsx';
+import { lessonPath } from '../utils/worlds.js';
+import SmartLink from '../components/site/SmartLink.jsx';
+import NotifyForm from '../components/site/NotifyForm.jsx';
+import BrandDots from '../components/site/BrandDots.jsx';
 
-const PATH = [
-  { n: '01', tag: 'Goal', title: 'Know the aim', color: 'var(--violet)', text: 'Each course opens with clear objectives, so you know what you’re working toward.' },
-  { n: '02', tag: 'Learn', title: 'A real teacher', color: 'var(--yellow)', text: 'Short video lessons explain the idea before you go in.' },
-  { n: '03', tag: 'Explore', title: 'Step into the world', color: 'var(--teal)', text: 'Run the experiment yourself in the 3D world.' },
-  { n: '04', tag: 'Check', title: 'Show what you know', color: 'var(--green)', text: 'An assessment with feedback on what you got right and what to revisit.' },
-  { n: '05', tag: 'Next', title: 'Keep your progress', color: 'var(--pink)', text: 'See how far you’ve come and which door opens next.' },
+const byId = Object.fromEntries(courses.map(c => [c.id, c]));
+const tripLabel = c => `Trip ${String(c.trip).padStart(2, '0')} · ${c.place}`;
+
+const ROUTE = [
+  { stop: 1, title: 'Know the goal', text: 'Clear objectives, so you know what you’re there to find out.' },
+  { stop: 2, title: 'Learn it', text: 'A short video lesson from your guide sets up the big idea.' },
+  { stop: 3, title: 'Go there', text: 'Step into the 3D world and run the experiment yourself.', here: true },
+  { stop: 4, title: 'Prove it', text: 'A check-in with feedback on what stuck and what to revisit.' },
+  { stop: 5, title: 'Next stop', text: 'Your progress is saved, and the next trip is waiting.', end: true },
 ];
 
+function Arrow() {
+  return (
+    <span className="arrow" aria-hidden="true">
+      →
+    </span>
+  );
+}
+
 export default function Landing() {
-  const ocean = courses.find(c => c.id === 'ocean-explorer');
-  const oceanOverview = `/courses/${ocean.id}`;
-  const oceanWorld = SITE.worlds[ocean.id];
+  const ocean = byId['ocean-explorer'];
+  const orbit = byId['orbit-atlas'];
+  const power = byId['power-a-city'];
+  const firstTrip = lessonPath('ocean-explorer');
 
   return (
     <>
       {/* ── Hero ── */}
       <section className="hero" aria-labelledby="hero-title">
-        <div className="wrap hero__grid">
-          <div className="hero__copy">
-            <p className="eyebrow">The Codex / 3 worlds · first course forming</p>
-            <h1 id="hero-title" className="display-1">
-              Every lesson
+        <div className="wrap">
+          <div className="hero__top">
+            <h1 id="hero-title" className="wide display-hero">
+              Field
               <br />
-              is a door.
+              trips,
               <br />
-              <span className="text-yellow">Step through.</span>
+              <span className="c-teal">
+                minus
+                <br />
+                the bus.
+              </span>
             </h1>
-            <p className="lead">
-              Short lessons taught by a real teacher, then a 3D world where you test the idea yourself: change the
-              conditions, watch what happens, explain why.
-            </p>
-            <div className="cta-row">
-              <Link to={oceanOverview} className="btn btn-primary">
-                Start with Ocean Explorer <span className="arrow" aria-hidden="true">→</span>
-              </Link>
-              <SmartLink href={oceanWorld} fallback={oceanOverview} className="btn btn-ghost">
-                Try the reef now
-              </SmartLink>
-            </div>
-            <p className="hero__note">Runs in your web browser · no install</p>
-          </div>
-
-          <Portal
-            src={ocean.image}
-            alt={ocean.imageAlt}
-            title={ocean.world}
-            caption="Door 01 · first course"
-          />
-        </div>
-      </section>
-
-      {/* ── Three doors ── */}
-      <section id="worlds" className="section" aria-labelledby="worlds-title">
-        <div className="wrap">
-          <div className="section-head">
-            <h2 id="worlds-title" className="display-2">
-              Three doors. Start with the reef.
-            </h2>
-            <p>Each world becomes a full course. Ocean Explorer opens first, and the others follow the same path.</p>
-          </div>
-          <div className="doors">
-            {courses.map(c => (
-              <DoorCard key={c.id} course={c} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── First course ── */}
-      <section id="first-course" className="section section--alt first-course" aria-labelledby="fc-title">
-        <div className="wrap first-course__grid">
-          <div>
-            <p className="eyebrow">First course · {ocean.world}</p>
-            <h2 id="fc-title" className="display-2">
-              {ocean.courseTitle}
-            </h2>
-            <p className="lead">{ocean.intro}</p>
-            <ul className="topic-list">
-              {ocean.topics.map(t => (
-                <li key={t}>{t}</li>
-              ))}
-            </ul>
-            <div className="cta-row">
-              <SmartLink href={SITE.earlyAccessUrl} fallback={oceanOverview} className="btn btn-primary">
-                Get early access to the course
-              </SmartLink>
-              <SmartLink href={oceanWorld} fallback={oceanOverview} className="btn btn-ghost">
-                Explore the world first
-              </SmartLink>
+            <div className="hero__copy">
+              <p className="lead">
+                Explore a real Belize reef, follow satellites around Earth, and wire a city’s power grid. Every trip is
+                guided by a real teacher, on a tablet, touchscreen or laptop.
+              </p>
+              <div className="cta-row">
+                <Link to={firstTrip} className="btn btn-teal">
+                  Take the first trip <Arrow />
+                </Link>
+                <Link to="/#trips" className="btn btn-outline">
+                  See all three
+                </Link>
+              </div>
             </div>
           </div>
 
-          <div>
-            <p className="eyebrow" id="inside-title">
-              Inside the world, you…
-            </p>
-            <ol className="inside-list" aria-labelledby="inside-title">
-              {ocean.insideTheWorld.map((step, i) => (
-                <li key={step.verb}>
-                  <span className="num" aria-hidden="true">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <span className="verb">{step.verb}</span>
-                  <span className="detail">{step.detail}</span>
-                </li>
-              ))}
-            </ol>
+          <div className="bento">
+            <Link to={`/trips/${ocean.id}`} className="tile bento__main">
+              <img src={ocean.image} alt={ocean.imageAlt} width="1150" height="810" fetchPriority="high" />
+              <span className="bento__chip">
+                <span className="kicker" style={{ display: 'block' }}>
+                  Trip 01 · {ocean.heroLabel}
+                </span>
+                <span className="wide" style={{ display: 'block' }}>
+                  {ocean.heroPlace}
+                </span>
+              </span>
+            </Link>
+            <Link to={`/trips/${orbit.id}`} className="tile tile--blue on-dark">
+              <span>
+                <span className="kicker" style={{ display: 'block' }}>
+                  Trip 02 · {orbit.heroPlace}
+                </span>
+                <span className="wide" style={{ display: 'block', marginTop: '1.4rem' }}>
+                  {orbit.world}
+                </span>
+              </span>
+              <span className="tile__tag">{orbit.heroTagline}</span>
+            </Link>
+            <Link to={`/trips/${power.id}`} className="tile tile--orange on-orange">
+              <span>
+                <span className="kicker" style={{ display: 'block' }}>
+                  Trip 03 · {power.heroPlace}
+                </span>
+                <span className="wide" style={{ display: 'block', marginTop: '1.4rem' }}>
+                  {power.world}
+                </span>
+              </span>
+              <span className="tile__tag">{power.heroTagline}</span>
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* ── How it works ── */}
-      <section id="how-it-works" className="section" aria-labelledby="path-title">
+      {/* ── Why ── */}
+      <section className="band on-dark" aria-label="Why The Codex">
+        <div className="wrap band__grid">
+          <p className="band__statement">
+            For every kid who has never seen a reef up close, a satellite at work, or where the power really comes from.
+          </p>
+          <p>No aquarium, observatory or power plant nearby? The Codex brings the place to you, and a teacher to explain it.</p>
+        </div>
+      </section>
+
+      {/* ── Where we're going ── */}
+      <section id="trips" className="section" aria-labelledby="trips-title">
         <div className="wrap">
-          <div className="section-head" style={{ gridTemplateColumns: '1fr' }}>
-            <h2 id="path-title" className="display-2">
-              Every course follows the same path
-            </h2>
-            <p style={{ maxWidth: '34rem' }}>
-              A real lesson before the world, a check after it, and a clear way back to the course. Every activity has
-              an accessible alternative.
-            </p>
-          </div>
-          <ol className="path">
-            {PATH.map(step => (
-              <li key={step.n} style={{ '--step': step.color }}>
-                <p className="eyebrow" style={{ margin: 0 }}>
-                  {step.n} / {step.tag}
+          <h2 id="trips-title" className="wide display-xl">
+            Where we’re going
+          </h2>
+
+          <div className="trips">
+            {/* Trip 01 */}
+            <article className="trip trip--teal on-dark" aria-labelledby="trip-ocean">
+              <div className="trip__media">
+                <img src={ocean.image} alt="" width="1150" height="810" loading="lazy" />
+              </div>
+              <div className="trip__body">
+                <div className="trip__head">
+                  <p className="kicker">{tripLabel(ocean)}</p>
+                  <span className="pill pill--white">{ocean.statusLabel}</span>
+                </div>
+                <h3 id="trip-ocean" className="wide">
+                  <Link to={`/trips/${ocean.id}`} style={{ color: 'inherit', textDecoration: 'none' }}>
+                    {ocean.world}
+                  </Link>
+                </h3>
+                <p className="trip__text">{ocean.summary}</p>
+                <ol className="trip__lessons">
+                  {ocean.lessons.map((l, i) => (
+                    <li key={l.title}>
+                      <span className="n">{String(i + 1).padStart(2, '0')}</span>
+                      <span>{l.title}</span>
+                    </li>
+                  ))}
+                </ol>
+                <div className="trip__actions">
+                  <Link to={firstTrip} className="btn btn-white">
+                    {ocean.cta}
+                  </Link>
+                  <span className="trip__note">{ocean.ctaNote}</span>
+                </div>
+              </div>
+            </article>
+
+            {/* Trip 02 */}
+            <article className="trip trip--blue trip--flip on-dark" aria-labelledby="trip-orbit">
+              <div className="trip__media">
+                <img src={orbit.image} alt="" width="1150" height="810" loading="lazy" />
+              </div>
+              <div className="trip__body">
+                <div className="trip__head">
+                  <p className="kicker">{tripLabel(orbit)}</p>
+                  <span className="pill pill--outline">{orbit.statusLabel}</span>
+                </div>
+                <h3 id="trip-orbit" className="wide" style={{ maxWidth: 'none' }}>
+                  <Link to={`/trips/${orbit.id}`} style={{ color: 'inherit', textDecoration: 'none' }}>
+                    {orbit.world}
+                  </Link>
+                </h3>
+                <p className="trip__text">{orbit.summary}</p>
+                <p className="trip__text" style={{ fontSize: '0.94rem' }}>
+                  <strong>First lesson:</strong> {orbit.firstLesson}
                 </p>
-                <h3>{step.title}</h3>
-                <p>{step.text}</p>
+                <ul className="chips" aria-label="Each lesson">
+                  {orbit.chips.map(c => (
+                    <li key={c}>{c}</li>
+                  ))}
+                </ul>
+                <div className="trip__actions">
+                  <SmartLink href={SITE.previews[orbit.id]} fallback={`/trips/${orbit.id}`} className="btn btn-white">
+                    {orbit.cta}
+                  </SmartLink>
+                </div>
+              </div>
+            </article>
+
+            {/* Trip 03 */}
+            <article className="trip trip--orange on-orange" aria-labelledby="trip-power">
+              <div className="trip__media">
+                <img src={power.image} alt="" width="1150" height="810" loading="lazy" />
+              </div>
+              <div className="trip__body">
+                <div className="trip__head">
+                  <p className="kicker">{tripLabel(power)}</p>
+                  <span className="pill pill--ink">{power.statusLabel}</span>
+                </div>
+                <h3 id="trip-power" className="wide" style={{ maxWidth: 'none' }}>
+                  <Link to={`/trips/${power.id}`} style={{ color: 'inherit', textDecoration: 'none' }}>
+                    {power.world}
+                  </Link>
+                </h3>
+                <p className="trip__text">{power.summary}</p>
+                <ol className="path-chips" aria-label="The route through the course">
+                  {power.path.map((step, i) => (
+                    <li key={step}>
+                      <span className="chip">{step}</span>
+                      {i < power.path.length - 1 && <span aria-hidden="true">→</span>}
+                    </li>
+                  ))}
+                </ol>
+                <div className="trip__actions">
+                  <SmartLink href={SITE.previews[power.id]} fallback={`/trips/${power.id}`} className="btn btn-ink">
+                    {power.cta}
+                  </SmartLink>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Every trip, same route ── */}
+      <section id="route" className="section" style={{ paddingTop: 0 }} aria-labelledby="route-title">
+        <div className="wrap">
+          <h2 id="route-title" className="wide display-xl">
+            Every trip, same route
+          </h2>
+          <p className="section-sub">
+            A real lesson before the world, a check after it, and you always know your next stop. Every activity has an
+            accessible alternative.
+          </p>
+          <ol className="route">
+            {ROUTE.map(r => (
+              <li key={r.stop} className={r.here ? 'is-here' : r.end ? 'is-end' : undefined}>
+                <p className="kicker">Stop {r.stop}</p>
+                <h3 className="wide">{r.title}</h3>
+                <p>{r.text}</p>
               </li>
             ))}
           </ol>
         </div>
       </section>
 
-      {/* ── Teachers & schools ── */}
-      <section id="for-schools" className="section schools" aria-labelledby="schools-title">
-        <div className="wrap schools__grid">
-          <div>
-            <p className="eyebrow">For teachers &amp; schools</p>
-            <h2 id="schools-title" className="display-2">
-              Open one door for the whole class.
-            </h2>
-            <p>
-              Run Ocean Explorer as a teacher-led lesson, or let students work through it at their own pace. Help shape
-              the first course by piloting it with your class.
-            </p>
-          </div>
-          <div className="schools__actions">
-            <SmartLink
-              href={SITE.pilotUrl}
-              notice="Pilot sign-ups aren’t open yet — check back soon."
-              className="btn btn-ink"
-            >
-              Pilot the first course
-            </SmartLink>
-            <SmartLink
-              href={SITE.contactUrl}
-              notice="A contact route isn’t connected yet — check back soon."
-              className="btn btn-ink-outline"
-            >
-              Talk to us
-            </SmartLink>
+      {/* ── Who's coming along ── */}
+      <section id="along" className="section section--grey" aria-labelledby="along-title">
+        <div className="wrap">
+          <h2 id="along-title" className="wide display-xl">
+            Who’s coming along
+          </h2>
+          <div className="along">
+            <article className="along__card" style={{ '--link': 'var(--teal)' }}>
+              <p className="kicker">Families &amp; libraries</p>
+              <h3 className="wide">Explore together</h3>
+              <p>
+                Gather around a touchscreen or a few iPads and tap your way through the reef as a family. Ask about a
+                workshop at your local library.
+              </p>
+              <SmartLink href={SITE.workshopUrl} className="u-link">
+                Bring a workshop to your library →
+              </SmartLink>
+            </article>
+            <article className="along__card" style={{ '--link': 'var(--blue)' }}>
+              <p className="kicker">Teachers &amp; schools</p>
+              <h3 className="wide">Take the whole class</h3>
+              <p>
+                Lead the trip from the front of the room, or let students go at their own pace. Help shape the first full
+                course by piloting it.
+              </p>
+              <SmartLink href={SITE.pilotUrl} className="u-link">
+                Pilot the reef course →
+              </SmartLink>
+            </article>
+            <article className="along__card" style={{ '--link': 'var(--orange-text)' }}>
+              <p className="kicker">Curious learners</p>
+              <h3 className="wide">Go on your own</h3>
+              <p>
+                Start any trip in your browser, no install. Pick up where you left off whenever you’re ready for the next
+                stop.
+              </p>
+              <Link to={firstTrip} className="u-link">
+                Start the first trip →
+              </Link>
+            </article>
           </div>
         </div>
       </section>
 
-      {/* ── Which door first ── */}
-      <section className="section which" aria-labelledby="which-title">
-        <div className="wrap">
-          <h2 id="which-title" className="display-2">
-            Which door first?
-          </h2>
-          <ul className="which__row">
-            {courses.map(c => (
-              <li key={c.id} data-accent={c.accent}>
-                <Link to={`/courses/${c.id}`} className="which__item">
-                  <span className="which__thumb">
-                    <span className="which__thumb-clip" style={{ display: 'block' }}>
-                      <img src={c.image} alt="" width="765" height="667" loading="lazy" />
-                    </span>
-                  </span>
-                  <span className="which__name">{c.world}</span>
-                  <span className="which__status">{c.statusLabel}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
+      {/* ── Your guide ── */}
+      <section id="guide" className="section" aria-labelledby="guide-title">
+        <div className="wrap guide">
+          {SITE.guidePhoto ? (
+            <div className="guide__photo">
+              <img src={SITE.guidePhoto} alt="Devin, the teacher who builds The Codex worlds" loading="lazy" />
+            </div>
+          ) : (
+            <div className="guide__photo guide__placeholder" aria-hidden="true">
+              <BrandDots />
+            </div>
+          )}
+          <div>
+            <p className="kicker">Your guide</p>
+            <h2 id="guide-title" className="wide display-xl" style={{ marginBottom: 0 }}>
+              Taught by a teacher who builds the worlds.
+            </h2>
+            <p className="lead">
+              Devin is a classroom teacher and creative technologist. He builds every Codex world himself, and the reef
+              trips are set in Belize waters he explored in person, so what you see comes from somewhere real.
+            </p>
+            <div style={{ marginTop: '1rem' }}>
+              <SmartLink href={SITE.aboutUrl} notice="The About page isn’t published yet." className="u-link">
+                More about Devin and The Devinci Code →
+              </SmartLink>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── First stop ── */}
+      <section className="final on-dark" aria-labelledby="final-title">
+        <div className="wrap final__grid">
+          <div>
+            <h2 id="final-title" className="wide display-xl">
+              First
+              <br />
+              stop:
+              <br />
+              the reef.
+            </h2>
+            <div className="cta-row" style={{ marginTop: '1.75rem' }}>
+              <Link to={firstTrip} className="btn btn-white">
+                Take the first trip <Arrow />
+              </Link>
+            </div>
+          </div>
+          <NotifyForm />
         </div>
       </section>
     </>

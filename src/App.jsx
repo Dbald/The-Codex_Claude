@@ -5,6 +5,8 @@ import Home from './pages/Home.jsx';
 import FeedPage from './pages/FeedPage.jsx';
 import Saved from './pages/Saved.jsx';
 import Progress from './pages/Progress.jsx';
+import WorldLesson from './pages/WorldLesson.jsx';
+import { WORLDS } from './utils/worlds.js';
 import { loadProgress } from './utils/storage.js';
 import { loadSettings, saveSettings, applySettings } from './utils/settings.js';
 import {
@@ -21,6 +23,7 @@ export default function App() {
   const [progress, setProgress] = useState(() => loadProgress());
   const [settings, setSettings] = useState(() => loadSettings());
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [worldId, setWorldId] = useState(null);
 
   useEffect(() => {
     applySettings(settings);
@@ -79,6 +82,19 @@ export default function App() {
 
   const showNav = page !== 'feed';
 
+  // An interactive world takes the whole screen; the lesson page has its own header.
+  if (worldId && WORLDS[worldId]) {
+    return (
+      <WorldLesson
+        world={WORLDS[worldId]}
+        onExit={() => {
+          setWorldId(null);
+          setPage('home');
+        }}
+      />
+    );
+  }
+
   return (
     <AppShell
       currentPage={showNav ? page : null}
@@ -91,6 +107,7 @@ export default function App() {
           progress={progress}
           onStartSession={handleStartSession}
           onOpenChannel={handleOpenChannel}
+          onOpenWorld={setWorldId}
         />
       )}
       {page === 'feed' && (

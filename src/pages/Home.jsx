@@ -1,7 +1,15 @@
 import ChannelCard from '../components/ChannelCard.jsx';
 import { ALL_CARDS } from '../utils/feed.js';
+import { WORLDS, loadWorldProgress } from '../utils/worlds.js';
 
-export default function Home({ progress, onStartSession, onOpenChannel }) {
+export default function Home({ progress, onStartSession, onOpenChannel, onOpenWorld }) {
+  const reef = WORLDS['ocean-explorer'];
+  const reefProgress = loadWorldProgress(reef.lesson);
+  const reefAction = reefProgress.completed
+    ? 'Revisit the reef lesson'
+    : reefProgress.started
+      ? `Continue · Step ${reefProgress.index + 1} of ${reefProgress.total}`
+      : 'Start the reef lesson';
   const streak = progress.streak.current;
   const totalViewed = progress.viewedCardIds.length;
   const totalLearned = progress.learnedCardIds.length;
@@ -85,12 +93,23 @@ export default function Home({ progress, onStartSession, onOpenChannel }) {
         style={{ background: 'linear-gradient(135deg, #0b3a50 0%, #0f1f33 70%)', borderColor: 'rgba(61,214,198,0.3)' }}
       >
         <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: '#3DD6C6' }}>
-          Coming next · Ocean Explorer
+          Ocean Explorer · First lesson open
         </p>
         <h2 id="ocean-early-title" className="text-xl font-black text-white mb-1">Exploring Reef Ecosystems</h2>
         <p className="text-slate-300 text-sm mb-4">
           Short lessons from a real teacher, plus an interactive reef you can explore on any screen.
         </p>
+        <button
+          onClick={() => onOpenWorld?.('ocean-explorer')}
+          className="w-full flex items-center justify-between rounded-xl px-4 mb-3 font-bold text-sm text-left"
+          style={{ background: '#3DD6C6', color: '#0B1020', minHeight: 52 }}
+        >
+          <span>
+            <span className="block">{reefAction}</span>
+            <span className="block text-xs font-semibold opacity-80">{reef.title}</span>
+          </span>
+          <span aria-hidden="true">→</span>
+        </button>
         <div className="flex flex-wrap gap-2">
           <a
             href="/early-access/?interest=early&src=codex-app"

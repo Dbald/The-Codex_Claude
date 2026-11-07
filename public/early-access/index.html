@@ -7,86 +7,111 @@
 <meta name="description" content="Sign up for early access to The Codex: short lessons taught by a real teacher, paired with an interactive reef kids can explore on any screen.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<!-- Archivo, as on the homepage: wide and heavy for headlines, regular width for text. -->
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0B1020; --surface: #141B2E; --line: #273152; --line-2: #3A4562;
-    --ink: #EEF1F7; --soft: #C9D1E2; --muted: #8D97AD;
-    --amber: #FFC857; --amber-ink: #0B1020; --teal: #3DD6C6; --error: #F4A3C0;
-    --display: 'Bricolage Grotesque', system-ui, sans-serif;
-    --body: 'Atkinson Hyperlegible', system-ui, sans-serif;
-    --mono: 'IBM Plex Mono', ui-monospace, monospace;
-    color-scheme: dark;
+    /* The Codex homepage: white pages, near-black ink, teal for the reef trip, thin black outlines. */
+    --bg: #FFFFFF; --surface: #FFFFFF; --tint: #F1F2F3;
+    --ink: #121316; --soft: #3B4046; --muted: #5F666D;
+    --line: #D4D7DA; --line-strong: #121316;
+    --teal: #00756B; --teal-dark: #005C54; --teal-tint: #E6F2F0;
+    --blue: #2F3BD8; --orange: #F26B1D; --error: #B3261E;
+    --display: 'Archivo', 'Arial Black', system-ui, sans-serif;
+    --body: 'Archivo', system-ui, sans-serif;
+    color-scheme: light;
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; }
-  body {
-    background:
-      radial-gradient(1200px 600px at 85% -10%, rgba(142, 164, 255, 0.16), transparent 60%),
-      radial-gradient(900px 500px at -10% 110%, rgba(61, 214, 198, 0.10), transparent 60%),
-      var(--bg);
-    color: var(--ink); font-family: var(--body); font-size: 18px; line-height: 1.5;
-    min-height: 100vh;
-  }
+  body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 18px; line-height: 1.5; min-height: 100vh; display: flex; flex-direction: column; }
   a { color: var(--teal); }
-  :focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; border-radius: 6px; }
-  .wrap { max-width: 1120px; margin: 0 auto; padding: 28px 16px 64px; }
-  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); font-family: var(--display); font-weight: 800; font-size: 20px; }
-  .brand-door { width: 22px; height: 28px; border: 2px solid var(--amber); border-bottom: 0; border-radius: 11px 11px 0 0; }
-  .grid { display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 40px; }
-  @media (min-width: 900px) { .grid { grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: start; } .intro { position: sticky; top: 32px; } }
-  .eyebrow { font-family: var(--mono); font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin: 0 0 12px; }
-  h1 { font-family: var(--display); font-weight: 800; font-size: clamp(34px, 5vw, 54px); line-height: 1.04; margin: 0 0 16px; letter-spacing: -0.01em; }
-  .lede { color: var(--soft); font-size: 19px; margin: 0 0 24px; max-width: 34em; }
-  .perks { list-style: none; margin: 0 0 24px; padding: 0; display: grid; gap: 12px; }
-  .perks li { display: flex; gap: 12px; align-items: flex-start; color: var(--soft); }
-  .perks li::before { content: ''; flex: none; width: 10px; height: 10px; margin-top: 9px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 0 4px rgba(255, 200, 87, 0.15); }
-  .try { display: inline-flex; align-items: center; gap: 8px; color: var(--ink); text-decoration: none; font-weight: 700; padding: 12px 18px; border: 1.5px solid var(--line-2); border-radius: 999px; }
-  .try:hover { border-color: var(--teal); }
+  :focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 6px; }
 
-  .card { background: var(--surface); border: 1.5px solid var(--line); border-radius: 22px; padding: 28px 24px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35); }
-  @media (min-width: 600px) { .card { padding: 32px; } }
-  .card h2 { font-family: var(--display); font-weight: 800; font-size: 24px; margin: 0 0 4px; }
-  .card .sub { color: var(--muted); margin: 0 0 24px; font-size: 16px; }
+  /* Header: the four-dot mark and wide capitals, over a thin black rule. */
+  .top { border-bottom: 1.5px solid var(--line-strong); }
+  .top-inner { max-width: 1120px; margin: 0 auto; padding: 18px 16px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); font-family: var(--display); font-stretch: 125%; font-weight: 900; font-size: 19px; text-transform: uppercase; letter-spacing: 0.01em; }
+  .mark { display: grid; grid-template-columns: repeat(2, 10px); gap: 3px; }
+  .mark i { width: 10px; height: 10px; border-radius: 50%; display: block; }
+  .mark i:nth-child(1) { background: var(--teal); }
+  .mark i:nth-child(2) { background: var(--blue); }
+  .mark i:nth-child(3) { background: var(--orange); }
+  .mark i:nth-child(4) { background: var(--ink); }
+  .top-link { color: var(--ink); text-decoration: none; font-weight: 700; font-size: 15px; padding: 10px 18px; border-radius: 999px; background: var(--ink); color: #fff; white-space: nowrap; }
+  .top-link:hover { background: #2B2E33; }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px 64px; width: 100%; flex: 1; }
+  .grid { display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 48px; }
+  @media (min-width: 900px) { .grid { grid-template-columns: 0.95fr 1.05fr; gap: 56px; align-items: start; } .intro { position: sticky; top: 32px; } }
+  .eyebrow { font-size: 13px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal); margin: 0 0 16px; }
+  h1 { font-family: var(--display); font-stretch: 125%; font-weight: 900; text-transform: uppercase; font-size: clamp(36px, 5.2vw, 60px); line-height: 0.95; margin: 0 0 22px; letter-spacing: -0.01em; }
+  .lede { color: var(--soft); font-size: 19px; margin: 0 0 26px; max-width: 32em; }
+  /* Numbered like the homepage's trip list: 01, 02, 03. */
+  .perks { list-style: none; margin: 0 0 28px; padding: 0; display: grid; gap: 12px; counter-reset: perk; }
+  .perks li { display: flex; gap: 14px; align-items: baseline; color: var(--soft); counter-increment: perk; }
+  .perks li::before { content: counter(perk, decimal-leading-zero); flex: none; font-weight: 800; color: var(--ink); font-size: 15px; }
+  .try { display: inline-flex; align-items: center; gap: 8px; color: var(--ink); text-decoration: none; font-weight: 700; padding: 12px 20px; border: 1.5px solid var(--line-strong); border-radius: 999px; background: var(--surface); }
+  .try:hover { background: var(--tint); }
+
+  .card { background: var(--surface); border: 1.5px solid var(--line-strong); border-radius: 24px; padding: 28px 22px; }
+  @media (min-width: 600px) { .card { padding: 34px 32px; } }
+  .card h2 { font-family: var(--display); font-stretch: 125%; font-weight: 900; text-transform: uppercase; font-size: 26px; line-height: 1; margin: 0 0 8px; }
+  .card .sub { color: var(--muted); margin: 0 0 26px; font-size: 16px; }
   .field { margin: 0 0 18px; }
   .row2 { display: grid; gap: 0 16px; grid-template-columns: 1fr; }
   @media (min-width: 600px) { .row2 { grid-template-columns: 1fr 1fr; } }
   label, legend { display: block; font-weight: 700; margin: 0 0 6px; font-size: 16px; }
   .opt { font-weight: 400; color: var(--muted); }
   input[type=text], input[type=email], select, textarea {
-    width: 100%; font: inherit; font-size: 17px; color: var(--ink); background: var(--bg);
-    border: 1.5px solid var(--line-2); border-radius: 12px; padding: 12px 14px; min-height: 50px;
+    width: 100%; font: inherit; font-size: 17px; color: var(--ink); background: var(--surface);
+    border: 1.5px solid var(--line-strong); border-radius: 14px; padding: 12px 16px; min-height: 52px;
   }
-  textarea { min-height: 96px; resize: vertical; }
-  input:focus, select:focus, textarea:focus { border-color: var(--amber); outline: none; box-shadow: 0 0 0 3px rgba(255, 200, 87, 0.25); }
+  input::placeholder, textarea::placeholder { color: #8A9096; }
+  /* A plain chevron, so the select matches the other fields in every browser. */
+  select { appearance: none; -webkit-appearance: none; padding-right: 44px; cursor: pointer;
+    background: var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%23121316' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 16px center; }
+  textarea { min-height: 100px; resize: vertical; }
+  input:focus, select:focus, textarea:focus { border-color: var(--teal); outline: none; box-shadow: 0 0 0 4px rgba(0, 117, 107, 0.18); }
   fieldset { border: 0; padding: 0; margin: 0 0 18px; }
   .checks { display: grid; gap: 10px; }
-  .check { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border: 1.5px solid var(--line-2); border-radius: 12px; cursor: pointer; font-weight: 400; margin: 0; }
-  .check:has(input:checked) { border-color: var(--amber); background: rgba(255, 200, 87, 0.06); }
-  .check input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--amber); flex: none; }
+  .check { display: flex; gap: 14px; align-items: flex-start; padding: 14px 16px; border: 1.5px solid var(--line); border-radius: 16px; cursor: pointer; font-weight: 400; margin: 0; background: var(--surface); }
+  .check:hover { border-color: var(--line-strong); }
+  .check:has(input:checked) { border-color: var(--teal); background: var(--teal-tint); box-shadow: inset 0 0 0 1px var(--teal); }
+  .check input { width: 20px; height: 20px; margin: 3px 0 0; accent-color: var(--teal); flex: none; }
   .check strong { display: block; }
   .check span span { color: var(--muted); font-size: 15px; }
-  .consent { border: 0; padding: 0; }
-  .consent:has(input:checked) { background: none; }
-  .note { font-size: 14px; color: var(--muted); margin: 0 0 18px; }
+  .consent { border: 0; padding: 0; background: none; }
+  .consent:hover { border: 0; }
+  .consent:has(input:checked) { background: none; box-shadow: none; }
+  .note { font-size: 14px; color: var(--muted); margin: 0 0 18px; padding: 10px 14px; border-radius: 12px; background: var(--tint); }
   .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
   button[type=submit] {
-    width: 100%; font: inherit; font-weight: 700; font-size: 19px; min-height: 58px; border: 0; border-radius: 999px;
-    background: var(--amber); color: var(--amber-ink); cursor: pointer;
+    width: 100%; font: inherit; font-weight: 800; font-size: 19px; min-height: 58px; border: 0; border-radius: 999px;
+    background: var(--ink); color: #fff; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
   }
-  button[type=submit]:hover { filter: brightness(1.06); }
+  button[type=submit]:hover { background: #2B2E33; }
   button[type=submit]:disabled { opacity: 0.6; cursor: progress; }
   .error { color: var(--error); font-weight: 700; margin: 12px 0 0; }
   .done { text-align: center; padding: 24px 8px; }
-  .done .big-door { width: 56px; height: 72px; margin: 0 auto 18px; border: 3px solid var(--amber); border-bottom: 0; border-radius: 28px 28px 0 0; background: linear-gradient(rgba(255, 200, 87, 0.25), transparent); }
-  .done h2 { font-size: 30px; }
+  .done .mark { grid-template-columns: repeat(2, 22px); gap: 6px; justify-content: center; margin: 0 0 22px; }
+  .done .mark i { width: 22px; height: 22px; }
+  .done h2 { font-size: 32px; }
   .done p { color: var(--soft); }
-  footer { margin-top: 48px; color: var(--muted); font-size: 14px; }
+
+  /* Footer: the homepage's black bar. */
+  footer { background: var(--ink); color: #D9DCDF; font-size: 14px; }
+  footer p { max-width: 1120px; margin: 0 auto; padding: 22px 16px; }
 </style>
 </head>
 <body>
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="/"><span class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>The Codex</a>
+    <a class="top-link" href="https://oceanexp.netlify.app/">Start at the reef</a>
+  </div>
+</header>
+
 <div class="wrap">
-  <a class="brand" href="/"><span class="brand-door" aria-hidden="true"></span>The Codex</a>
 
   <div class="grid">
     <section class="intro" aria-labelledby="page-title">
@@ -178,13 +203,13 @@
             <label class="check consent"><input type="checkbox" name="consent" value="yes" required><span>It's OK to email me about The Codex and Ocean Explorer. My info won't be sold or shared.</span></label>
           </div>
 
-          <button type="submit" id="submit">Count me in</button>
+          <button type="submit" id="submit">Count me in <span aria-hidden="true">→</span></button>
           <p class="error" id="error" role="alert" hidden></p>
         </form>
       </div>
 
       <div class="done" id="done" hidden tabindex="-1">
-        <div class="big-door" aria-hidden="true"></div>
+        <div class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
         <h2>You're on the list.</h2>
         <p>Thanks for signing up. We'll be in touch when the first course opens.</p>
         <p><a class="try" href="https://oceanexp.netlify.app/">Explore the reef while you wait <span aria-hidden="true">→</span></a></p>
@@ -192,8 +217,9 @@
     </section>
   </div>
 
-  <footer>The Codex · a Devinci Global learning platform</footer>
 </div>
+
+<footer><p>The Codex · a Devinci Global learning platform</p></footer>
 
 <script>
   // ?interest=early|pilot|workshop pre-selects a box and tunes the headline.
@@ -244,7 +270,7 @@
           error.textContent = "That didn't go through. Please check your connection and try again.";
           error.hidden = false;
           submit.disabled = false;
-          submit.textContent = 'Count me in';
+          submit.innerHTML = 'Count me in <span aria-hidden="true">→</span>';
         });
     });
   })();
